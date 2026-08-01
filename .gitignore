@@ -1,0 +1,8 @@
+# Videos y assets pesados: se guardan en tu disco, no en el repo
+proyectos/**/exports/*
+!proyectos/**/exports/.gitkeep
+
+*.mp4
+*.mov
+*.mkv
+*.webm
