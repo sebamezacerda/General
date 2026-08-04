@@ -1,9 +1,10 @@
-# Proyectos
+# Bidasoa
 
-Repositorio contenedor de proyectos de marketing/contenido. Cada proyecto vive en su propia
-carpeta bajo `proyectos/`, independientemente de qué herramienta se haya usado para producirlo.
+Repositorio general, agrupado en dos áreas:
 
-## Proyectos
-
-- [`proyectos/casa-sanz/`](proyectos/casa-sanz/) — Video publicitario 9:16 para Casa Sanz
-  (restaurante vegano, Vitacura). Producido con Higgsfield.
+- [`Marketing Bidasoa/`](Marketing%20Bidasoa/) — contenido y proyectos de marketing.
+  - [`Videos Higgsfield/`](Marketing%20Bidasoa/Videos%20Higgsfield/) — videos producidos con
+    Higgsfield.
+    - [`casa-sanz/`](Marketing%20Bidasoa/Videos%20Higgsfield/casa-sanz/) — video publicitario
+      9:16 para Casa Sanz (restaurante vegano, Vitacura).
+- [`Gestión Bidasoa/`](Gestión%20Bidasoa/) — gestión/operaciones.
