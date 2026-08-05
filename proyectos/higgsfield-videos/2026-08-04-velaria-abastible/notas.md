@@ -45,3 +45,10 @@
   hf_20260805_010623_fecbe4bf-15e0-4eba-a4f3-77a095c76957.mp4 (80s, 1080p, 16:9,
   subtitulos quemados, voz clonada chilena). Proyecto v1 cerrado; proximo paso es la
   revision del guion con el equipo (ver guion.md, bloques B1-B8 parametrizables).
+- 2026-08-05 (4): Musica ad hoc generada con sonilo_music, 80s exactos, arco en tres
+  partes que sigue el guion (tension sin resolver 0-20s / giro cuando aparece Velaria
+  20-30s / momentum 30-70s / cierre 70-80s). Dos versiones: corporativa
+  (774f7217-ac51-4fd4-b791-7f9cdf3aeb50) y ELECTRONICA elegida por Sebastian
+  (0c0ef7bc-561c-472b-8a90-3715ece4e171). Video v3 con musica ducked bajo la voz:
+  92513a10-881d-4340-98ef-3b4ba2a0d2d2 (720p). Upscale 1080p: job
+  8190ed44-99d9-4160-9a68-3e8831636f28. Musica generada = sin problema de licencia.
