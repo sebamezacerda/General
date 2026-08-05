@@ -91,3 +91,8 @@
   LIMITE CONOCIDO: no se pueden poner marcas reales (Word/Excel/Claude) ni texto
   legible en pantalla; se representan por su forma visual (grilla, slide, burbujas de
   chat) y las keywords viajan en la narracion + subtitulos.
+- 2026-08-05 (9): ENTREGABLE FINAL v2 en 1080p:
+  hf_20260805_153847_d5e67946-adcf-4579-9dee-b4ef223eac5a.mp4
+  (60s, 1080p, 16:9, oficina, simbolo de marca en bloques 3 y 6, voz clonada chilena,
+  musica electronica con drop en el segundo 18, subtitulos quemados).
+  Este reemplaza a la v1 de 80s como version vigente.
