@@ -52,3 +52,12 @@
   (0c0ef7bc-561c-472b-8a90-3715ece4e171). Video v3 con musica ducked bajo la voz:
   92513a10-881d-4340-98ef-3b4ba2a0d2d2 (720p). Upscale 1080p: job
   8190ed44-99d9-4160-9a68-3e8831636f28. Musica generada = sin problema de licencia.
+- 2026-08-05 (5): Upscale 1080p CON MUSICA completado:
+  hf_20260805_012714_8190ed44-99d9-4160-9a68-3e8831636f28.mp4
+  PENDIENTE (decision de Sebastian): la musica queda inaudible porque el ensamblador
+  la mezcla como cama a -24.6 dB y le hace ducking bajo la voz. Medido: el volumen
+  medio con musica (-19.0/-18.7/-18.5 dB) es casi igual al de la version sin musica
+  (-19.0 dB). Descartado el falso diagnostico de 96 kHz: la version que Sebastian si
+  escucho tiene la misma codificacion. Opciones ofrecidas: (a) subir la musica 8-12 dB
+  en la mezcla final, (b) abrir respiros instrumentales sin voz al inicio y al cierre
+  (implica reescribir 2 lineas del guion y regenerar esas 2 tomas), o ambas.
