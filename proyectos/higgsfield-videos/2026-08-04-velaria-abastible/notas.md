@@ -76,3 +76,18 @@
   hf_20260805_035002_a03aca62-3838-4409-bc74-5be95f4fbfad.mp4
   (80s, 1080p, 16:9, voz clonada chilena, musica electronica a -18.58 dB, subtitulos
   quemados). Este reemplaza a todas las versiones anteriores.
+- 2026-08-05 (8): VERSION 2 COMPLETA (rebrief de Sebastian). Cambios: 60s (6 bloques),
+  ambientacion de OFICINA REAL (monitores, archivadores, estanteria de biblioteca,
+  muro de metricas), simbolo del ojo de Velaria en los bloques 3 y 6, arco mas
+  dramatico (problema fuerte -> quiebre -> solucion), keywords de producto en la
+  narracion (cuentas gobernadas, biblioteca, skills, integraciones, controles, linea
+  base). Guion nuevo validado valid:true (sm2.json). Assets nuevos: office_wide
+  d29bbdd9, desk_detail ec0713b9, velaria_stage 3e3fb2cb, library_wall 41668f99,
+  dashboard_wall deeda5c6, screen_chat 6dd36e5e, screen_spreadsheet e3ad96fe,
+  screen_slides 5b2f7caa, velaria_eye 2c41de99 (generado desde el SVG real de marca
+  febdaf0f). Reusados: engineer, colleague, giant_hand, blue_folder, seal_stamp.
+  Musica nueva de 60s con drop en el segundo 18: 4d8fb976.
+  Entregable 720p: c8efc430-7e19-483e-9257-2229780288fb. Upscale job d5e67946.
+  LIMITE CONOCIDO: no se pueden poner marcas reales (Word/Excel/Claude) ni texto
+  legible en pantalla; se representan por su forma visual (grilla, slide, burbujas de
+  chat) y las keywords viajan en la narracion + subtitulos.
