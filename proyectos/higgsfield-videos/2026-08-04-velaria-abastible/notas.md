@@ -61,3 +61,14 @@
   escucho tiene la misma codificacion. Opciones ofrecidas: (a) subir la musica 8-12 dB
   en la mezcla final, (b) abrir respiros instrumentales sin voz al inicio y al cierre
   (implica reescribir 2 lineas del guion y regenerar esas 2 tomas), o ambas.
+- 2026-08-05 (6): MUSICA SUBIDA AL TOPE. Hallazgo tecnico: assemble_final.sh mide la
+  cama contra la voz y la fija ~14 dB bajo el habla, asi que subir el archivo de entrada
+  no sirve; el unico control es --music-vol (default 0.10, clampeado a 0.20 = +6 dB max).
+  finish_video.sh NO expone ese flag, asi que se uso la cadena de abajo (documentada en
+  SKILL.md para 're-assembly with a bed'): assemble_final.sh --music-vol 0.20 +
+  audio_to_captions.py + burn_caps_clean.sh. Resultado: cama de -24.60 a -18.58 dB.
+  Entregable 720p: 6cebef59-facb-4c24-b825-bb903540f9dd. Upscale 1080p job
+  a03aca62-3838-4409-bc74-5be95f4fbfad.
+  NO SE PUDO el respiro instrumental: el ensamblador exige 8.6-10.0 s de habla en CADA
+  bloque de 10 s (gate duro), asi que no admite un tramo sin voz. Para un intro/outro
+  instrumental real habria que editar fuera de este pipeline.
