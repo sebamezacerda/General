@@ -41,3 +41,7 @@
   gates verdes. Entregable 720p: 5dcd4046-fa7f-4827-a4ca-76223144ef1c.
   Upscale Topaz 1080p en curso (job fecbe4bf-15e0-4eba-a4f3-77a095c76957).
   Guion v3 parametrizable en guion.md para la revision con el equipo.
+- 2026-08-05 (3): Upscale Topaz 1080p COMPLETADO. Entregable final:
+  hf_20260805_010623_fecbe4bf-15e0-4eba-a4f3-77a095c76957.mp4 (80s, 1080p, 16:9,
+  subtitulos quemados, voz clonada chilena). Proyecto v1 cerrado; proximo paso es la
+  revision del guion con el equipo (ver guion.md, bloques B1-B8 parametrizables).
