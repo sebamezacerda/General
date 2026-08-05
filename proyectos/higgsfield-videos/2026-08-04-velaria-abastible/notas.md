@@ -72,3 +72,7 @@
   NO SE PUDO el respiro instrumental: el ensamblador exige 8.6-10.0 s de habla en CADA
   bloque de 10 s (gate duro), asi que no admite un tramo sin voz. Para un intro/outro
   instrumental real habria que editar fuera de este pipeline.
+- 2026-08-05 (7): ENTREGABLE FINAL 1080p con musica al tope:
+  hf_20260805_035002_a03aca62-3838-4409-bc74-5be95f4fbfad.mp4
+  (80s, 1080p, 16:9, voz clonada chilena, musica electronica a -18.58 dB, subtitulos
+  quemados). Este reemplaza a todas las versiones anteriores.
