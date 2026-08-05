@@ -1,66 +1,57 @@
-# Guion FINAL (v3 — en producción) — Animación VELARIA para Abastible
+# Guion v4 (VIGENTE) — Animación VELARIA para Abastibletec
 
-> Esta es la versión que se está produciendo en Higgsfield como PRUEBA. Cada bloque es
-> independiente: se puede cambiar su texto (VO) o su visual y regenerar solo ese bloque
-> sin tocar el resto. Para la reunión de equipo: marquen los cambios por número de bloque.
+> Versión producida y entregada: 60 segundos, 6 bloques de 10s, ambientada en oficina.
+> Reemplaza al guion v3 de 8 bloques (80s). Los cambios se piden por número de bloque.
 
-## Parámetros del video (ajustables)
+## Parámetros del video
 
-| Parámetro | Valor actual | Notas para ajustar |
+| Parámetro | Valor | Cómo se cambia |
 |---|---|---|
-| Duración | 80s (8 bloques × 10s) | Se puede acortar/alargar por bloques de 10s |
-| Formato | 16:9 horizontal | Existe reframe a 9:16 si se necesita para redes |
-| Estilo visual | **Whiteboard Doodle** (pizarra blanca + plumón negro + acento azul cobalto VELARIA) | Elegido por Sebastián en la galería; cambiar estilo = regenerar todo |
-| Voz | Cillian (masculina), español latino neutro | Cambiar voz = regenerar solo la narración (barato) |
-| Subtítulos | Sí, look "clean" | on/off, 3 looks disponibles |
-| Hilo conductor | **El dossier azul**: parte vacío e ignorado → se llena con las piezas del equipo → termina sellado | Es la metáfora del sistema VELARIA funcionando |
-| Texto en pantalla | Ninguno (la voz carga todo; el estilo lo exige) | Logo/cierre con marca se puede añadir en post aparte |
+| Duración | 60,07s (6 bloques × 10s) | Sumar o quitar bloques de 10s |
+| Formato | 16:9 · 1920×1080 · 24 fps | Reframe a 9:16 para redes |
+| Estilo | Whiteboard Doodle (pizarra + plumón), acento azul cobalto de marca | Cambiarlo = rehacer assets y clips (caro) |
+| Voz | Clon chileno de Sebastián (`element f41d7f77`) | Regenerar 6 tomas (barato) |
+| Música | Electrónica a medida, 60s, drop en el segundo 18 | Regenerar pista + reensamblar |
+| Subtítulos | Quemados, look "clean", español | on/off, 3 looks |
+| Hilo conductor | La carpeta azul: cerrada y olvidada → se activa → se llena → sellada | — |
 
-## Los 8 bloques (VO definitiva + visual)
+## Los 6 bloques
 
-**B1 · Gancho — el "hoy" (escritorios desordenados)**
-VO: "La inteligencia artificial ya llegó a tu empresa. Pero entró desordenada: cada persona la usa por su cuenta, a su manera, y cada respuesta vive solo en su pantalla."
-Visual: tres escritorios doodle, cada uno con su pila de papeles aislada; círculos azules marcan las islas; el dossier azul tirado en una esquina, vacío.
+**B1 · 00:00–00:10 · Gancho**
+VO: "Mira tu oficina ahora mismo. Cada persona tiene su propia ventana de inteligencia artificial abierta: planillas, presentaciones, informes, macros a medias, y un chat distinto en cada pantalla."
+Visual: oficina abierta, tres escritorios con monitores apareciendo escalonados y pilas de papel disparándose. Ventana de chat golpea el monitor del ingeniero; planilla se estrella sobre otra ventana. Cenital: escritorios como islas separadas por trazos azules. La carpeta azul cerrada en el suelo junto al archivador.
 
-**B2 · El costo invisible (escritorio desbordado)**
-VO: "El conocimiento duerme en carpetas que nadie consulta, los mismos cálculos se rehacen a mano cada semana, y nadie sabe cuántas horas se van en cada entrega."
-Visual: la pila se duplica y desborda; una hoja se cae; el dossier sigue vacío al borde.
+**B2 · 00:10–00:20 · El costo**
+VO: "El mismo cálculo se rehace en tres escritorios distintos. El hallazgo de ayer se pierde en una carpeta, y nadie puede decir cuántas horas costó esa entrega."
+Visual: monitor saturado de ventanas apiladas; la planilla se parte en tres copias idénticas; la pila de papeles colapsa fuera de cuadro; trazo azul subrayando el desorden. La carpeta sigue cerrada al borde.
 
-**B3 · Aparece VELARIA (círculo azul)**
-VO: "Velaria convierte ese uso individual en un sistema de trabajo compartido: la misma inteligencia, ahora gobernada, medida y al servicio del equipo completo, no de cada persona por separado."
-Visual: el dossier azul se para en el centro del gran círculo azul; las hojas sueltas se alinean y entran en él.
+**B3 · 00:20–00:30 · El quiebre (aparece VELARIA)**
+VO: "Entonces entra Velaria. La misma inteligencia artificial que ya usan, pero gobernada: una sola capa que ordena las cuentas, el contexto y el conocimiento de toda la empresa."
+Visual: el círculo azul aterriza con golpe y el símbolo del ojo se dibuja solo (anillo → arco azul barriendo → punto central). Las ventanas dispersas vuelan y se alinean en una columna. La carpeta se para en el centro y recibe las primeras hojas. **Aquí rompe la música.**
 
-**B4 · Frente 1: Gobernanza (mapa con sellos)**
-VO: "Primero, gobernanza: la política de la empresa se carga en la herramienta y se cumple en automático, y cada sesión queda registrada, con su autor y su criterio a la vista."
-Visual: mapa doodle con ruta y pines; un timbre estampa sellos azules; la mano gigante planta el dossier.
+**B4 · 00:30–00:40 · Qué instala**
+VO: "Cuentas gobernadas con la política cargada. Una biblioteca consultable, skills de cálculo aprobadas, integraciones a tus sistemas y controles automáticos antes de sacar cualquier entrega al cliente."
+Visual: muro de estanterías con biblioratos ordenados; la ingeniera encaja uno nuevo; la mano gigante lo levanta y se multiplica en tres copias que se acomodan solas. La carpeta, más gruesa, al final de la fila.
 
-**B5 · Frente 2: Habilitación (estante de piezas)**
-VO: "Segundo, habilitación: lo que descubre una persona se vuelve pieza del equipo, plantillas, cálculos validados, integraciones, y la mejora de uno le llega a todos sin pedirla dos veces."
-Visual: estante de tarjetas fijadas; la ingeniera agrega una pieza nueva; la mano la multiplica en copias que llegan a todos los pines.
+**B5 · 00:40–00:50 · El giro (human in the loop)**
+VO: "Toda sesión queda registrada y cada avance se mide contra la línea base. La inteligencia prepara el trabajo pesado, pero nada sale sin el visto bueno de tu equipo."
+Visual: muro de métricas; el medidor se pinta de azul punto por punto; una barra supera a las demás. La mano ofrece una hoja y la hoja se detiene en el aire: visto bueno azul, y recién ahí entra a la carpeta.
 
-**B6 · Frente 3: Productividad medida (tablero de datos)**
-VO: "Y tercero, productividad medida como resultado del negocio: más propuestas enviadas, menos horas por entrega, siempre contra la línea base, porque el avance no es una sensación, es un número."
-Visual: medidor semicircular de puntos que se van pintando de azul; una barra supera a las demás; círculo azul la destaca.
-
-**B7 · El giro: human in the loop (escritorios ordenados)**
-VO: "La inteligencia prepara el cálculo y el borrador, pero la decisión sigue siendo de tu equipo: nada sale hacia el cliente sin el visto bueno de una persona."
-Visual: la mano ofrece una hoja, queda detenida en el aire para revisión; el ingeniero la inspecciona; check azul; recién ahí entra al dossier.
-
-**B8 · Cierre / CTA (círculo azul)**
+**B6 · 00:50–01:00 · Cierre**
 VO: "Un piloto corto que parte midiendo y pone un número sobre la mesa antes de que decidas. Velaria: libera el poder de la inteligencia artificial, y guíala con tu visión."
-Visual: el dossier lleno aterriza en el centro, recibe el sello azul; el dúo lo flanquea; plano final estable.
+Visual: la carpeta llena golpea el centro del círculo; el timbre estampa el sello azul; los dos ingenieros entran flanqueándola; el símbolo late arriba y la música se retira.
+
+## Decisiones y límites
+
+- **Herramientas mostradas, no nombradas.** El generador rechaza marcas reales y el texto dibujado sale ilegible. Excel = grilla de celdas, PowerPoint = slide con barra de título y gráfico, chats de IA = ventanas con burbujas.
+- **Keywords en la narración → aparecen en los subtítulos**, que sí son texto limpio: cuentas gobernadas, biblioteca consultable, skills de cálculo, integraciones, controles automáticos, línea base.
+- **Símbolo de marca** generado desde el SVG real (`marca/velaria-kit/simbolo/`) como referencia. Para el logo vectorial exacto con wordmark `velaria_`, hace falta una sobreimpresión en edición.
+- **Sin respiro instrumental**: el ensamblador exige 8,6–10,0s de habla en cada bloque de 10s, así que no admite tramos sin voz.
 
 ## Trazabilidad del mensaje
 
-- B1-B2 y B3-B6 = sección "HOY / CON VELARIA" y "La capa · tres frentes" de la propuesta a Abastibletec.
-- B7 = "El punto delicado / Human in the loop" de la propuesta.
-- B8 = "El objetivo del piloto" + "Próximo paso" + tagline oficial de marca.
-- Sin cifras confidenciales (precios, métricas del cliente): el video queda reutilizable y este repo es público.
-
-## Cómo pedir ajustes (para la reunión)
-
-- "Cambiar VO del B4 a: ..." → se regenera solo esa toma de voz (minutos).
-- "Rehacer el visual del B2 con ..." → se regenera solo ese clip de 10s.
-- "Otra voz / voz femenina / voz clonada propia" → se regeneran las 8 tomas de voz.
-- "Versión 9:16 para RRSS" → reframe del video final.
-- "Otro estilo visual" → es rehacer assets + clips (lo más caro; decidirlo antes de iterar fino).
+- B1–B2 = sección "HOY" del cuadro "Qué logra Velaria" de la propuesta a Abastibletec.
+- B3–B4 = "La capa · tres frentes" (gobernanza, habilitación) y "Qué recibe Abastibletec".
+- B5 = "Cómo se mide" + "El punto delicado / human in the loop".
+- B6 = "El objetivo del piloto" + "Próximo paso" + tagline oficial de marca.
+- Sin cifras confidenciales (precios, métricas del cliente): este repo es público.
