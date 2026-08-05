@@ -96,3 +96,20 @@
   (60s, 1080p, 16:9, oficina, simbolo de marca en bloques 3 y 6, voz clonada chilena,
   musica electronica con drop en el segundo 18, subtitulos quemados).
   Este reemplaza a la v1 de 80s como version vigente.
+- 2026-08-05 (10): VERSION 3 segun la guia de estilo del companero de equipo
+  (`proyectos/velaria/docs/estilo-video-velaria.html`, ver README al lado).
+  Los 6 clips regenerados con sus prompts textuales + su master prompt + su negative
+  prompt exacto, camara clavada (sin push-in ni drift), una sola imagen de referencia
+  de estilo (b483e916) + carpeta azul (6cbca422) + emblema (2c41de99) en B3/B6.
+  Narracion, guion y musica sin cambios respecto de la v2.
+  Entregable 720p: media 25e36735-1dc4-4055-a0a6-7583e6c055d2 (60.07s).
+  Upscale Topaz 1080p: job ea56b8a4-6754-40f1-930d-a7de1ee806d4.
+  Lo que la guia NO se pudo aplicar y hay que corregir en el documento: pide clips de
+  5+5 s y un control de "motion 0.5-0.7" que este motor no tiene (gemini_omni genera
+  los 10 s de una vez y no expone ese parametro), y una sobreimpresion vectorial del
+  wordmark de 2 s que necesita un editor de video fuera de este pipeline.
+- 2026-08-05 (11): Busqueda de voz "mas comercial" descartada por Sebastian; se sigue
+  con la voz clonada chilena. Hallazgo util igual: seed_audio acepta `speech_rate`
+  (ENTERO, no decimal; con 20 Elena bajo de 14.5s a 10.5s). Sirve para calzar
+  cualquier voz preset en el gate de 8.6-10.0 s por bloque sin recortar el guion.
+  Todas las presets del catalogo vienen mas lentas que la voz clonada.
