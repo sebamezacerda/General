@@ -35,3 +35,9 @@
   de video generados con gemini_omni; el bloque 5 quedó bloqueado por falta de
   créditos (quedaban 9). Pendiente al recargar: bloque 5, narración seed_audio
   (voz Cillian, español), ensamblado con subtítulos, upscale Topaz 1080p, entrega.
+- 2026-08-05 (2): VIDEO v1 ENTREGADO. 8/8 bloques, 80s, 16:9, subtitulos "clean".
+  Narracion final: voz clonada chilena de Sebastian (element f41d7f77) tras descartar
+  Cillian (sonaba angloparlante) y Marisol. Ensamblado con finish_video.sh, todos los
+  gates verdes. Entregable 720p: 5dcd4046-fa7f-4827-a4ca-76223144ef1c.
+  Upscale Topaz 1080p en curso (job fecbe4bf-15e0-4eba-a4f3-77a095c76957).
+  Guion v3 parametrizable en guion.md para la revision con el equipo.
