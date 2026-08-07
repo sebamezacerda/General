@@ -73,3 +73,61 @@ four-on-the-floor kick and a bright arpeggiated synth enter together and lift th
 Through the middle it drives forward, warm and confident, minimal. In the last eight seconds
 the drums drop away and it resolves onto one calm sustained chord that fades.
 ```
+
+---
+
+# v2 — Isometric Flat Vector (versión en inglés)
+
+## Fórmula de estilo (literal en todos los prompts)
+
+```
+Isometric flat vector illustration on a plain solid pale-grey background: clean geometric
+forms in true isometric projection with no outlines, broad flat fields of colour with one
+slightly darker tone per face for depth, crisp straight edges and softly rounded corners, a
+restrained palette of cool greys and desaturated slate with ONE signature accent — cobalt
+blue — carrying the key element of every frame. No texture, no grain, no gradients, no
+realistic lighting and no cast shadow beyond a simple soft contact shadow; motion is smooth
+and mechanical, with elements sliding and snapping along the isometric axes.
+```
+
+Preset **Isometric Flat Vector** `c109eddb-1a79-478a-afd5-273bd0b205e5`
+→ `media_id 090c5e7b-d9f3-4351-8329-143a0e77eeb7`.
+
+## Assets v2 (job_ids reusables)
+
+| Asset | job_id |
+|---|---|
+| Ancla de estilo | `68f11314-3290-4fbc-94cb-43f20c4c736a` |
+| Especialista de operaciones | `1012e04b-9d1c-449f-9dd9-cae9b31c84dc` |
+| Ingeniero de software | `379b9220-bb9f-42d9-9678-3a8b48e685f5` |
+| Persona nueva | `0353ccf5-3d97-472c-960c-b773c16c461f` |
+| Oficina isométrica | `dfc4b531-284c-4915-873c-62430b2cd10a` |
+| Oficina, esquina opuesta | `2ff12b10-8dd9-4d80-bbd4-f18b5e1f89d7` |
+| Losa con hueco circular | `96323044-87fe-422a-b388-9bf1efa6472b` |
+| Sala de racks | `018509c0-70fc-4a17-a8d8-98e3ed824925` |
+| Sala de tablero | `f09cf6f7-0832-49cc-aa55-979a90a8b9c5` |
+| Carpeta azul (hilo conductor) | `0c6273e6-4311-44e9-b55a-b3a46fa48af0` |
+| Pila de ventanas de app | `88c633c1-0596-4f48-b40a-5eafc43b8587` |
+| Emblema Velaria isométrico | `4af1641d-46ce-4ae1-a6fa-f951850f90e0` |
+| Iconos de escritorio (carpeta manila, ventana, cursor) | `ddaf2628-3ae0-4a35-b81a-a511f306aa8b` |
+
+## Cómo pedir las herramientas sin nombrar marcas
+
+En vez de "Excel" / "PowerPoint" / "icono de carpeta de Mac", describir la forma:
+
+```
+a green-barred window showing an empty grid of spreadsheet cells
+an orange-barred window showing a simple bar chart on a slide
+a blue-barred window showing blank ruled document lines
+a folder icon with the classic small raised tab on the top-left edge
+a grey application window with three small round dots in a row along its title bar
+```
+
+Y siempre cerrar el NEGATIVE con: `on-screen text, captions, lettering, brand logos`.
+
+## Dirección de voz (inglés, Bram)
+
+```
+[ crisp corporate explainer narrator, confident and dry, warm direct timbre, brisk pace,
+starts speaking immediately] [00:00-00:09] {línea}
+```
