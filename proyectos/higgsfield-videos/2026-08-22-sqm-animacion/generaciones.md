@@ -426,3 +426,43 @@ renderizadas con `omitBackground` y compuestas con `overlay` de ffmpeg:
    título.
 
 Ninguno se habría notado sin renderizar frames intermedios y mirarlos.
+
+## Ronda 10 — corte v3: más pace · 2026-08-22
+
+**`corte-v3.mp4` — 3:29 · 1920×1080 · 29 planos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/1a8606c4-bd28-4c83-b76e-c103b4ba8dcd.mp4
+
+### Cortar es lo que da ritmo
+
+El v2 tenía **20 planos para 3:30** — un plano cada 10,5 segundos — con escenas enteras
+resueltas en una sola toma de hasta 23s. Acelerar las animaciones dentro de un plano largo no
+alcanza: lo que se percibe como lento es la falta de cortes.
+
+El v3 tiene **29 planos** (uno cada 7,2s) **sin renderizar una sola pantalla nueva**. El truco:
+los planos largos se parten en dos, y el segundo entra recortado a un detalle y **tomado más
+adelante en el tiempo del mismo clip**, así que el contenido además avanzó. Las escenas 2 y 4,
+las más pesadas, pasan de 1 y 2 planos a 3 cada una.
+
+| | v2 | v3 |
+|---|---:|---:|
+| Planos | 20 | 29 |
+| Segundos por plano | 10,5 | 7,2 |
+| Entrada de cada elemento | 0,30s | 0,18s |
+| Paso entre elementos | 1,15s | 0,62s |
+| Contadores | 1,1s | 0,70s |
+| Deriva de escala | 1,6% | 2,8% |
+
+### 🐛 Un bug del v2 que sí se veía
+
+Al validar duraciones apareció que **siete pantallas nacían 1s más cortas que su ventana**: son
+exactamente las que cierran cada escena, o sea las que llevan el segundo de aire, y `render.js`
+las generaba sin él.
+
+En el v3 eso truncaba el video (202,4s contra 209,25 de audio). Pero en el v2 era peor y
+silencioso: al ser el clip más corto que su ventana, caía en la rama del bucle ida y vuelta, así
+que **esas siete pantallas se reproducían hacia atrás** al final de cada escena — el texto se
+desaparecía solo. Nadie lo habría atribuido a esta causa.
+
+Corregido: los clips se renderizan ya con su segundo de aire. Verificación automática de que
+ningún plano quede corto: **29 planos, 0 con problema.**
