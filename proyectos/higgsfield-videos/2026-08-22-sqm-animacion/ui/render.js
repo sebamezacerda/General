@@ -6,13 +6,13 @@ const FPS = 25;
 
 // pantalla -> segundos que ocupa en el montaje (ver montaje.md)
 const PLAN = [
-  ['plate', 4.0], ['04-dependencias', 13.3], ['04-pregunta', 13.2],
-  ['06-criterios', 7.85], ['06-permisos', 7.85],
-  ['07-registro', 5.9], ['07-patron', 5.95],
-  ['08-insight', 12.7],
-  ['09-mcp', 9.3], ['09-skill', 9.3],
-  ['10-bandeja', 7.0], ['10-caso', 6.9],
-  ['11-valor', 15.06], ['12-plataforma', 10.75],
+  ['plate', 4.0], ['04-dependencias', 13.3], ['04-pregunta', 14.23],
+  ['06-criterios', 7.85], ['06-permisos', 8.85],
+  ['07-registro', 5.9], ['07-patron', 6.95],
+  ['08-insight', 13.7],
+  ['09-mcp', 9.3], ['09-skill', 10.28],
+  ['10-bandeja', 7.0], ['10-caso', 7.94],
+  ['11-valor', 16.06], ['12-plataforma', 10.75],
 ];
 
 // capas transparentes que se superponen a los planos generados
