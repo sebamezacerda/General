@@ -466,3 +466,58 @@ desaparecía solo. Nadie lo habría atribuido a esta causa.
 
 Corregido: los clips se renderizan ya con su segundo de aire. Verificación automática de que
 ningún plano quede corto: **29 planos, 0 con problema.**
+
+## Ronda 11 — corte v4: el contenido pasa a la pantalla · 2026-08-22
+
+**`corte-v4.mp4` — 1:47 · 1920×1080 · 13 planos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/22033b64-f26e-46ae-bb79-3dc246052fe5.mp4
+
+Pedido: más corto y al grano; ser explícito en cómo ejecuta el trabajo el equipo hoy, con el
+stack escrito en pantalla y no solo como imagen de fondo con voz en off; y hacer el paralelo
+con Velaria.
+
+### La decisión que hace posible todo lo demás
+
+**La locución deja de decir lo que la pantalla escribe.** Esa sola regla permite bajar de 424 a
+189 palabras: el video pasa de **3:29 a 1:47 diciendo más cosas**, porque la pantalla comunica
+más rápido que la voz. Antes la voz enumeraba seis sistemas en doce segundos; ahora la tabla los
+muestra en dos, con quién los usa y cuánto demora cada uno.
+
+### El corazón: la misma tabla, dos veces
+
+| | Hoy | Con Velaria |
+|---|---|---|
+| 01 Demand planning · BI | 45 min | 12 s |
+| 02 Inventarios · ERP | 40 min | 9 s |
+| 03 Producción · ERP | 50 min | 11 s |
+| 04 Logística · TMS | 55 min | 14 s |
+| 05 Comercial · CRM | 35 min | 8 s |
+| 06 Finanzas · Planilla | 60 min | 15 s |
+| 07 Todos · Correo | 45 min | 21 s |
+| **Total** | **5 h 30 min** | **1 min 30 s** |
+
+La escena 5 repite **exactamente la misma tabla** de la escena 3: mismas filas, mismas áreas,
+mismos sistemas. Solo cambia la columna de tiempo. El paralelo es literal, no una metáfora — y
+deja claro que Velaria no reemplaza el stack, lo recorre.
+
+### Silencio deliberado
+
+Las escenas de tabla llevan **11s y 8s de silencio** después de la locución. No es una pausa
+mal medida: es el tiempo que necesita el espectador para leer siete filas. Es la consecuencia
+directa de poner el contenido en pantalla, y hay que defenderla en la revisión.
+
+### Qué se fundió
+
+Cuatro escenas del guion original — gobernanza, observación, MCP + Skill, y valor — se funden en
+la escena 5. Eran cuatro escenas **describiendo** el mecanismo; ahora la tabla lo **demuestra**.
+
+### Comparación de versiones
+
+| | v3 | v4 |
+|---|---:|---:|
+| Duración | 3:29 | **1:47** |
+| Palabras de locución | 424 | **189** |
+| Planos | 29 | 13 |
+| Escenas | 12 | 7 |
+| Contenido escrito en pantalla | parcial | **todo lo relevante** |
