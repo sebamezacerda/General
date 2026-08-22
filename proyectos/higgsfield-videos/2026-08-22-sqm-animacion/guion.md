@@ -5,6 +5,44 @@
 - **Nota visual inicial (en pantalla):** Caso sintético basado en prioridades y operaciones
   públicas de SQM. Datos, usuarios e impactos económicos son ficticios.
 
+## Duración calculada (no estimada)
+
+Contando las palabras reales de locución, a ritmo ejecutivo pausado en español
+(130–145 palabras/min):
+
+| Escena | Palabras | 145 wpm | 130 wpm |
+|---|---:|---:|---:|
+| 1 — SQM hoy | 33 | 14s | 15s |
+| 2 — El desafío | 43 | 18s | 20s |
+| 3 — Una excepción | 29 | 12s | 13s |
+| 4 — Cómo se resuelve hoy | 56 | 23s | 26s |
+| 5 — Entra Velaria | 28 | 12s | 13s |
+| 6 — Criterios y gobernanza | 34 | 14s | 16s |
+| 7 — Velaria observa | 32 | 13s | 15s |
+| 8 — Insight | 23 | 10s | 11s |
+| 9 — MCP + Skill | 40 | 17s | 18s |
+| 10 — La semana siguiente | 29 | 12s | 13s |
+| 11 — De productividad a valor | 38 | 16s | 18s |
+| 12 — Cierre | 39 | 16s | 18s |
+| **Total** | **424** | **175s** | **196s** |
+
+Sumando ~1s de aire entre escenas (12s) y la placa inicial del disclaimer (~4s):
+
+**≈ 3:11 – 3:32 min.**
+
+### ⚠ Se pasa del objetivo
+
+El guion declara un objetivo de **2:30–3:00**. Con el texto actual no se llega: sobra entre
+**20 y 45 segundos**. Opciones:
+
+1. **Recortar ~60 palabras.** La escena 4 es la más larga (56 palabras, 23–26s) y es la que más
+   se puede comprimir: la enumeración de las seis fuentes ya la muestra la pantalla
+   `ui/04-dependencias.html`, así que la locución no necesita repetirla.
+2. **Subir el objetivo a 3:30.** Para un caso corporativo B2B dirigido a un comité es una
+   duración razonable; el problema no es el largo sino que el guion se contradiga a sí mismo.
+
+Decisión pendiente del cliente. Todo lo demás del proyecto es independiente de esto.
+
 ---
 
 ## ESCENA 1 — SQM HOY
