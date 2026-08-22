@@ -1,6 +1,7 @@
 # Caso sintético SQM × Velaria
 
-- Para qué negocio: **VELARIA** (colaboración; ver `proyectos/velaria/spec.md`)
+- Para qué negocio: **VELARIA** (colaboración). Sistema de diseño y contexto en
+  `proyectos/velaria/spec.md`.
 - Objetivo del video: pieza de demostración/venta. Mostrar, sobre un caso sintético
   inspirado en las prioridades y operaciones públicas de SQM, cómo Velaria agrega
   una capa de inteligencia organizacional sobre un stack corporativo que ya funciona
@@ -36,22 +37,51 @@ Debe aparecer en pantalla al inicio (y conviene repetirlo en la descripción del
 
 ## Reglas de arte
 
-- Paleta corporativa fría (azules profundos, grises, blanco), acentos de dato en cyan/verde.
-- Nada de estética "sci-fi": realismo corporativo + capas de UI limpias sobre imagen real.
-- Las personas se muestran trabajando, no reemplazadas: Velaria habilita, no sustituye.
-- Los sistemas existentes (Power BI, Salesforce, ERP, WMS/TMS) permanecen visibles e intactos
-  debajo de la capa Velaria en las escenas 5 y 12.
-- Tipografía sans-serif, UI con mucho aire; las cifras son el héroe visual en 8, 10 y 11.
-- **No usar logos ni marcas registradas de terceros reconocibles**: referirse a las categorías
-  de sistema de forma genérica o con placeholders propios.
+**El arte sigue el sistema de diseño de Velaria** — documentado completo en
+`proyectos/velaria/spec.md`. Ese documento manda sobre cualquier criterio de este proyecto.
+Resumen operativo para el video:
+
+- **Paleta estricta**: `ink #0B0F17` fondo · `ink2 #151C2B` paneles · `accent #2456D6` acción
+  (uno solo por vista) · `accent-hi #7DA0F2` · `steel #8A94A6` labels técnicos ·
+  `light #F5F7FA`. Estados solo en badges: ok `#3FB27F`, warn `#D9A03C`, err `#D95C4A`.
+- **Tipografía**: IBM Plex Sans (títulos y cuerpo) + IBM Plex Mono CAPS con letter-spacing
+  1.5–3px (labels, kickers, timestamps, navegación).
+- **Todo es registro**: timestamps `14:32:08Z`, estados entre corchetes `[ ACTIVO ]` —
+  nunca píldoras —, comentarios `// así`.
+- **Nada flota**: sin sombras ni glow. La jerarquía sale de hairlines, planos ink/ink2 y
+  densidad. Radios 0–2px.
+- **El prompt manda**: acción primaria con prefijo `❯`, nav activa con `_` pestañeando.
+- **Prohibido**: degradados, glassmorphism, orbes/blobs, glow, esquinas redondas, emojis,
+  cerebros/chips/circuitos/redes neuronales, sombras blandas, píldoras de estado, más de un
+  azul de acción por vista.
+- Personas trabajando y decidiendo, nunca desplazadas por la máquina.
+- Sin logos de terceros: los sistemas corporativos se nombran por categoría en mono caps.
+
+### Dos reescrituras respecto del guion original
+
+- **No hay redes de nodos.** Las escenas 2 y 4 pedían constelaciones y grafos conectados: eso
+  cae en "redes neuronales" y "orbes", ambos prohibidos. Se reemplazan por estructuras de
+  registro (grillas, tablas, líneas de log), que además son más fieles al principio "todo es
+  registro".
+- **Velaria no brilla.** La escena 5 pedía una capa luminosa descendiendo sobre el stack. Sin
+  glow, la capa se expresa como un plano ink2 con un canto accent: jerarquía por plano y
+  densidad, no por luz.
 
 ## Bitácora
 - 2026-08-22: se crea el proyecto a partir de la plantilla. Se recibe y documenta el guion
-  completo (12 escenas, locución + texto en pantalla). Se arman los prompts por escena en
-  `prompts.md`. Falta: definir voz de locución, generar tomas y montar.
+  completo (12 escenas, locución + texto en pantalla) en `guion.md`.
+- 2026-08-22: llega el sistema de diseño real de Velaria (`sistema visual.md` de
+  `Velaria-HQ/velaria-delivery`). Se reescriben **todos** los prompts: la primera versión usaba
+  glow, degradados, esquinas redondeadas, redes de nodos y una paleta cyan/mint, todo prohibido
+  por el sistema. El sistema queda copiado en `proyectos/velaria/spec.md` para que no dependa de
+  acceder a ese repo. Falta: validar escenas de dashboard contra el `Velaria UI Manual`, elegir
+  voz, generar y montar.
 
 ## Próximos pasos
-1. Confirmar modelo de generación y presupuesto de créditos (12 escenas × 2–3 tomas).
-2. Generar frame clave (imagen) por escena para validar arte antes de animar.
-3. Animar cada frame aprobado y generar la locución.
-4. Montaje, música y mezcla; export a `exports/` (no versionado).
+1. Conseguir `Velaria UI Manual.dc.html` — es la fuente de verdad de UI y las escenas 8, 10 y
+   12 muestran dashboard. Vive en el repo del fundador, no accesible desde acá.
+2. Conseguir los SVG de marca (ojo del velarium + wordmark) desde `descargables/velaria-kit/`.
+3. Confirmar modelo de generación y presupuesto de créditos (~18 tomas).
+4. Generar frames clave de las escenas 5, 8 y 12 para validar arte antes de animar el resto.
+5. Animar cada frame aprobado y generar la locución (12 pistas).
+6. Montaje, música y mezcla; export a `exports/` (no versionado).
