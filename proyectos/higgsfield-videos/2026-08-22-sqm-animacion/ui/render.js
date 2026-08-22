@@ -6,20 +6,14 @@ const FPS = 25;
 
 // pantalla -> segundos que ocupa en el montaje (ver montaje.md)
 const PLAN = [
-  ['plate', 4.0], ['04-dependencias', 13.3], ['04-pregunta', 14.23],
-  ['06-criterios', 7.85], ['06-permisos', 8.85],
-  ['07-registro', 5.9], ['07-patron', 6.95],
-  ['08-insight', 13.7],
-  ['09-mcp', 9.3], ['09-skill', 10.28],
-  ['10-bandeja', 7.0], ['10-caso', 7.94],
-  ['11-valor', 16.06], ['12-plataforma', 10.75],
+  ['plate', 4.00],
+  ['v4-01-stack', 7.77], ['v4-02-equipo', 7.90], ['v4-03-hoy', 23.16],
+  ['v4-04-costo', 7.93], ['v4-05-velaria', 20.67], ['v4-06-decision', 15.32],
+  ['v4-07-cierre', 10.21],
 ];
 
 // capas transparentes que se superponen a los planos generados
-const OVER = [
-  ['ov-01-sistemas', 8.75], ['ov-02-areas', 8.00], ['ov-03-brasil', 7.60],
-  ['ov-05-capa', 6.60], ['ov-12-cierre', 7.00],
-];
+const OVER = [];
 
 (async () => {
   const only = process.argv[2];
@@ -33,10 +27,7 @@ const OVER = [
     const tmp = fs.mkdtempSync(path.join(__dirname, '.fr-'));
     await p.goto('file://' + __dirname + '/' + name + '.html');
     await p.evaluate// capas transparentes que se superponen a los planos generados
-const OVER = [
-  ['ov-01-sistemas', 8.75], ['ov-02-areas', 8.00], ['ov-03-brasil', 7.60],
-  ['ov-05-capa', 6.60], ['ov-12-cierre', 7.00],
-];
+const OVER = [];
 
 (async () => { await document.fonts.ready; return true; });
     await p.evaluate(d => window.buildAnim(d), dur);

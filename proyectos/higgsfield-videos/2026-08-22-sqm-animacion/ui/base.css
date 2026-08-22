@@ -128,3 +128,32 @@ body.ov{background:transparent;display:block;padding:70px 90px}
   background:rgba(11,15,23,.72);padding:9px 16px;border-left:3px solid var(--steel);width:max-content}
 .ovtitle{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:3px;
   text-transform:uppercase;color:var(--steel);background:rgba(11,15,23,.72);padding:10px 18px;width:max-content}
+
+/* ---- tabla de pasos: el corazon del v4 ---- */
+.tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.tbl th{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:400;text-transform:uppercase;
+  letter-spacing:2.5px;color:var(--steel);text-align:left;padding:0 22px 16px;border-bottom:1px solid var(--hair2)}
+.tbl td{padding:17px 22px;border-bottom:1px solid var(--hair);font-size:19px;vertical-align:middle}
+.tbl td:first-child,.tbl th:first-child{padding-left:0}
+.tbl td:last-child,.tbl th:last-child{padding-right:0;text-align:right}
+.tbl .n{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--steel);width:72px}
+.tbl .ar{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--light);width:280px}
+.tbl .sis{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:2px;color:var(--steel);width:170px}
+.tbl .tm{font-family:'IBM Plex Mono',monospace;font-size:22px;width:190px}
+.tbl .tm.fast{color:var(--accent-hi)}
+.totbar{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid var(--hair2);padding-top:26px;margin-top:8px}
+.totbar .lbl{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--steel)}
+.totbar .val{font-family:'IBM Plex Mono',monospace;font-size:52px;letter-spacing:-1px}
+.totbar .val.fast{color:var(--accent-hi)}
+.kv{display:flex;gap:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.kv .c{flex:1;padding:26px 28px;border-left:1px solid var(--hair)}
+.kv .c:first-child{border-left:0;padding-left:0}
+.kv .c .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.kv .c .v2{font-size:30px}
+.kv .c .v2.fast{color:var(--accent-hi)}
+.chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:16px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--light);border:1px solid var(--hair2);padding:12px 20px;margin:0 10px 12px 0}
