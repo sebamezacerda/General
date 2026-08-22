@@ -211,3 +211,29 @@ plano de verdad.
 Estas tomas van de 15,5s a 20,4s para las mismas 33 palabras — una diferencia del 30% entre
 motores. **La duración final del video depende de qué motor se elija**, no solo del guion:
 entre 3:35 (Isabella/minimax) y 4:40 (Inés/elevenlabs).
+
+## Ronda 5 — la voz elegida, contrastada · 2026-08-22
+
+Voz seleccionada por el cliente: **Isabella por MiniMax** (`80924413-1ea8-4e64-9719-e00b86796f05`,
+`text2speech_v2` variant `minimax`). El archivo de referencia es el job `e3a54302`.
+
+Se generó la locución de la **escena 2** por los dos caminos posibles, para decidir cuál usar en
+las 12 pistas:
+
+| # | Camino | job_id | Duración |
+|---|---|---|---:|
+| 61 | Clonar desde el audio de referencia (`seed_audio` + `audio_references`) | `0f7959b3-d7ca-4eb5-95f9-e652ce6f17e7` | 19,82s |
+| 62 | Repetir la receta original (`text2speech_v2` / minimax / Isabella) | `93e7d5cb-fa6c-41fd-bfd5-8fb3d7f8575c` | 21,96s |
+
+### ⚠ Por qué la 62 es probablemente la correcta
+
+Clonar el audio de referencia lo hace pasar por **`seed_audio`**, que es justamente el motor
+anglocéntrico que causó el problema de acento. Se estaría clonando un buen resultado a través
+del motor equivocado, con riesgo de reintroducir el acento inglés.
+
+La receta original (62) reproduce exactamente la configuración que generó el archivo que gustó.
+Es determinista y no depende de una clonación. **Salvo que la 61 suene mejor al oído, la
+producción va por la 62.**
+
+La clonación sí tiene sentido en otro escenario: partir de una grabación real de una locutora
+hispanohablante (ver `create_voice` en la ronda 4), no de un audio ya sintético.
