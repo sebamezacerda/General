@@ -30,18 +30,34 @@ Sumando ~1s de aire entre escenas (12s) y la placa inicial del disclaimer (~4s):
 
 **≈ 3:11 – 3:32 min.**
 
-### ⚠ Se pasa del objetivo
+### ⚠ CORREGIDO con audio real — se pasa MUCHO del objetivo
 
-El guion declara un objetivo de **2:30–3:00**. Con el texto actual no se llega: sobra entre
-**20 y 45 segundos**. Opciones:
+La tabla de arriba estimaba 130–145 wpm. **Está mal.** Generada la escena 1 con cuatro voces
+reales, el ritmo medido es bastante más lento:
 
-1. **Recortar ~60 palabras.** La escena 4 es la más larga (56 palabras, 23–26s) y es la que más
-   se puede comprimir: la enumeración de las seis fuentes ya la muestra la pantalla
-   `ui/04-dependencias.html`, así que la locución no necesita repetirla.
-2. **Subir el objetivo a 3:30.** Para un caso corporativo B2B dirigido a un comité es una
-   duración razonable; el problema no es el largo sino que el guion se contradiga a sí mismo.
+| Voz | Escena 1 (33 palabras) | Ritmo | Total 424 palabras | Video completo |
+|---|---:|---:|---:|---:|
+| Isabella | 16,10s | 123 wpm | 207s | **3:43** |
+| Elena | 16,50s | 120 wpm | 212s | **3:48** |
+| Inés | 16,88s | 117 wpm | 217s | **3:53** |
+| Marisol | 18,28s | 108 wpm | 235s | **4:11** |
 
-Decisión pendiente del cliente. Todo lo demás del proyecto es independiente de esto.
+Contra un objetivo declarado de **2:30–3:00**, el guion actual se pasa entre **45 y 70
+segundos**. No es un ajuste de montaje: hay que decidir.
+
+Tres salidas, no excluyentes:
+
+1. **Recortar el guion.** Para caer en 3:00 hay que sacar unas **100–140 palabras** de 424, casi
+   un tercio. La escena 4 (56 palabras) es la más comprimible: enumera las seis fuentes que la
+   pantalla `ui/04-dependencias.html` ya muestra en pantalla. También sobra redundancia entre
+   las escenas 1 y 2.
+2. **Acelerar la locución.** `seed_audio` expone `speech_rate`; subirlo un 10% recorta ~20s.
+   Más que eso rompe el tono ejecutivo pausado que pide el brief.
+3. **Aceptar 3:45–4:00.** Para un caso B2B ante un comité es defendible. Pero entonces hay que
+   cambiar el objetivo declarado arriba, en vez de dejar el guion contradiciéndose.
+
+**Decisión del cliente.** Nada más del proyecto depende de esto: las 13 pantallas y las tomas
+generadas sirven igual.
 
 ---
 

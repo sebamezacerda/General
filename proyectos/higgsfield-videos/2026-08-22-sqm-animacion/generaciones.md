@@ -126,3 +126,48 @@ en video no es pesimismo: dirigir arte contra un modelo generativo rara vez sale
 Saldo actual: **1.112 créditos** — sobra holgadamente, del orden de 4× el estimado.
 
 Sin medir todavía: `upscale_video` sobre las tomas aprobadas.
+
+## Ronda 3 — prueba de voz y stills fotográficos · 2026-08-22
+
+### Locución — `seed_audio`
+
+Requisito del cliente: **voz nativa en español, mujer, español plano.** Cuatro candidatas
+preset con nombre hispano, todas leyendo el texto real de la escena 1:
+
+| Voz | voice_id | Duración | Ritmo |
+|---|---|---:|---:|
+| Marisol | `75e72cd5-011b-4130-a474-e8b1ab341f04` | 18,28s | 108 wpm |
+| Inés | `023ebf5e-1970-40d8-825c-a5ef6a1dd4ff` | 16,88s | 117 wpm |
+| Elena | `ca83ca7f-c186-493d-bd69-0d765fa861b2` | 16,50s | 120 wpm |
+| Isabella | `80924413-1ea8-4e64-9719-e00b86796f05` | 16,10s | 123 wpm |
+
+Todas `voice_type: "preset"`. **Sin evaluar el acento**: el CDN está bloqueado, no puedo
+escucharlas. La elección es del cliente.
+
+Descartadas antes de la prueba: las voces chilenas propias del workspace (elementos de Casa
+Sanz) — el pedido es *español plano* y el acento chileno es marcado. Se gastaron ~5 créditos en
+tres pruebas previas (dos masculinas + una chilena) antes de conocer el requisito.
+
+Parámetro útil para después: `speech_rate` permite ajustar el ritmo sin regenerar el guion.
+
+### Stills fotográficos
+
+Las escenas 1 y 2 son fotografía, así que van con `model_type: "standard"` (no `utility`, que es
+para superficies planas) y **sin `background_color`** — solo la paleta como guía de grading:
+
+```json
+{"model_type": "standard", "colors": ["#0B0F17","#151C2B","#8A94A6","#F5F7FA"]}
+```
+
+| Toma | job_id | Modelo |
+|---|---|---|
+| 1.1 faena aérea | `bfc5e836-346d-42bc-acb9-518eb054ed70` | standard |
+| 1.2 puerto | `fccd6520-1527-4ab4-8bff-7f5aa5b59eb2` | standard |
+| 2.1 viñeta individual (prueba) | `6cd0d181-8eb1-4bd8-b4d4-80e0f88a63ba` | standard |
+| 3.1 mapa punteado | `2c91fe82-7137-4d98-8666-994afa837bf7` | utility + paleta cerrada |
+
+Todas sin auditar — CDN bloqueado.
+
+**Nota sobre la escena 2:** la grilla de diez personas conviene armarla en HTML (hairlines,
+labels mono, alineación exacta) y **rellenar las celdas con fotos generadas**, en vez de pedirle
+la grilla entera a un modelo. La toma 2.1 de arriba es la prueba de una celda.
