@@ -100,8 +100,9 @@ El reparto:
 | 12.1 ecosistema | **generar** | volumen 3D |
 | 12.2 nav · 12.3 placa | **construir** | `ui/12-plataforma.html` + kit de marca |
 
-Quedan **6 tomas para generar** y 13 pantallas construidas. Eso baja mucho el costo en créditos
-y sube el control sobre el resultado.
+Quedan **8 tomas para generar** (1.1, 1.2, 2.1, 2.2, 3.1, 5.1, 5.2, 12.1) y **13 pantallas
+construidas**. Eso baja mucho el costo en créditos y sube el control sobre el resultado.
+Presupuesto y costos unitarios medidos en `generaciones.md`.
 
 ## Style token
 
