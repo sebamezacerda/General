@@ -1,103 +1,97 @@
 # Guion v5 — Qué hace Velaria, explicado desde lo que la gente ya conoce
 
-## El problema de los guiones anteriores
+**Duración objetivo: 3:00.** Nueve escenas.
 
-Arrancaban desde el vocabulario de Velaria — "capa de inteligencia organizacional", "criterios",
-"gobernanza" — y trataban de explicarlo. Para un equipo comercial eso es ruido. Para el equipo de
-tecnología de SQM quizás no, pero ellos no son quienes hay que convencer.
+## Por qué los guiones anteriores quedaron genéricos
+
+Arrancaban desde el vocabulario de Velaria — «capa de inteligencia organizacional», «criterios»,
+«gobernanza» — y trataban de explicarlo. Para un equipo comercial eso es ruido. Para el equipo de
+tecnología de SQM quizás no, pero ellos no son a quienes hay que convencer.
 
 **La mayoría de las personas hoy conoce dos cosas de IA:**
+
 1. Abrir ChatGPT o Claude y hacer una pregunta.
 2. Conectar el banco a una app para bajar cartolas y ordenar sus finanzas.
 
-Este guion se construye **entero** sobre esas dos referencias. Nada se explica en abstracto:
-todo se explica como una diferencia contra algo que el espectador ya hizo.
+Este guion se construye **entero** sobre esas dos referencias. Nada se explica en abstracto: todo
+se explica como una diferencia contra algo que el espectador ya hizo.
 
 ## El hilo conductor
 
-**Una sola pregunta atraviesa el video de principio a fin:**
+**Una sola pregunta atraviesa el video:**
 
-> «Subió catorce por ciento la demanda de Producto X en Brasil. ¿Qué hacemos?»
+> «Subió 14% la demanda de Producto X en Brasil. ¿Qué hacemos?»
 
-Se la hacemos tres veces: a una IA normal, a una IA con Velaria, y a la Skill ya construida. Las
-tres respuestas se muestran escritas. El video es la distancia entre esas tres respuestas.
+Se la hacemos dos veces: a una IA normal y a la misma IA con Velaria. Las dos respuestas se
+muestran **escritas completas**. El video es la distancia entre esas dos respuestas.
+
+## Regla de escritura
+
+La locución nunca dice lo que la pantalla escribe. La voz enmarca; la pantalla explica. Por eso
+el guion tiene 290 palabras y aun así el video dice más que el de 424.
 
 ---
 
-## ESCENA 1 — Lo que ya sabemos hacer (22s)
+## ESCENA 1 — La pregunta (24s)
 
-**Locución:**
-> Hoy casi todos usamos la inteligencia artificial de la misma manera: abrimos una ventana,
-> escribimos una pregunta y recibimos una respuesta. Funciona. Probemos con una pregunta real
-> de SQM.
+**Locución (24 pal.):**
+> Hoy casi todos usamos la inteligencia artificial igual: abrimos una ventana y preguntamos.
+> Probemos con una pregunta real de SQM.
 
-**En pantalla:** una ventana de chat común y corriente. Se escribe la pregunta, letra por letra:
+**En pantalla:** una ventana de chat común. La pregunta se escribe letra por letra:
 `Subió 14% la demanda de Producto X en Brasil. ¿Qué hacemos?`
 
-Y aparece la respuesta genérica, escrita completa, palabra por palabra:
+Y la respuesta se escribe completa, sin cortes:
 
-> *"Para responder necesitaría conocer tu inventario actual, tu capacidad de producción, tus
+> *«Para responder necesitaría conocer tu inventario actual, tu capacidad de producción, tus
 > compromisos comerciales y tus costos logísticos. En general, ante un aumento de demanda se
-> recomienda revisar el stock de seguridad y evaluar aumentar la producción…"*
-
-**El punto:** la respuesta no está mal. Está vacía. Y todos reconocen esa respuesta.
+> recomienda revisar el stock de seguridad…»*
 
 ---
 
-## ESCENA 2 — Por qué está vacía (26s)
+## ESCENA 2 — Por qué esa respuesta está vacía (28s)
 
-**Locución:**
-> No está mal. Está vacía. Y no es culpa del modelo: es que no sabe nada de SQM. No sabe qué
-> significa cobertura acá, no sabe dónde vive el dato, y no sabe con qué criterio decide esta
-> empresa.
+**Locución (32 pal.):**
+> No está mal. Está vacía. No sabe nada de SQM. Y como no sabe, cada persona completa lo que
+> falta a mano, y arma su propia versión de la pregunta.
 
-**En pantalla:** tres carencias, escritas, cada una con su ejemplo concreto:
+**En pantalla:** primero las tres carencias, con ejemplo concreto:
 
-| Lo que le falta | En concreto |
+| Le falta | En concreto |
 |---|---|
-| **Contexto** | No sabe que en SQM «cobertura» es stock disponible dividido por demanda semanal proyectada. Ni en qué sistema está ese dato. |
-| **Criterios** | No sabe que SQM no compromete capacidad de planta sin aprobación de Finanzas. |
-| **Acceso** | No puede leer el ERP, ni el TMS, ni el CRM. Solo sabe lo que uno le pega en el chat. |
+| **Contexto** | No sabe que acá «cobertura» es stock disponible ÷ demanda semanal proyectada |
+| **Criterios** | No sabe que SQM no compromete capacidad de planta sin aprobación de Finanzas |
+| **Acceso** | No puede leer el ERP, el TMS ni el CRM. Solo sabe lo que uno le pega en el chat |
 
----
-
-## ESCENA 3 — Y cada uno lo resuelve por su cuenta (20s)
-
-**Locución:**
-> Entonces cada persona completa lo que falta a mano. Copia y pega datos, agrega de memoria las
-> reglas de la empresa, y arma su propia versión de la pregunta.
-
-**En pantalla:** las mismas ocho personas escribiendo ocho versiones distintas de la misma
-pregunta, una debajo de la otra. Se lee lo distintas que son. Abajo:
+Después, ocho versiones distintas de la misma pregunta, escritas una debajo de otra:
 `8 personas · 8 formas de preguntar lo mismo · 0 quedan registradas`
 
 ---
 
-## ESCENA 4 — Qué es una capa de inteligencia organizacional (34s)
+## ESCENA 3 — Qué instala Velaria (30s)
 
-**Locución:**
-> Velaria es eso que falta, puesto una sola vez para toda la empresa. No es otro chat. Es cuatro
-> cosas que se instalan encima de los sistemas que SQM ya tiene.
+**Locución (28 pal.):**
+> Velaria es eso que falta, puesto una sola vez para toda la empresa. No es otro chat: son cuatro
+> piezas que se instalan sobre los sistemas que SQM ya tiene.
 
-**En pantalla:** las cuatro, escritas, cada una con un ejemplo real y no con una definición:
+**En pantalla:** las cuatro, con ejemplo real en vez de definición:
 
 | | Qué es | Ejemplo en SQM |
 |---|---|---|
-| **Contexto** | El diccionario de la empresa | `cobertura = stock disponible / demanda semanal proyectada` · fuente: ERP |
-| **Criterios** | Las reglas de decisión, escritas | `cobertura < 15 días → escalar a Finanzas` |
+| **Contexto** | El diccionario de la empresa | `cobertura = stock disponible ÷ demanda semanal` · fuente: ERP |
+| **Criterios** | Las reglas de decisión, escritas | `cobertura < 21 días → escalar a Finanzas` |
 | **Conexiones** | Permisos de lectura a los sistemas | ERP · TMS · CRM · BI |
 | **Registro** | Qué se preguntó, con qué fuente, quién decidió | `41.208 ejecuciones` |
 
 ---
 
-## ESCENA 5 — Qué es una conexión, en cristiano (28s)
+## ESCENA 4 — Qué es una conexión (32s) ← la escena que hace entendible el resto
 
-**Locución:**
-> Una conexión funciona igual que cuando conectas tu banco a una aplicación de finanzas. No le
-> entregas tu clave. Le das permiso para leer ciertas cuentas, para ciertas cosas, y se lo puedes
-> quitar cuando quieras.
+**Locución (38 pal.):**
+> Una conexión funciona igual que cuando conectas tu banco a una app de finanzas. No le entregas
+> tu clave: le das permiso para leer ciertas cuentas, y se lo puedes quitar cuando quieras.
 
-**En pantalla:** el paralelo, lado a lado. Es el corazón didáctico del video.
+**En pantalla:** el paralelo, lado a lado.
 
 | Tu banco → app de finanzas | El ERP de SQM → Velaria |
 |---|---|
@@ -107,80 +101,63 @@ pregunta, una debajo de la otra. Se lee lo distintas que son. Abajo:
 | Lo revocas cuando quieras | Se revoca cuando quieras |
 | Queda registro de cada acceso | Queda registro de cada acceso |
 
-**Y recién ahí se nombra:** `A esto le decimos MCP.` Primero se entiende, después se nombra —
-nunca al revés.
+**Y recién al final aparece la sigla:** `A esto le decimos MCP.`
+Primero se entiende, después se nombra. Nunca al revés.
 
 ---
 
-## ESCENA 6 — La misma pregunta, ahora (26s)
+## ESCENA 5 — La misma pregunta, ahora (32s)
 
-**Locución:**
-> Con eso puesto, volvamos a hacer la misma pregunta.
+**Locución (30 pal.):**
+> Misma IA, misma pregunta. Lo único que cambió es lo que sabe. Y no lo configuró nadie por su
+> cuenta: los diez reciben lo mismo, con el alcance de su rol.
 
-**En pantalla:** la misma ventana de chat, la misma pregunta, y la respuesta nueva escribiéndose:
+**En pantalla:** la misma ventana, la misma pregunta, y la respuesta escribiéndose:
 
-> *"Cobertura actual en Brasil: 18 días, bajo el umbral de 21 definido por Planificación.
-> Capacidad disponible en planta local: sí, semana 36. Compromisos con clientes en riesgo: 2.
-> Alternativas: adelantar producción local, US$ 17k. Transferir desde México, US$ 41k. No
-> intervenir pone en riesgo US$ 310k de margen. Criterio aplicado: cobertura bajo 21 días escala
-> a Finanzas. Fuentes: ERP, TMS, CRM. — 09:04:12Z"*
+> *«Cobertura en Brasil: 18 días, bajo el umbral de 21. Capacidad en planta local: disponible,
+> semana 36. Compromisos en riesgo: 2. Alternativas: producción local US$ 17k · transferir desde
+> México US$ 41k · no intervenir arriesga US$ 310k. Criterio aplicado: cobertura bajo 21 días
+> escala a Finanzas. Fuentes: ERP, TMS, CRM. — 09:04:12Z»*
 
-**El punto:** es la misma IA. Lo que cambió es lo que sabe.
-
----
-
-## ESCENA 7 — Y para los diez, igual (22s)
-
-**Locución:**
-> Y esto no lo configuró cada persona por su cuenta. Los diez reciben el mismo contexto y los
-> mismos criterios, con el alcance que le corresponde a su rol.
-
-**En pantalla:** la misma pregunta hecha por dos roles distintos, con dos respuestas correctas y
-distintas:
-
-- **Logística** ve capacidad de embarque y ventana de puerto. No ve margen.
-- **Finanzas** ve margen en riesgo y costo de cada alternativa. No ve datos de clientes.
-
-`Mismo contexto · mismos criterios · distinto alcance`
+Y al cerrar, el alcance por rol en una línea:
+`Logística ve capacidad y puerto · Finanzas ve margen · mismo contexto, mismos criterios`
 
 ---
 
-## ESCENA 8 — Qué significa que Velaria observe (30s)
+## ESCENA 6 — Qué significa que Velaria observe (30s)
 
-**Locución:**
-> Velaria además mira cómo se está usando. No lee lo que la gente escribe para vigilarla: registra
-> qué se pregunta, con qué fuentes y con qué frecuencia. Y busca lo que se repite.
+**Locución (36 pal.):**
+> Velaria además mira cómo se usa. No lee conversaciones para vigilar a nadie: registra qué se
+> pregunta, con qué fuentes y con qué frecuencia. Y busca lo que se repite.
 
-**En pantalla:** primero, de forma explícita, **qué NO hace** — porque es la objeción que aparece
-sola en la cabeza de cualquiera:
+**En pantalla:** primero lo que **no** hace, porque es la objeción que aparece sola:
 
 | Sí registra | No hace |
 |---|---|
 | Qué fuentes se consultaron | Leer conversaciones privadas |
 | Con qué criterio se decidió | Evaluar a las personas |
-| Cuántas veces se repitió | Compartir datos entre áreas sin permiso |
+| Cuántas veces se repitió | Cruzar datos entre áreas sin permiso |
 
-Después, el hallazgo: las ocho formulaciones distintas de la escena 3 se alinean.
+Después, las ocho formulaciones de la escena 2 se alinean:
 `Mismo proceso · 8 personas · 5 áreas · 67 veces en 4 semanas`
 
-> *Eso no es un prompt repetido. Es un proceso que la empresa ya tiene y que nadie escribió.*
+> *No es un prompt repetido. Es un proceso que la empresa ya tiene y que nadie escribió.*
 
 ---
 
-## ESCENA 9 — Cómo nace una Skill (36s)
+## ESCENA 7 — Cómo nace una Skill (34s)
 
-**Locución:**
-> Cuando aparece un patrón así, se convierte en una capacidad de la empresa. Una Skill. Y no la
-> escribe un algoritmo solo: la definen las personas que ya saben hacer ese trabajo.
+**Locución (30 pal.):**
+> Ese patrón se convierte en una capacidad de la empresa. Y no la escribe un algoritmo solo: la
+> definen las personas que ya saben hacer ese trabajo.
 
-**En pantalla:** los seis pasos, escritos, uno por uno — esto es lo que pediste explicar en
-detalle:
+**En pantalla:** los seis pasos, con responsable en cada uno:
 
 | | Paso | Quién |
 |---|---|---|
 | 01 | Velaria propone el patrón detectado | Automático |
 | 02 | Se define qué pasos tiene, qué fuentes usa y qué entrega | Experto del área + Forward Deployed Engineer |
-| 03 | Se escriben los criterios que aplica | El área dueña del proceso |
+| 03 | Se escriben los criterios que aplica | El área dueña |
 | 04 | Se le dan accesos solo a las fuentes que necesita | TI |
 | 05 | Se prueba contra casos históricos reales | El área + FDE |
 | 06 | Se publica con dueño, versión y permisos | Gobernanza |
@@ -189,28 +166,28 @@ detalle:
 
 ---
 
-## ESCENA 10 — Qué cambia el lunes (24s)
+## ESCENA 8 — Qué cambia el lunes (24s)
 
-**Locución:**
-> Desde entonces, nadie vuelve a armar esa pregunta a mano. El lunes a las nueve la excepción ya
-> está analizada, con sus alternativas y su costo. La persona no recopila: decide.
+**Locución (30 pal.):**
+> Desde entonces nadie vuelve a armar esa pregunta a mano. El lunes a las nueve la excepción ya
+> está analizada. La persona no recopila: decide.
 
-**En pantalla:** la bandeja del lunes, y el comparativo:
+**En pantalla:**
 
 | | Antes | Con la Skill |
 |---|---|---|
-| Quién la ejecuta | 5 personas | 1 persona decide |
+| Quién ejecuta | 5 personas | 1 persona decide |
 | Cuánto demora | 5 h 30 min | 1 min 30 s |
 | Cuándo se decide | Jueves | Lunes 09:04 |
 | Queda registro | No | Sí, con autor y criterio |
 
 ---
 
-## ESCENA 11 — Cierre (18s)
+## ESCENA 9 — Cierre (16s)
 
-**Locución:**
-> Velaria no reemplaza los sistemas de SQM, ni a las personas que saben hacer el trabajo. Toma lo
-> que la empresa ya sabe hacer, lo escribe una sola vez, y lo pone a disposición de todos.
+**Locución (26 pal.):**
+> Velaria no reemplaza los sistemas de SQM ni a las personas que saben hacer el trabajo. Toma lo
+> que la empresa ya sabe, lo escribe una vez, y lo pone a disposición de todos.
 
 **En pantalla:** placa de marca.
 
@@ -218,16 +195,14 @@ detalle:
 
 ## Notas de producción
 
-- **Duración estimada:** ~4:10 de locución + aire ≈ **4:30**. Es más largo que el v4 (1:47) a
-  propósito: este video tiene otro trabajo. El v4 era institucional; este es **explicativo**, y
-  lo que se pidió fue explicar el mecanismo con más detalle, no menos.
-  Si hay que acortar, las escenas 3 y 7 son las que menos daño hacen al sacarlas (−42s → 3:48).
-- **Las escenas 1 y 6 son las más importantes del video.** La misma pregunta, dos respuestas
-  escritas completas. Ahí está el «ajá». Merecen tiempo en pantalla y que el texto se escriba
-  como se escribe en un chat, no que aparezca de golpe.
-- **La escena 5 es la que hace entendible todo lo demás.** Si el paralelo del banco funciona,
-  MCP deja de ser una sigla. Va antes de nombrar la sigla, nunca después.
-- **La escena 8 responde una objeción antes de que se formule.** Cuando alguien escucha «Velaria
-  observa cómo trabajas», lo primero que piensa es vigilancia. Decir explícitamente qué NO hace
-  vale más que tres frases sobre gobernanza.
-- Sin cifras nuevas inventadas: se reusan las del caso sintético ya definido.
+- **Las escenas 1 y 5 son el video.** La misma pregunta, dos respuestas escritas completas. Ahí
+  está el «ajá». El texto debe escribirse como en un chat —carácter por carácter— no aparecer de
+  golpe: es lo que hace que se lea de verdad.
+- **La escena 4 es la que vuelve entendible todo lo demás.** Si el paralelo del banco funciona,
+  MCP deja de ser una sigla. Va antes de nombrarla.
+- **La escena 6 responde una objeción antes de que se formule.** Cuando alguien escucha «Velaria
+  observa cómo trabajas», lo primero que piensa es vigilancia. Decir qué NO hace vale más que
+  tres frases sobre gobernanza.
+- **Ritmo:** 9 escenas en 180s = 20s por escena, contra 29s del v4. Las tablas necesitan aire
+  para leerse; ese silencio es funcional, no una pausa mal medida.
+- Sin cifras nuevas: se reusan las del caso sintético ya definido.
