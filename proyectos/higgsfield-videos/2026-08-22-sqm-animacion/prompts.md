@@ -29,6 +29,53 @@ Dos reescrituras de fondo respecto del guion original:
   expresa como un **plano** ink2 con hairline y un canto accent: jerarquía por plano y
   densidad, no por luz. "Nada flota."
 
+## Recursos de marca reales
+
+El kit oficial está en `referencias/velaria-kit/` (SVGs de símbolo y wordmark, tokens CSS,
+piezas aplicadas). La paleta del kit coincide exactamente con la que ya usábamos — no hay que
+corregir nada de color.
+
+### Geometría exacta del símbolo (ojo del velarium)
+
+Sobre `viewBox 0 0 48 48`:
+
+| Elemento | Spec | Significado |
+|---|---|---|
+| Anillo | `circle cx24 cy24 r19`, stroke `#F5F7FA`, width 2.5 | la lona tendida sobre la arena |
+| Arco | mismo círculo, stroke `#2456D6`, dasharray `30 90`, dashoffset `52`, `rotate(-90 24 24)` | **el tramo que Velaria cubre** |
+| Punto | `circle cx24 cy24 r5`, fill `#F5F7FA` | **la operación, intacta** |
+
+**Esto es el video entero en un símbolo.** El punto central es SQM operando, que no se toca; el
+arco azul es la porción que Velaria cubre. Es exactamente la tesis del guion — "SQM ya funciona
+bien", "el stack queda intacto", "Velaria es una capa encima". Vale la pena que el cierre lo
+haga explícito (ver toma 12.3).
+
+### Wordmark
+
+IBM Plex Mono 500, minúsculas, letter-spacing ≈0.1em (en el SVG de 520×120: `font-size 40`,
+`letter-spacing 4`), fill `#F5F7FA`, con el `_` final en `#7DA0F2`. Área de respeto: la altura
+del símbolo a cada lado. Tamaño mínimo del lockup: 24px de alto.
+
+### El recurso recurrente: la banda con hairlines
+
+Tanto el `og-image` como los banners del kit componen igual: **dos hairlines horizontales
+encerrando una banda de contenido**, con el lockup a la izquierda y labels mono caps steel a la
+derecha. Y la firma de correo usa `border-left: 3px solid #2456D6` como marca de bloque.
+
+Conviene adoptar la banda como **marco persistente del video**: los rótulos de escena viven
+siempre entre esas dos hairlines, en la misma posición, las 12 escenas. Da continuidad sin
+agregar nada decorativo, y sale de las piezas reales de la marca en vez de inventarse.
+
+### ⚠ Conflicto de tipografía a resolver
+
+El `README.md` del kit dice **Avenir Next** para títulos/cuerpo y *mono del sistema* (SF Mono /
+Menlo) para labels. El `sistema visual.md`, que es posterior (2026-07-30), dice **IBM Plex Sans**
+e **IBM Plex Mono**, y degrada Avenir Next a "decks legacy".
+
+Voy con **IBM Plex Sans + IBM Plex Mono**: es la fuente más nueva, es coherente con el wordmark
+(que sí es Plex Mono en ambos documentos) y no depende de una tipografía de pago. Si el fundador
+dice lo contrario, se cambia solo el estilo de texto en post — no afecta ningún prompt.
+
 ## Style token
 
 Pegar al final de cada prompt de imagen:
@@ -382,14 +429,32 @@ Post: Instalaciones · Criterios · Insights · Skills · Marketplace · Registr
 caps. El item activo lleva `_` pestañeando (keyframes `vblink`).
 
 **Toma 12.3 — placa final**
-```
-Completely empty flat dark field, absolutely nothing in frame, uniform matte surface with no
-gradient, no vignette, no light falloff, no texture. Pure negative space.
-```
-Post: wordmark `velaria_` en IBM Plex Mono 500, minúsculas, letter-spacing 0.1em, con el `_`
-final en `#7DA0F2` y pestañeando. Debajo: `De uso individual de IA / a capacidad organizacional
-medible.` Opción: cerrar con el tagline oficial, "Libera el poder de la IA. Guíala con tu
-visión."
+
+**No se genera con IA.** Se compone en post con los assets reales del kit, replicando la
+maqueta de `referencias/velaria-kit/og/og-image.png`, que es la marca aplicada por sus propios
+autores:
+
+- Fondo `#0B0F17` plano — sin viñeta, sin degradado, sin textura.
+- Dos hairlines horizontales `rgba(245,247,250,.10)` encerrando la banda de contenido.
+- Kicker arriba, mono CAPS steel `#8A94A6`, letter-spacing ~3px.
+- Lockup símbolo + `velaria_` alineado a la izquierda, con el `_` en `#7DA0F2`.
+- Bajada en dos líneas: la primera en `#F5F7FA`, la segunda en `#7DA0F2` — así separa el OG el
+  tagline ("Libera el poder de la IA." / "Guíala con tu visión.").
+- Pie en mono steel con metadato: `velaria.ai · 2026`.
+
+Texto: `De uso individual de IA` / `a capacidad organizacional medible.` (segunda línea en
+accent-hi), y cierre con el tagline oficial.
+
+**Animación del símbolo — el cierre del video.** Construir el ojo en el orden en que significa:
+
+1. Aparece el **punto central** solo, quieto. *(la operación de SQM, que ya funciona)*
+2. Se traza el **anillo** blanco alrededor, en sentido horario. *(el stack existente, intacto)*
+3. Se dibuja el **arco azul** sobre el anillo — solo su tramo, `dasharray 30 90`. *(Velaria: no
+   reemplaza el anillo, cubre un tramo de él)*
+4. Entra el wordmark a la derecha; el `_` arranca a pestañear (`vblink`, 1.02s).
+
+Sin glow en ninguno de los cuatro pasos, sin escalado elástico, sin fade suave. Trazado limpio,
+tiempos parejos.
 
 ---
 
@@ -403,6 +468,7 @@ visión."
 
 - Tipografía: **IBM Plex Sans** para títulos y cuerpo; **IBM Plex Mono CAPS** con
   letter-spacing 1.5–3px para labels, kickers, timestamps y navegación.
+- Marco persistente: la banda entre dos hairlines, en la misma posición las 12 escenas.
 - Timestamps visibles y consistentes a lo largo del video (`14:32:08Z`): son parte del sistema,
   no decoración.
 - Estados **siempre entre corchetes** — `[ ACTIVO ]`, `[ OK ]`, `[ REQUIERE APROBACIÓN ]`.
@@ -413,9 +479,11 @@ visión."
 
 ## Pendiente antes de generar
 
+- [x] ~~Conseguir los SVG del ojo del velarium y del wordmark~~ → `referencias/velaria-kit/`
 - [ ] Conseguir `Velaria UI Manual.dc.html` para validar las escenas 8, 10 y 12 contra
-      componentes reales.
-- [ ] Confirmar los SVG del ojo del velarium y del wordmark (`descargables/velaria-kit/`).
+      componentes reales. **Es el único bloqueante de arte que queda.**
+- [ ] Confirmar tipografía con el fundador: IBM Plex Sans (sistema visual) vs Avenir Next
+      (README del kit). Ver "Conflicto de tipografía" arriba.
 - [ ] Elegir modelo de imagen y de video, y confirmar presupuesto de créditos (~18 tomas).
 - [ ] Validar frames clave de escenas 5, 8 y 12 — definen el arte del resto.
 - [ ] Elegir voz de locución.

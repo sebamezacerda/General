@@ -70,6 +70,12 @@ Resumen operativo para el video:
 ## Bitácora
 - 2026-08-22: se crea el proyecto a partir de la plantilla. Se recibe y documenta el guion
   completo (12 escenas, locución + texto en pantalla) en `guion.md`.
+- 2026-08-22: llega el `velaria-kit` oficial y queda versionado en `referencias/velaria-kit/`.
+  Confirma la paleta (coincide exacta), aporta la geometría del ojo del velarium y el lockup, y
+  la maqueta del `og-image` pasa a ser la base de la placa final. Se adopta la banda entre
+  hairlines como marco persistente del video. El cierre ahora construye el símbolo en el orden
+  en que significa: punto (la operación) → anillo (el stack) → arco azul (Velaria cubre un
+  tramo).
 - 2026-08-22: llega el sistema de diseño real de Velaria (`sistema visual.md` de
   `Velaria-HQ/velaria-delivery`). Se reescriben **todos** los prompts: la primera versión usaba
   glow, degradados, esquinas redondeadas, redes de nodos y una paleta cyan/mint, todo prohibido
@@ -79,8 +85,9 @@ Resumen operativo para el video:
 
 ## Próximos pasos
 1. Conseguir `Velaria UI Manual.dc.html` — es la fuente de verdad de UI y las escenas 8, 10 y
-   12 muestran dashboard. Vive en el repo del fundador, no accesible desde acá.
-2. Conseguir los SVG de marca (ojo del velarium + wordmark) desde `descargables/velaria-kit/`.
+   12 muestran dashboard. Único bloqueante de arte que queda.
+2. Confirmar tipografía: IBM Plex Sans (sistema visual, posterior) vs Avenir Next (README del
+   kit). Se adopta Plex; falta el visto bueno del fundador.
 3. Confirmar modelo de generación y presupuesto de créditos (~18 tomas).
 4. Generar frames clave de las escenas 5, 8 y 12 para validar arte antes de animar el resto.
 5. Animar cada frame aprobado y generar la locución (12 pistas).

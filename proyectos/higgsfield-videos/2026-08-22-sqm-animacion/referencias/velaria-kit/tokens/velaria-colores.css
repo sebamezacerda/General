@@ -1,0 +1,11 @@
+:root{
+  --ink:#0B0F17;       /* fondo oscuro (consola, portadas) */
+  --ink2:#151C2B;      /* paneles sobre ink */
+  --accent:#2456D6;    /* azul cobalto — acción primaria */
+  --accent-hi:#7DA0F2; /* azul claro — texto/acento sobre ink */
+  --light:#F5F7FA;     /* fondo claro (docs, reportes) */
+  --text:#111827;      /* texto sobre claro */
+  --mute:#6B7280;      /* texto secundario sobre claro */
+  --steel:#8A94A6;     /* acero — labels técnicos, metadatos */
+  --ok:#3FB27F; --warn:#D9A03C; --err:#D95C4A; /* estados, solo en badges */
+}

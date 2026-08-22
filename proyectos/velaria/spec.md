@@ -77,13 +77,37 @@ Degradados · glassmorphism · orbes/blobs · glow · esquinas redondas · emoji
 circuitos/redes neuronales · sombras blandas gigantes · píldoras de estado · más de un azul de
 acción por vista.
 
-### Archivos de referencia (viven en el repo del fundador, no accesibles desde acá)
-- `Velaria Brand Board.dc.html` — identidad y sistema de slides
-- `Velaria UI Manual.dc.html` — componentes de plataforma (**fuente de verdad de UI**)
-- `Velaria Landing.dc.html` — patrón de landing/marketing
-- `descargables/velaria-kit/` — SVGs finales y tokens CSS
+### Archivos de referencia
+- ✅ `velaria-kit/` — **disponible** en
+  `proyectos/higgsfield-videos/2026-08-22-sqm-animacion/referencias/velaria-kit/`: SVGs de
+  símbolo y wordmark (color, mono, favicon), tokens CSS, firma de correo, og-image, banners y
+  avatares. La paleta del kit coincide exactamente con la de este documento.
+- ❌ `Velaria UI Manual.dc.html` — componentes de plataforma (**fuente de verdad de UI**). No
+  disponible. Es lo que falta para diseñar pantallas de producto en marca.
+- ❌ `Velaria Brand Board.dc.html` — identidad y sistema de slides. No disponible.
+- ❌ `Velaria Landing.dc.html` — patrón de landing/marketing. No disponible.
+
+### Geometría del símbolo (del kit, exacta)
+Sobre `viewBox 0 0 48 48`: anillo `circle cx24 cy24 r19` stroke `#F5F7FA` width 2.5 (*la lona
+tendida sobre la arena*) · arco mismo círculo stroke `#2456D6` dasharray `30 90` dashoffset `52`
+`rotate(-90 24 24)` (*el tramo que Velaria cubre*) · punto `circle cx24 cy24 r5` fill `#F5F7FA`
+(*la operación, intacta*).
+
+### ⚠ Conflicto de tipografía sin resolver
+El `README.md` del kit indica **Avenir Next** (fallback Helvetica Neue) para títulos/cuerpo y
+*mono del sistema* (SF Mono / Menlo) para labels. El `sistema visual.md`, posterior, indica
+**IBM Plex Sans** e **IBM Plex Mono** y degrada Avenir Next a "decks legacy". Se adopta Plex por
+ser lo más nuevo, coherente con el wordmark y libre. **Confirmar con el fundador.**
+
+### Composición aplicada (deducida del kit)
+El `og-image` y los banners componen igual: dos hairlines horizontales encerrando una banda,
+lockup a la izquierda, labels mono caps steel a la derecha, tagline en dos líneas (la segunda en
+`--accent-hi`), pie con metadato mono steel. La firma de correo usa `border-left: 3px solid
+#2456D6` como marca de bloque — el mismo recurso que el `--accent` a la izquierda de los paneles.
 
 ## Resumen de estado
 - 2026-08-22: se documenta el sistema de diseño acá para desbloquear el video "Caso sintético
-  SQM × Velaria" (`proyectos/higgsfield-videos/2026-08-22-sqm-animacion/`). Pendiente:
-  conseguir el `UI Manual` para que las escenas de dashboard repliquen componentes reales.
+  SQM × Velaria" (`proyectos/higgsfield-videos/2026-08-22-sqm-animacion/`).
+- 2026-08-22: llega el `velaria-kit` completo y queda versionado en el proyecto de video.
+  Confirma la paleta, aporta la geometría exacta del símbolo y el lockup. Pendientes: el
+  `UI Manual` (para las escenas de dashboard) y resolver el conflicto de tipografía.
