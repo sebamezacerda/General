@@ -171,3 +171,43 @@ Todas sin auditar — CDN bloqueado.
 **Nota sobre la escena 2:** la grilla de diez personas conviene armarla en HTML (hairlines,
 labels mono, alineación exacta) y **rellenar las celdas con fotos generadas**, en vez de pedirle
 la grilla entera a un modelo. La toma 2.1 de arriba es la prueba de una celda.
+
+## Ronda 4 — el problema no era la voz, era el motor · 2026-08-22
+
+Las cuatro candidatas de la ronda 3 leen español **con acento anglo**. `seed_audio` (ByteDance)
+es anglocéntrico: la voz es femenina y el nombre hispano, pero la pronunciación es inglesa.
+
+`text2speech_v2` permite cambiar de motor manteniendo el mismo `voice_id`. Se probaron los dos
+multilingües:
+
+| # | Voz | Motor | job_id | Duración |
+|---|---|---|---|---:|
+| 51 | Inés | elevenlabs | `7ebcef73-2b15-4d66-9e57-dd1db0a58040` | 20,40s |
+| 52 | Marisol | elevenlabs | `7d94da20-59f7-4001-a306-c7c1f72dfd75` | 17,28s |
+| 53 | Inés | minimax | `82e0487e-c604-4b50-8f8d-4a17437a5233` | 19,16s |
+| 54 | Isabella | minimax | `e3a54302-dec5-4659-a42c-75a999aad78c` | 15,50s |
+
+### 🔑 La palanca: `language_boost`
+
+MiniMax devolvió `language_boost: "auto"` entre sus parámetros. **Si el motor no detectó que el
+texto es español, forzar ese parámetro es lo que falta.** Es el próximo intento si estas cuatro
+siguen sonando anglo — antes de descartar voces o clonar una nueva.
+
+### Descartado: `inworld_text_to_speech`
+
+Es el único modelo del catálogo con voces marcadas nativas en español — Lupita (es), Diego (es),
+Miguel (es), Rafael (es), Lupita la única femenina. **No se puede usar**: está reservado al
+pipeline de generación de juegos y no admite audio suelto.
+
+### Plan B si ningún preset convence
+
+`create_voice` clona una voz desde una muestra de audio. Con 30–60 segundos de una locutora
+hispanohablante leyendo cualquier texto se obtiene una voz nativa propia, reutilizable en todos
+los videos de Velaria. Es la opción más sólida a mediano plazo, y la única que garantiza acento
+plano de verdad.
+
+### Nota sobre duración
+
+Estas tomas van de 15,5s a 20,4s para las mismas 33 palabras — una diferencia del 30% entre
+motores. **La duración final del video depende de qué motor se elija**, no solo del guion:
+entre 3:35 (Isabella/minimax) y 4:40 (Inés/elevenlabs).
