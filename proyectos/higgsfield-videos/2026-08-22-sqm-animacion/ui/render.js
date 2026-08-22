@@ -15,6 +15,12 @@ const PLAN = [
   ['11-valor', 15.06], ['12-plataforma', 8.0],
 ];
 
+// capas transparentes que se superponen a los planos generados
+const OVER = [
+  ['ov-01-sistemas', 8.75], ['ov-02-areas', 22.96], ['ov-03-brasil', 13.60],
+  ['ov-05-capa', 13.10], ['ov-12-cierre', 9.75],
+];
+
 (async () => {
   const only = process.argv[2];
   const jobs = only ? PLAN.filter(p => p[0] === only) : PLAN;
@@ -26,7 +32,13 @@ const PLAN = [
   for (const [name, dur] of jobs) {
     const tmp = fs.mkdtempSync(path.join(__dirname, '.fr-'));
     await p.goto('file://' + __dirname + '/' + name + '.html');
-    await p.evaluate(async () => { await document.fonts.ready; return true; });
+    await p.evaluate// capas transparentes que se superponen a los planos generados
+const OVER = [
+  ['ov-01-sistemas', 8.75], ['ov-02-areas', 22.96], ['ov-03-brasil', 13.60],
+  ['ov-05-capa', 13.10], ['ov-12-cierre', 9.75],
+];
+
+(async () => { await document.fonts.ready; return true; });
     await p.evaluate(d => window.buildAnim(d), dur);
     const N = Math.round(dur * FPS);
     console.log('  render', name, N, 'frames ->', tmp);
@@ -40,6 +52,20 @@ const PLAN = [
       '-crf', '16', '-pix_fmt', 'yuv420p', 'clips/' + name + '.mp4']);
     fs.rmSync(tmp, { recursive: true, force: true });
     console.log('clip', name, dur + 's', N + 'f');
+  }
+  // capas: se dejan como secuencia PNG con alpha, para superponer en el montaje
+  if (!only) for (const [name, dur] of OVER) {
+    const out = 'clips/' + name;
+    fs.mkdirSync(out, { recursive: true });
+    await p.goto('file://' + __dirname + '/' + name + '.html');
+    await p.evaluate(async () => { await document.fonts.ready; return true; });
+    await p.evaluate(d => window.buildAnim(d), dur);
+    const N = Math.round(dur * FPS);
+    for (let i = 0; i < N; i++) {
+      await p.evaluate(([t, d]) => window.scrub(t, d), [i / FPS, dur]);
+      await p.screenshot({ path: path.join(out, String(i).padStart(5, '0') + '.png'), omitBackground: true });
+    }
+    console.log('capa', name, dur + 's', N + 'f');
   }
   await b.close();
 })();
