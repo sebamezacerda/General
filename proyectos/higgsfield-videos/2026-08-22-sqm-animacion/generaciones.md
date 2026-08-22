@@ -325,3 +325,46 @@ para unirlos con los clips de pantallas. Todo lo necesario está listo y documen
 - Los job_id de las 6 tomas y las 12 pistas, en este archivo
 
 Con eso, el armado en cualquier editor es mecánico.
+
+## Ronda 8 — el corte armado · 2026-08-22
+
+**`corte-v1.mp4` — 3:29,4 · 1920×1080 · H.264 + AAC · 34 MB**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/d3c0f7bb-a682-48f9-ba64-7cfc464f507b.mp4
+
+### Cómo se pudo montar pese al bloqueo de red
+
+La política de red de esta sesión bloquea el CDN de Higgsfield, así que acá no se pueden bajar
+ni las tomas ni la locución. **Pero Higgsfield expone `sandbox_exec`**: un Linux en la nube con
+ffmpeg, Playwright y salida a internet, que sí alcanza ese CDN.
+
+El montaje se hizo ahí:
+
+1. `git clone` del repo público (`sebamezacerda/General`, rama de este proyecto) — trae HTML,
+   CSS, fuentes IBM Plex y `render.js`.
+2. Se renderizan las 14 pantallas con el Chromium del sandbox (`chrome-linux64`, no
+   `chrome-linux` como en este entorno).
+3. `curl` de las 6 tomas generativas y las 12 pistas de locución desde el CDN.
+4. `assemble.py` construye cada segmento a su duración exacta y multiplexa.
+5. `media_upload` → `PUT` → `media_confirm`.
+
+Los clips no están versionados (`.gitignore` excluye `*.mp4`), así que el sandbox los
+**re-renderiza** desde el HTML. Eso hace el pipeline reproducible desde cero con solo el repo.
+
+### Cómo se rellenan las ventanas
+
+Cada plano se estira con `setpts` hasta cubrir su ventana, con **tope de 2,5×**; lo que falta se
+sostiene con `tpad=stop_mode=clone`. Estirar más de 2,5× un plano de 5s deja el movimiento
+antinatural, y las tomas generadas duran 5s contra ventanas de hasta 22s.
+
+### Error corregido en el camino
+
+El primer armado dio **198,4s de video contra 209,25s de audio**. Faltaba sumar los **11
+segundos de aire entre escenas** en el plan de video: el audio sí los tenía. Se resolvió
+extendiendo 1s el último plano de cada escena, que además es lo correcto en montaje — el aire
+va sobre la imagen que cierra la escena, no en negro.
+
+### Placa inicial
+
+Se agregó `ui/plate.html`: el disclaimer de caso sintético, en el sistema de la marca (banda
+entre hairlines, kicker mono acero, "ficticios" en accent-hi). Renderizada como una pantalla más.

@@ -6,7 +6,7 @@ const FPS = 25;
 
 // pantalla -> segundos que ocupa en el montaje (ver montaje.md)
 const PLAN = [
-  ['04-dependencias', 13.3], ['04-pregunta', 13.2],
+  ['plate', 4.0], ['04-dependencias', 13.3], ['04-pregunta', 13.2],
   ['06-criterios', 7.85], ['06-permisos', 7.85],
   ['07-registro', 5.9], ['07-patron', 5.95],
   ['08-insight', 12.7],
