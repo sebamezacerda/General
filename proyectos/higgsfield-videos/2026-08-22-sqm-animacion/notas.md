@@ -70,6 +70,10 @@ Resumen operativo para el video:
 ## Bitácora
 - 2026-08-22: se crea el proyecto a partir de la plantilla. Se recibe y documenta el guion
   completo (12 escenas, locución + texto en pantalla) en `guion.md`.
+- 2026-08-22: las pantallas de producto (escenas 8, 10, 11 y 12) se construyen en HTML con los
+  tokens exactos y se capturan con Chromium — ver `ui/`. Sale mejor que generarlas: tipografía
+  Plex real, hairlines de 1px, cifras del guion correctas. Quedan como propuesta hasta poder
+  contrastarlas con el UI Manual o la web (ambos inaccesibles por la política de red).
 - 2026-08-22: ronda 1 de generación — 3 frames de validación (escenas 5, 8 y 12) con
   `recraft_v4_1 / utility`, que acepta paleta cerrada por parámetro. Detalle y checklist de
   auditoría en `generaciones.md`. Quedan sin auditar: el entorno bloquea el CDN de Higgsfield.

@@ -321,9 +321,12 @@ Sans; y las cuatro métricas — 8 usuarios / 67 ejecuciones similares / 5 fuent
 112 horas de trabajo asociadas. Timestamp de detección arriba a la derecha.
 Movimiento: las celdas se completan en secuencia; cámara fija. Modelo: —. Resultado: —
 
-> ⚠ Esta toma, la 10 y la 12 deberían replicar componentes reales del `Velaria UI Manual`
-> (fuente de verdad de UI). Ese archivo vive en el repo del fundador y no es accesible desde
-> acá — validar antes de dar el arte por cerrado.
+> ✅ **Esta toma no se genera con IA.** Está construida en HTML con los tokens exactos y
+> capturada a 1920×1080: `ui/screens/08-insight.png` (fuente en `ui/08-insight.html`). Lo mismo
+> para las escenas 10, 11 y 12. Ver `ui/README.md`.
+>
+> ⚠ Son una propuesta hecha desde el sistema visual y el guion, sin acceso al `Velaria UI
+> Manual` ni a la web del producto. Validar nomenclatura y navegación antes de filmar.
 
 ---
 
