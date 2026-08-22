@@ -77,6 +77,8 @@ Resumen operativo para el video:
   tokens exactos y se capturan con Chromium — ver `ui/`. Sale mejor que generarlas: tipografía
   Plex real, hairlines de 1px, cifras del guion correctas. Quedan como propuesta hasta poder
   contrastarlas con el UI Manual o la web (ambos inaccesibles por la política de red).
+- 2026-08-22: **corte v2** — se le da ritmo: contadores, capas de datos sobre los planos
+  generados (incluida la tarjeta de Brasil que faltaba), y los planos dejan de congelarse.
 - 2026-08-22: **corte v1 armado y entregado** — 3:29,4 a 1080p, con locución. Se montó en el
   sandbox de Higgsfield (`sandbox_exec`), que tiene ffmpeg y salida a internet y sí alcanza el
   CDN que esta sesión bloquea. Link y detalle en `generaciones.md`.

@@ -368,3 +368,61 @@ va sobre la imagen que cierra la escena, no en negro.
 
 Se agregó `ui/plate.html`: el disclaimer de caso sintético, en el sistema de la marca (banda
 entre hairlines, kicker mono acero, "ficticios" en accent-hi). Renderizada como una pantalla más.
+
+## Ronda 9 — corte v2: se le da ritmo · 2026-08-22
+
+**`corte-v2.mp4` — 3:31 · 1920×1080**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/a63bbbc7-4830-4b4d-a5e1-6f2384ed7a3c.mp4
+
+Feedback del cliente sobre el v1: *"le falta más velocidad, las animaciones muy estáticas, está
+fome"*, y *"cuando se habla del pedido de Brasil y se hablan números, deberían aparecer también
+en el video"*. Las tres causas eran concretas:
+
+### 1. Una sola entrada y después nada
+
+`anim.js` repartía las entradas en el primer 50% de la ventana con un paso máximo de 0,13s: en
+una pantalla de 15s había ~3s de movimiento y 12s de quietud. Ahora el reparto ocupa **del 10%
+al 80%** de la ventana, con paso limitado a 1,15s. Nunca hay un tramo largo sin que entre algo.
+
+### 2. Los números aparecían en vez de contar
+
+Ahora **cuentan**. `anim.js` parsea el formato castellano (coma decimal, punto de miles), lo
+interpola y lo reconstruye con el mismo formato. Aplica a las métricas, a las cifras grandes de
+valor y al contador del registro. El guion bajo del wordmark y de la nav además pestañea de
+verdad, con los tiempos del sistema (`vblink`, 1,02s).
+
+### 3. Los planos generados se congelaban
+
+Se rellenaban con `tpad=stop_mode=clone`, o sea un frame estático — hasta 17 segundos en la
+escena 2. Ahora se estiran poco (**máximo 1,8×**, antes 2,5×) y hacen **ida y vuelta** hasta
+llenar la ventana. Siempre hay movimiento.
+
+### 4. Faltaban los datos sobre los planos generados
+
+Es lo que notó el cliente: en la escena 3 la locución dice "aumenta un catorce por ciento" y en
+pantalla no había ningún número. El guion pide esa tarjeta como texto en pantalla y el v1 no la
+tenía.
+
+Se agregan **cinco capas con fondo transparente** que se superponen a los planos generados,
+renderizadas con `omitBackground` y compuestas con `overlay` de ffmpeg:
+
+| Capa | Va sobre | Qué muestra |
+|---|---|---|
+| `ov-01-sistemas` | puerto | las cinco capas de sistema como líneas de registro |
+| `ov-02-areas` | grilla de diez | el rótulo de cada área sobre su panel |
+| `ov-03-brasil` | mapa | **forecast +14% · cobertura 18 días · quiebre semana 37** |
+| `ov-05-capa` | la capa | Contexto · Criterios · Gobernanza · Observabilidad |
+| `ov-12-cierre` | ecosistema | la bajada del cierre |
+
+### Tres bugs encontrados renderizando frames y mirándolos
+
+1. **El chrome se animaba como contenido.** El rail, la nav y la cabecera aparecían de a poco,
+   como si fueran datos. Son interfaz: ahora están desde el frame 0.
+2. **Los contadores arrancaban todos en t=0** porque la búsqueda del bloque dueño estaba mal
+   escrita y devolvía `undefined`. Se veían terminados antes de que su bloque entrara.
+3. **Las filas de las capas no estaban en el selector**, así que aparecían de golpe en el frame
+   0 mientras el título sí se animaba: la tarjeta de Brasil salía con un hueco donde iba el
+   título.
+
+Ninguno se habría notado sin renderizar frames intermedios y mirarlos.
