@@ -78,3 +78,38 @@ h2{font-size:22px;font-weight:500}
 .act{display:inline-flex;align-items:center;gap:12px;background:var(--accent);
   color:var(--light);padding:15px 26px;font-family:'IBM Plex Mono',monospace;
   font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px}
+
+/* ---- diagramas a sangre (sin rail) ---- */
+body.bare{display:block;padding:70px 90px}
+.dtop{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--hair);padding-bottom:22px;margin-bottom:60px}
+.plate{background:var(--ink2);border:1px solid var(--hair);
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.plate.on{border-color:var(--accent-hi)}
+.cap{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;
+  text-transform:uppercase;letter-spacing:2px;color:var(--steel);text-align:center}
+.cap.on{color:var(--accent-hi)}
+.link{height:1px;background:var(--hair2);flex:1}
+.vlink{width:1px;background:var(--hair2)}
+.card{background:var(--ink2);border:1px solid var(--hair);border-top:3px solid var(--accent-hi);
+  padding:30px 32px}
+.card h3{font-size:20px;font-weight:500;margin-bottom:12px}
+.card p{font-size:15px;color:var(--steel);line-height:1.5}
+table{width:100%;border-collapse:collapse}
+th{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;text-transform:uppercase;
+  letter-spacing:2px;color:var(--steel);text-align:left;padding:16px 20px;
+  border-bottom:1px solid var(--hair2)}
+td{padding:20px;border-bottom:1px solid var(--hair);border-left:1px solid var(--hair);font-size:15px}
+td:first-child,th:first-child{border-left:0;padding-left:0}
+.logwall{display:flex;flex-direction:column;gap:9px}
+.lg{display:flex;align-items:center;gap:20px;font-family:'IBM Plex Mono',monospace;font-size:13px;
+  color:var(--steel);opacity:.55}
+.lg .rule{height:7px;background:rgba(245,247,250,.13)}
+.lg.hit{opacity:1;color:var(--accent-hi)}
+.lg.hit .rule{background:var(--accent-hi)}
+
+body.bare{display:flex;flex-direction:column}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+.pipe{display:flex;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center}
+.colbox{display:flex;flex-direction:column;align-items:center;justify-content:center}

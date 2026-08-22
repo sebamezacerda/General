@@ -76,6 +76,33 @@ Voy con **IBM Plex Sans + IBM Plex Mono**: es la fuente más nueva, es coherente
 (que sí es Plex Mono en ambos documentos) y no depende de una tipografía de pago. Si el fundador
 dice lo contrario, se cambia solo el estilo de texto en post — no afecta ningún prompt.
 
+## Qué se genera y qué se construye
+
+Una vez montado el pipeline de HTML+Chromium quedó claro que **la mayoría de las tomas del
+guion son diagramas, no fotografía**. Un diagrama construido en HTML sale exacto, en marca y
+sin costo; generado, sale aproximado, caro y con riesgo de glow y esquinas redondas.
+
+El reparto:
+
+| Toma | Cómo | Por qué |
+|---|---|---|
+| 1.1 faena · 1.2 puerto | **generar** | fotografía aérea real |
+| 2.1 grilla de diez · 2.2 proceso | **generar** | personas reales trabajando |
+| 3.1 mapa | **generar** | mapa punteado, más rápido generado |
+| 4.1 dependencias · 4.2 la pregunta | **construir** | consola y tipografía → `ui/04-*.html` |
+| 5.1 la capa · 5.2 los diez | **generar** | volumen 3D de planos |
+| 6.1 criterios · 6.2 permisos | **construir** | tarjetas y matriz → `ui/06-*.html` |
+| 7.1 registro · 7.2 el patrón | **construir** | el patrón necesita alineación exacta → `ui/07-*.html` |
+| 8.1 dashboard | **construir** | producto → `ui/08-insight.html` |
+| 9.1 MCP · 9.2 skill | **construir** | esquemas → `ui/09-*.html` |
+| 10.1 bandeja · 10.2 caso | **construir** | producto → `ui/10-*.html` |
+| 11.1 valor | **construir** | cifras exactas → `ui/11-valor.html` |
+| 12.1 ecosistema | **generar** | volumen 3D |
+| 12.2 nav · 12.3 placa | **construir** | `ui/12-plataforma.html` + kit de marca |
+
+Quedan **6 tomas para generar** y 13 pantallas construidas. Eso baja mucho el costo en créditos
+y sube el control sobre el resultado.
+
 ## Style token
 
 Pegar al final de cada prompt de imagen:

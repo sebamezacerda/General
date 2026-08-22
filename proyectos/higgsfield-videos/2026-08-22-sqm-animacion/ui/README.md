@@ -29,6 +29,14 @@ no hace falta instalar nada.
 | `10-caso.html` | 10.2 | El caso Brasil con sus tres alternativas y el costo de no actuar |
 | `11-valor.html` | 11 | El KPI que cambia: valor económico dominante, horas subordinadas |
 | `12-plataforma.html` | 12 | Las siete secciones de la plataforma, para el cierre |
+| `04-dependencias.html` | 4.1 | Las seis fuentes que hay que consultar para responder una pregunta |
+| `04-pregunta.html` | 4.2 | La pregunta que abre el video, sobre negro |
+| `06-criterios.html` | 6.1 | Las cuatro políticas de gobernanza |
+| `06-permisos.html` | 6.2 | Matriz de permisos por área |
+| `07-registro.html` | 7.1 | Muro de log: cuatro semanas de uso acumulado |
+| `07-patron.html` | 7.2 | El mismo muro, con ocho líneas alineándose en el patrón |
+| `09-mcp.html` | 9.1 | El conector gobernado y su gate |
+| `09-skill.html` | 9.2 | La Skill como pipeline de seis pasos |
 
 ## Decisiones de diseño
 

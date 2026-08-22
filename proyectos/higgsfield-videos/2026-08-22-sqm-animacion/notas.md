@@ -70,6 +70,9 @@ Resumen operativo para el video:
 ## Bitácora
 - 2026-08-22: se crea el proyecto a partir de la plantilla. Se recibe y documenta el guion
   completo (12 escenas, locución + texto en pantalla) en `guion.md`.
+- 2026-08-22: se extiende el enfoque HTML a los diagramas (escenas 4, 6, 7 y 9). Quedan 13
+  pantallas construidas y solo 6 tomas para generar con IA — las genuinamente fotográficas o
+  volumétricas. Ver la tabla "Qué se genera y qué se construye" en `prompts.md`.
 - 2026-08-22: las pantallas de producto (escenas 8, 10, 11 y 12) se construyen en HTML con los
   tokens exactos y se capturan con Chromium — ver `ui/`. Sale mejor que generarlas: tipografía
   Plex real, hairlines de 1px, cifras del guion correctas. Quedan como propuesta hasta poder
