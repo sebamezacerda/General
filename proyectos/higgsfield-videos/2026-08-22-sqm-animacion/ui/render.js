@@ -12,13 +12,13 @@ const PLAN = [
   ['08-insight', 12.7],
   ['09-mcp', 9.3], ['09-skill', 9.3],
   ['10-bandeja', 7.0], ['10-caso', 6.9],
-  ['11-valor', 15.06], ['12-plataforma', 8.0],
+  ['11-valor', 15.06], ['12-plataforma', 10.75],
 ];
 
 // capas transparentes que se superponen a los planos generados
 const OVER = [
-  ['ov-01-sistemas', 8.75], ['ov-02-areas', 22.96], ['ov-03-brasil', 13.60],
-  ['ov-05-capa', 13.10], ['ov-12-cierre', 9.75],
+  ['ov-01-sistemas', 8.75], ['ov-02-areas', 8.00], ['ov-03-brasil', 7.60],
+  ['ov-05-capa', 6.60], ['ov-12-cierre', 7.00],
 ];
 
 (async () => {
@@ -34,8 +34,8 @@ const OVER = [
     await p.goto('file://' + __dirname + '/' + name + '.html');
     await p.evaluate// capas transparentes que se superponen a los planos generados
 const OVER = [
-  ['ov-01-sistemas', 8.75], ['ov-02-areas', 22.96], ['ov-03-brasil', 13.60],
-  ['ov-05-capa', 13.10], ['ov-12-cierre', 9.75],
+  ['ov-01-sistemas', 8.75], ['ov-02-areas', 8.00], ['ov-03-brasil', 7.60],
+  ['ov-05-capa', 6.60], ['ov-12-cierre', 7.00],
 ];
 
 (async () => { await document.fonts.ready; return true; });

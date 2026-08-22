@@ -5,7 +5,7 @@
   var SEL = '.panel, .card, .metrics .m, .rows .row, .lg, .pipe .col, .pipe .link, table tr,'
           + ' h1, h2, .cmt, .act, .kicker, .ovcard, .ovcard .r, .ovlog .l, .ovtitle, .bignum';
   var CHROME = '.rail, .top, .dtop';           // interfaz: no aparece, ya esta
-  var items = [], nums = [], DUR = 0.30, SHIFT = 0.75, COUNT = 1.1;
+  var items = [], nums = [], DUR = 0.18, SHIFT = 0.50, COUNT = 0.70;
 
   function parseNum(txt) {
     var m = txt.match(/(\d[\d.]*(?:,\d+)?)/);
@@ -37,9 +37,9 @@
       return true;
     });
     var n = els.length || 1;
-    var t0 = clipDur * 0.10, t1 = clipDur * 0.80;
+    var t0 = clipDur * 0.06, t1 = clipDur * 0.70;
     // pocos elementos no deben quedar separados 4s entre si, ni muchos amontonarse
-    var step = Math.min((t1 - t0) / n, 1.15);
+    var step = Math.min((t1 - t0) / n, 0.62);
     items = els.map(function (e, i) {
       return { el: e, t: t0 + i * step, hit: e.classList.contains('hit') };
     });
@@ -63,7 +63,7 @@
       var u = c01((t - it.t) / DUR);
       it.el.style.opacity = u;
       var y = (1 - u) * 12, x = 0;
-      if (it.hit) x = (1 - c01((t - it.t - 0.2) / SHIFT)) * -70;
+      if (it.hit) x = (1 - c01((t - it.t - 0.12) / SHIFT)) * -70;
       it.el.style.transform = 'translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)';
     });
     nums.forEach(function (q) {
@@ -72,7 +72,7 @@
     });
     var on = (t % 1.02) < 0.59;
     document.querySelectorAll('.wm i, .nav a i').forEach(function (e) { e.style.opacity = on ? 1 : 0; });
-    var s = 1 + 0.016 * c01(t / clipDur);
+    var s = 1 + 0.028 * c01(t / clipDur);
     document.body.style.transformOrigin = '50% 50%';
     document.body.style.transform = 'scale(' + s.toFixed(5) + ')';
   };
