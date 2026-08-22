@@ -32,7 +32,7 @@ el guion tiene 290 palabras y aun así el video dice más que el de 424.
 
 ---
 
-## ESCENA 1 — La pregunta (24s)
+## ESCENA 1 — La pregunta (20s)
 
 **Locución (24 pal.):**
 > Hoy casi todos usamos la inteligencia artificial igual: abrimos una ventana y preguntamos.
@@ -49,7 +49,7 @@ Y la respuesta se escribe completa, sin cortes:
 
 ---
 
-## ESCENA 2 — Por qué esa respuesta está vacía (28s)
+## ESCENA 2 — Por qué esa respuesta está vacía (23s)
 
 **Locución (32 pal.):**
 > No está mal. Está vacía. No sabe nada de SQM. Y como no sabe, cada persona completa lo que
@@ -68,7 +68,7 @@ Después, ocho versiones distintas de la misma pregunta, escritas una debajo de 
 
 ---
 
-## ESCENA 3 — Qué instala Velaria (30s)
+## ESCENA 3 — Qué instala Velaria (21s)
 
 **Locución (28 pal.):**
 > Velaria es eso que falta, puesto una sola vez para toda la empresa. No es otro chat: son cuatro
@@ -85,7 +85,7 @@ Después, ocho versiones distintas de la misma pregunta, escritas una debajo de 
 
 ---
 
-## ESCENA 4 — Qué es una conexión (32s) ← la escena que hace entendible el resto
+## ESCENA 4 — Qué es una conexión (26s) ← la escena que hace entendible el resto
 
 **Locución (38 pal.):**
 > Una conexión funciona igual que cuando conectas tu banco a una app de finanzas. No le entregas
@@ -106,7 +106,7 @@ Primero se entiende, después se nombra. Nunca al revés.
 
 ---
 
-## ESCENA 5 — La misma pregunta, ahora (32s)
+## ESCENA 5 — La misma pregunta, ahora (24s)
 
 **Locución (30 pal.):**
 > Misma IA, misma pregunta. Lo único que cambió es lo que sabe. Y no lo configuró nadie por su
@@ -124,7 +124,7 @@ Y al cerrar, el alcance por rol en una línea:
 
 ---
 
-## ESCENA 6 — Qué significa que Velaria observe (30s)
+## ESCENA 6 — Qué significa que Velaria observe (23s)
 
 **Locución (36 pal.):**
 > Velaria además mira cómo se usa. No lee conversaciones para vigilar a nadie: registra qué se
@@ -145,7 +145,7 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 
 ---
 
-## ESCENA 7 — Cómo nace una Skill (34s)
+## ESCENA 7 — Cómo nace una Skill (22s)
 
 **Locución (30 pal.):**
 > Ese patrón se convierte en una capacidad de la empresa. Y no la escribe un algoritmo solo: la
@@ -166,7 +166,7 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 
 ---
 
-## ESCENA 8 — Qué cambia el lunes (24s)
+## ESCENA 8 — Qué cambia el lunes (13s)
 
 **Locución (30 pal.):**
 > Desde entonces nadie vuelve a armar esa pregunta a mano. El lunes a las nueve la excepción ya
@@ -183,7 +183,7 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 
 ---
 
-## ESCENA 9 — Cierre (16s)
+## ESCENA 9 — Cierre (8s)
 
 **Locución (26 pal.):**
 > Velaria no reemplaza los sistemas de SQM ni a las personas que saben hacer el trabajo. Toma lo
@@ -205,4 +205,9 @@ Después, las ocho formulaciones de la escena 2 se alinean:
   tres frases sobre gobernanza.
 - **Ritmo:** 9 escenas en 180s = 20s por escena, contra 29s del v4. Las tablas necesitan aire
   para leerse; ese silencio es funcional, no una pausa mal medida.
+- **Las ventanas de arriba son el objetivo, no el dato final.** Como en las versiones anteriores,
+  la duración real de cada escena se fija con la locución ya generada y medida. Con 260 palabras
+  la voz ocupa ~2:14, así que quedan ~46s repartidos como aire de lectura. Las escenas 8 y 9 son
+  las más apretadas: si al medir la voz se pasan, se les recorta texto —son las que menos
+  explican.
 - Sin cifras nuevas: se reusan las del caso sintético ya definido.
