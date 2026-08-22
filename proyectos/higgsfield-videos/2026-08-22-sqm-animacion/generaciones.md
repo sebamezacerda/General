@@ -269,3 +269,59 @@ porque el CDN está bloqueado.
 
 ~62 créditos de 1.112. Muy por debajo del presupuesto de 265 — porque la mitad del video
 terminó construyéndose en vez de generándose.
+
+## Ronda 7 — las tomas generativas, completas · 2026-08-22
+
+Todas con `cinematic_studio_video_v2` / pro / 5s / `speedramp: linear` / `cfg_scale 0.85` /
+`sound: off`.
+
+| Toma | Escena | Movimiento | still | video |
+|---|---|---|---|---|
+| 1.1 faena aérea | 1 | descenso vertical lineal | `bfc5e836` | `ea2b7d28-9cab-40fb-af41-527b4e45fff0` |
+| 1.2 puerto | 1 | travelling lateral lineal | `fccd6520` | `0efafda1-7473-4074-8a48-fab24279810b` |
+| 2.1 grilla de diez | 2 | cámara fija, la gente se mueve | `1869ef6d` | `526d90d7-fad3-42e6-9372-08239aeb2026` |
+| 3.1 mapa punteado | 3 | push in frontal, sin rotación | `2c91fe82` | `ae78329e-7ae7-48d6-8e0c-4f4f4a2f43fc` |
+| 5.1 la capa | 5 | descenso lineal | `5543e2f4` | `00cc868f-628b-4859-8619-3a1818dee471` |
+| 12.1 ecosistema | 12 | zoom out lineal | `a4fb4e65` | `a0a60789-3982-4ccb-b1ad-00e13b33cd32` |
+
+**Seis generaciones cubren las ocho tomas del guion**: 2.2 (grilla con hairline de proceso) y
+5.2 (grilla con hairline azul de Velaria) son tratamientos en post sobre el clip 2.1, no
+generaciones aparte. Se ahorran 15 créditos y, más importante, la grilla queda idéntica en las
+tres apariciones — que es lo que pide la continuidad del guion.
+
+### El preset vuelve a aparecer
+
+El servidor volvió a recomendar "IN THE DARK" y **rechazó el batch entero** (0/4 enviados)
+hasta pasar `declined_preset_id` en cada request. Es un paso obligatorio en este proyecto, no
+una excepción: anotarlo en cualquier script futuro.
+
+### Decisión: cámara fija en la escena 2
+
+A la grilla de diez le pedí explícitamente **cámara inmóvil**, con movimiento solo dentro de
+los paneles. Un push in sobre una grilla de hairlines las curva y las hace vibrar —
+exactamente lo que el sistema prohíbe. El movimiento lo aporta la gente trabajando, que además
+es lo que la escena quiere decir.
+
+## Estado del material
+
+| Bloque | Estado |
+|---|---|
+| 13 pantallas HTML animadas a MP4 1080p | ✅ producidas y **verificadas** |
+| 12 pistas de locución | ✅ producidas, duraciones medidas |
+| 6 tomas generativas | ✅ producidas, **sin auditar** (CDN bloqueado) |
+| Montaje final | ⬜ pendiente — requiere una máquina con acceso a los archivos |
+
+**Gasto total: 68 créditos** de 1.112 (quedan 1.044). El presupuesto estimaba 265: la
+diferencia es que dos tercios del video terminaron construyéndose en HTML en vez de generándose.
+
+## Lo único que falta
+
+El montaje. No puedo hacerlo desde acá: los clips generados y las pistas de audio viven en el
+CDN de Higgsfield, que la política de red de este entorno bloquea, así que no puedo bajarlos
+para unirlos con los clips de pantallas. Todo lo necesario está listo y documentado:
+
+- `montaje.md` — timecode de entrada de cada escena
+- `ui/clips/` — las 13 pantallas ya en MP4
+- Los job_id de las 6 tomas y las 12 pistas, en este archivo
+
+Con eso, el armado en cualquier editor es mecánico.

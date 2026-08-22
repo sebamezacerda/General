@@ -41,6 +41,11 @@ Segundo candidato: la escena 2 (21,96s) repite la idea de la 1.
 
 Ambos cortes son de forma, no de fondo. Quedan propuestos, sin aplicar.
 
+## Material por escena
+
+Los clips de pantallas están en `ui/clips/*.mp4`. Las tomas generativas y la locución se bajan
+desde Higgsfield con los job_id de `generaciones.md`.
+
 ## Orden de montaje
 
 Cada escena entra en el timecode de la tabla. Las tomas dentro de una escena se reparten su
