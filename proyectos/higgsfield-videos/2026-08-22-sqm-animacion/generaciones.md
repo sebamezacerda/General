@@ -237,3 +237,35 @@ producción va por la 62.**
 
 La clonación sí tiene sentido en otro escenario: partir de una grabación real de una locutora
 hispanohablante (ver `create_voice` en la ronda 4), no de un audio ya sintético.
+
+## Ronda 6 — las 12 pistas y el render de pantallas · 2026-08-22
+
+Sebastián delegó las decisiones para avanzar sin él.
+
+### Locución completa
+
+12 pistas con la receta confirmada (`text2speech_v2` / `minimax` / Isabella
+`80924413-1ea8-4e64-9719-e00b86796f05`). Duraciones medidas y línea de tiempo en `montaje.md`.
+
+**Total: 3:29** con 1s de aire entre escenas y 4s de placa inicial.
+
+### Decisión tomada sobre la duración
+
+El guion pedía 2:30–3:00 y el resultado es 3:30. **No recorté el guion**: es contenido de cara
+al cliente final y cortarle un sexto es decisión de negocio, no de montaje. Queda propuesto en
+`montaje.md` el corte concreto (escena 4, que dura 26,5s y repite en audio lo que la pantalla
+ya muestra escrito) para cuando lo decida.
+
+### Pantallas renderizadas a video
+
+Las 13 pantallas quedaron animadas y encodeadas a MP4 1080p — ver `ui/RENDER.md`. Sin gastar
+créditos. `ui/clips/_reel-pantallas.mp4` (2:02) es el reel completo.
+
+Eso deja el video con **dos tercios del metraje ya producidos y verificados**. Lo que falta son
+las 8 tomas generativas, que sí dependen de Higgsfield y que **no puedo auditar** desde acá
+porque el CDN está bloqueado.
+
+### Gasto acumulado
+
+~62 créditos de 1.112. Muy por debajo del presupuesto de 265 — porque la mitad del video
+terminó construyéndose en vez de generándose.

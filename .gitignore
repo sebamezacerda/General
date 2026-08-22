@@ -6,3 +6,6 @@ proyectos/**/exports/*
 *.mov
 *.mkv
 *.webm
+
+# frames temporales del render
+proyectos/**/ui/.fr-*
