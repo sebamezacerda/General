@@ -157,3 +157,38 @@ body.ov{background:transparent;display:block;padding:70px 90px}
 .kv .c .v2.fast{color:var(--accent-hi)}
 .chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:16px;letter-spacing:2px;
   text-transform:uppercase;color:var(--light);border:1px solid var(--hair2);padding:12px 20px;margin:0 10px 12px 0}
+
+/* ---- subtitulos quemados ---- */
+.subs{position:fixed;left:0;right:0;bottom:52px;text-align:center;padding:0 220px;
+  font-family:'IBM Plex Sans',Helvetica,sans-serif;font-size:27px;line-height:1.45;
+  color:var(--light);text-shadow:0 2px 14px rgba(11,15,23,.95);pointer-events:none}
+/* ---- ventana de chat ---- */
+.chat{max-width:1420px;margin:0 auto}
+.bubble{border:1px solid var(--hair2);background:var(--ink2);padding:26px 30px;margin-bottom:22px}
+.bubble.q{border-left:3px solid var(--accent-hi)}
+.bubble.a{border-left:3px solid var(--steel)}
+.bubble .who{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+.bubble .txt{font-size:23px;line-height:1.55;min-height:34px}
+.bubble .txt.caret::after{content:'';display:inline-block;width:11px;height:24px;
+  background:var(--accent-hi);margin-left:4px;vertical-align:-4px}
+.bubble.a .txt{color:var(--steel)}
+.bubble.good .txt{color:var(--light)}
+.bubble.good{border-left-color:var(--accent-hi)}
+/* ---- iconos y pasos ---- */
+.ico{width:24px;height:24px;flex:0 0 24px;stroke:var(--steel);stroke-width:1.5;fill:none;
+  stroke-linecap:square;stroke-linejoin:miter}
+.ico.on{stroke:var(--accent-hi)}
+.step{display:flex;gap:22px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--hair)}
+.step .sn{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--steel);width:38px;flex:0 0 38px;padding-top:3px}
+.step .sb{flex:1}
+.step .st2{font-size:19px;margin-bottom:5px}
+.step .sw{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--steel)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--hair2)}
+.two .h{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--steel);padding:16px 26px;border-bottom:1px solid var(--hair2)}
+.two .c2{padding:16px 26px;border-bottom:1px solid var(--hair);font-size:18px}
+.two .c2:nth-child(odd){border-right:1px solid var(--hair)}
+.two .h:nth-child(odd){border-right:1px solid var(--hair)}
+.two .c2.on{color:var(--accent-hi)}
