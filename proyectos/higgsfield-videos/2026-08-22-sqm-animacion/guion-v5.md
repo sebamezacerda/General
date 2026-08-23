@@ -2,19 +2,27 @@
 
 **Duración objetivo: 3:00.** Nueve escenas.
 
-## Por qué los guiones anteriores quedaron genéricos
+## La tesis del video
 
-Arrancaban desde el vocabulario de Velaria — «capa de inteligencia organizacional», «criterios»,
-«gobernanza» — y trataban de explicarlo. Para un equipo comercial eso es ruido. Para el equipo de
-tecnología de SQM quizás no, pero ellos no son a quienes hay que convencer.
+**Las empresas todavía no ven el valor de la IA bien aplicada.** No porque no la usen: la usan.
+Pero la usan de a una persona por vez, como un asistente que responde preguntas sueltas. Ese es
+un piso, no un techo. El video existe para mostrar el techo.
 
-**La mayoría de las personas hoy conoce dos cosas de IA:**
+## ⚠ Nota sobre la audiencia (contexto interno, NO contenido del video)
 
-1. Abrir ChatGPT o Claude y hacer una pregunta.
-2. Conectar el banco a una app para bajar cartolas y ordenar sus finanzas.
+El nivel de referencia de la mayor parte de la audiencia es el uso individual de un asistente de
+IA. Eso **condiciona cómo se explica**, pero **no se dice nunca en pantalla ni en la locución**:
+decirle a un comité de SQM «ustedes solo conocen el chat» es condescendiente y además falso —
+ahí hay gente que sabe mucho más.
 
-Este guion se construye **entero** sobre esas dos referencias. Nada se explica en abstracto: todo
-se explica como una diferencia contra algo que el espectador ya hizo.
+Reglas que salen de esto:
+
+- **No se nombran productos de terceros.** Ni ChatGPT ni Claude ni ninguno. Se dice «una IA».
+- **No se describe cómo la gente usa la IA en su vida personal.** No viene al caso y baja el
+  registro del video.
+- **No se le dice al espectador lo que no entiende.** Se le muestra algo que sí entiende, y la
+  diferencia habla sola.
+- Todo concepto se explica por contraste con algo concreto y visible, nunca con una definición.
 
 ## El hilo conductor
 
@@ -32,11 +40,11 @@ el guion tiene 290 palabras y aun así el video dice más que el de 424.
 
 ---
 
-## ESCENA 1 — La pregunta (20s)
+## ESCENA 1 — Cómo está entrando la IA a las empresas (20s)
 
-**Locución (24 pal.):**
-> Hoy casi todos usamos la inteligencia artificial igual: abrimos una ventana y preguntamos.
-> Probemos con una pregunta real de SQM.
+**Locución (28 pal.):**
+> La inteligencia artificial ya está dentro de las empresas. Pero está entrando de a una persona
+> por vez. Probemos con una pregunta real de SQM.
 
 **En pantalla:** una ventana de chat común. La pregunta se escribe letra por letra:
 `Subió 14% la demanda de Producto X en Brasil. ¿Qué hacemos?`
@@ -51,9 +59,9 @@ Y la respuesta se escribe completa, sin cortes:
 
 ## ESCENA 2 — Por qué esa respuesta está vacía (23s)
 
-**Locución (32 pal.):**
-> No está mal. Está vacía. No sabe nada de SQM. Y como no sabe, cada persona completa lo que
-> falta a mano, y arma su propia versión de la pregunta.
+**Locución (34 pal.):**
+> No está mal. Está vacía. Y no es un límite del modelo: no sabe nada de esta empresa. Cada
+> persona completa a mano lo que falta, y arma su propia versión de la pregunta.
 
 **En pantalla:** primero las tres carencias, con ejemplo concreto:
 
@@ -87,18 +95,18 @@ Después, ocho versiones distintas de la misma pregunta, escritas una debajo de 
 
 ## ESCENA 4 — Qué es una conexión (26s) ← la escena que hace entendible el resto
 
-**Locución (38 pal.):**
-> Una conexión funciona igual que cuando conectas tu banco a una app de finanzas. No le entregas
-> tu clave: le das permiso para leer ciertas cuentas, y se lo puedes quitar cuando quieras.
+**Locución (36 pal.):**
+> Una conexión es un permiso de solo lectura, acotado y revocable. Igual que cuando se autoriza a
+> una aplicación a leer una cuenta bancaria: no entrega la clave, y se corta cuando se quiera.
 
 **En pantalla:** el paralelo, lado a lado.
 
-| Tu banco → app de finanzas | El ERP de SQM → Velaria |
+| Autorizar una app a leer una cuenta | El ERP de SQM → Velaria |
 |---|---|
-| Lee tus movimientos | Lee stock y cobertura por centro |
+| Lee los movimientos | Lee stock y cobertura por centro |
 | No puede transferir | No puede modificar una orden |
-| Solo las cuentas que autorizaste | Solo las tablas que autorizó TI |
-| Lo revocas cuando quieras | Se revoca cuando quieras |
+| Solo las cuentas autorizadas | Solo las tablas que autorizó TI |
+| Se revoca cuando se quiera | Se revoca cuando se quiera |
 | Queda registro de cada acceso | Queda registro de cada acceso |
 
 **Y recién al final aparece la sigla:** `A esto le decimos MCP.`
@@ -185,11 +193,14 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 
 ## ESCENA 9 — Cierre (8s)
 
-**Locución (26 pal.):**
+**Locución (30 pal.):**
 > Velaria no reemplaza los sistemas de SQM ni a las personas que saben hacer el trabajo. Toma lo
-> que la empresa ya sabe, lo escribe una vez, y lo pone a disposición de todos.
+> que la empresa ya sabe hacer, lo escribe una vez, y lo vuelve una capacidad de toda la
+> organización.
 
-**En pantalla:** placa de marca.
+**En pantalla:** la frase que cierra la tesis, y después la placa de marca:
+
+`De uso individual de IA · a capacidad organizacional`
 
 ---
 
@@ -198,8 +209,11 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 - **Las escenas 1 y 5 son el video.** La misma pregunta, dos respuestas escritas completas. Ahí
   está el «ajá». El texto debe escribirse como en un chat —carácter por carácter— no aparecer de
   golpe: es lo que hace que se lea de verdad.
-- **La escena 4 es la que vuelve entendible todo lo demás.** Si el paralelo del banco funciona,
-  MCP deja de ser una sigla. Va antes de nombrarla.
+- **La escena 4 es la que vuelve entendible todo lo demás.** El paralelo del permiso bancario se
+  usa solo como comparación de *cómo funciona una autorización* — nunca para decir que así usa la
+  gente la IA. Si funciona, MCP deja de ser una sigla. La sigla va después de entenderlo.
+- **Registro del video:** se le habla a un par, no a un principiante. El espectador nunca queda
+  en el lugar del que no entiende; el que no entiende, en el relato, es la IA sin contexto.
 - **La escena 6 responde una objeción antes de que se formule.** Cuando alguien escucha «Velaria
   observa cómo trabajas», lo primero que piensa es vigilancia. Decir qué NO hace vale más que
   tres frases sobre gobernanza.
