@@ -1,12 +1,17 @@
 # Guion v5 — Qué hace Velaria, explicado desde lo que la gente ya conoce
 
-**Duración objetivo: 3:00.** Nueve escenas.
+**Duración objetivo: ~3:15.** Diez escenas.
 
 ## La tesis del video
 
 **Las empresas todavía no ven el valor de la IA bien aplicada.** No porque no la usen: la usan.
 Pero la usan de a una persona por vez, como un asistente que responde preguntas sueltas. Ese es
 un piso, no un techo. El video existe para mostrar el techo.
+
+**Y el techo se mide en la última línea.** El video no puede terminar en «se ahorran horas»:
+tiene que llegar a margen protegido, capital de trabajo liberado y costo evitado, con Finanzas
+validándolo. Las horas son el mecanismo; la plata es el resultado. Un comité no aprueba
+mecanismos.
 
 ## ⚠ Nota sobre la audiencia (contexto interno, NO contenido del video)
 
@@ -73,6 +78,9 @@ Y la respuesta se escribe completa, sin cortes:
 
 Después, ocho versiones distintas de la misma pregunta, escritas una debajo de otra:
 `8 personas · 8 formas de preguntar lo mismo · 0 quedan registradas`
+
+Y el remate, que planta desde temprano dónde termina esto:
+`Ocho respuestas distintas a la misma pregunta = ocho decisiones distintas.`
 
 ---
 
@@ -174,24 +182,53 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 
 ---
 
-## ESCENA 8 — Qué cambia el lunes (13s)
+## ESCENA 8 — La decisión llega a tiempo (18s)
 
-**Locución (30 pal.):**
-> Desde entonces nadie vuelve a armar esa pregunta a mano. El lunes a las nueve la excepción ya
-> está analizada. La persona no recopila: decide.
+**Locución (26 pal.):**
+> La excepción se decide el lunes, no el jueves. Y esos tres días son exactamente lo que separa
+> proteger el margen de perderlo.
 
-**En pantalla:**
+**En pantalla:** el caso, en plata:
 
 | | Antes | Con la Skill |
 |---|---|---|
-| Quién ejecuta | 5 personas | 1 persona decide |
-| Cuánto demora | 5 h 30 min | 1 min 30 s |
-| Cuándo se decide | Jueves | Lunes 09:04 |
-| Queda registro | No | Sí, con autor y criterio |
+| Cuándo se decide | Jueves — el embarque ya salió | Lunes 09:04 |
+| Acción tomada | Ninguna a tiempo | Adelantar producción local |
+| Costo de la acción | — | `US$ 17k` |
+| **Margen preservado** | **`0`** | **`US$ 293k`** |
+
+*(310k en riesgo − 17k de costo = 293k preservados. La aritmética se muestra: un comité la va a
+hacer igual, y conviene que le dé.)*
 
 ---
 
-## ESCENA 9 — Cierre (8s)
+## ESCENA 9 — Dónde se ve esto en la última línea (26s)
+
+**Locución (34 pal.):**
+> Una excepción no mueve una compañía. Lo que la mueve es que esto pase todas las semanas, en
+> todas las áreas, y que Finanzas lo pueda validar.
+
+**En pantalla:** `TRIMESTRE EN CURSO · VALIDADO CON FINANZAS`
+
+| | |
+|---|---|
+| Margen identificado | `US$ 1,34 M` |
+| Margen implementado | `US$ 590k` |
+| **Validado por Finanzas** | **`US$ 447k`** |
+| Capital de trabajo liberado | `US$ 620k` |
+| Horas expertas liberadas | `1.120 h` |
+| Excepciones resueltas por criterio | `22 de 27, sin intervención humana` |
+
+Y la línea que ordena todo lo anterior:
+
+> *No es productividad. Es margen, capital de trabajo y tiempo de decisión.*
+
+**Por qué la fila de Finanzas va destacada:** es la única cifra que un CFO va a creer. Un número
+de impacto que no pasó por Finanzas es una estimación del proveedor.
+
+---
+
+## ESCENA 10 — Cierre (14s)
 
 **Locución (30 pal.):**
 > Velaria no reemplaza los sistemas de SQM ni a las personas que saben hacer el trabajo. Toma lo
@@ -217,11 +254,15 @@ Después, las ocho formulaciones de la escena 2 se alinean:
 - **La escena 6 responde una objeción antes de que se formule.** Cuando alguien escucha «Velaria
   observa cómo trabajas», lo primero que piensa es vigilancia. Decir qué NO hace vale más que
   tres frases sobre gobernanza.
-- **Ritmo:** 9 escenas en 180s = 20s por escena, contra 29s del v4. Las tablas necesitan aire
+- **Ritmo:** 10 escenas en ~195s = 20s por escena, contra 29s del v4. Las tablas necesitan aire
   para leerse; ese silencio es funcional, no una pausa mal medida.
 - **Las ventanas de arriba son el objetivo, no el dato final.** Como en las versiones anteriores,
   la duración real de cada escena se fija con la locución ya generada y medida. Con 260 palabras
   la voz ocupa ~2:14, así que quedan ~46s repartidos como aire de lectura. Las escenas 8 y 9 son
   las más apretadas: si al medir la voz se pasan, se les recorta texto —son las que menos
   explican.
-- Sin cifras nuevas: se reusan las del caso sintético ya definido.
+- Sin cifras nuevas inventadas: se reusan las del caso sintético ya definido, y la aritmética
+  cierra entre escenas (310k en riesgo − 17k de costo = 293k preservados; 1,34M identificado →
+  590k implementado → 447k validado).
+- **El video termina en la última línea, no en el mecanismo.** Si hubiera que sacrificar una
+  escena por tiempo, se saca la 3 o la 7 antes que la 8 o la 9.
