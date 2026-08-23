@@ -521,3 +521,41 @@ la escena 5. Eran cuatro escenas **describiendo** el mecanismo; ahora la tabla l
 | Planos | 29 | 13 |
 | Escenas | 12 | 7 |
 | Contenido escrito en pantalla | parcial | **todo lo relevante** |
+
+## Ronda 12 — corte v5: el guion nuevo, producido · 2026-08-23
+
+**`corte-v5.mp4` — 3:13 · 1920×1080 · con subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/a34f53dd-272e-413b-a114-f25a43e8d19c.mp4
+
+Produce el guion `guion-v5.md`: diez escenas, la tesis puesta en las empresas y no en el
+espectador, y cierre en la última línea.
+
+### Lo nuevo del sistema de producción
+
+| | Cómo se resolvió |
+|---|---|
+| **Subtítulos** | Quemados por el mismo pipeline, no por libass: se calculan desde la duración medida de cada pista y se reparten por largo de texto. Así usan la tipografía de marca en vez de una del sistema. |
+| **Tipeo** | Las pantallas de chat escriben carácter por carácter, con cursor. Es lo que hace que el espectador lea las dos respuestas en vez de saltearlas. |
+| **Transiciones** | Cada escena entra y sale sobre el fondo ink con una envolvente de fundido. El corte nunca ocurre entre dos imágenes distintas, así que se ve fluido **sin** cross-dissolve — que el sistema de Velaria prohíbe. |
+| **Iconos** | Grilla de 24, stroke 1.4, remates cuadrados, a 40px. |
+
+### Dos correcciones sobre la marcha
+
+**Tipografía de video, no de web.** Los textos estaban dimensionados como para una pantalla:
+en proyector o en teléfono se leían chicos. Error de criterio. Se escaló con criterio inverso al
+intuitivo — los cuerpos y labels chicos +45%, los intermedios +25%, los títulos grandes solo
++10%, porque el problema estaba abajo y no arriba. Subtítulos 27px → 38px. Iconos 24 → 40.
+Verificado que ninguna de las diez pantallas desborda 1920×1080 después del cambio.
+
+**Sin cortes con zoom.** En los cortes anteriores el ritmo venía de recortar el mismo plano a un
+detalle. Acá no se puede: el subtítulo está fijo abajo y un recorte lo cortaría. El ritmo lo
+aportan la animación interna y el tipeo. Es una consecuencia directa de haber agregado
+subtítulos, y conviene tenerla presente si se pide más pace.
+
+### Nota de infraestructura
+
+El sandbox se recicla si pasa demasiado tiempo entre llamadas: durante una pausa larga se
+perdieron los temporales y hubo que relanzar el pipeline completo. No es un problema —el repo
+tiene todo y el sandbox reconstruye desde cero— pero conviene saberlo: **nada de lo que vive
+solo en el sandbox sobrevive.**

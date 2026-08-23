@@ -77,6 +77,8 @@ Resumen operativo para el video:
   tokens exactos y se capturan con Chromium — ver `ui/`. Sale mejor que generarlas: tipografía
   Plex real, hairlines de 1px, cifras del guion correctas. Quedan como propuesta hasta poder
   contrastarlas con el UI Manual o la web (ambos inaccesibles por la política de red).
+- 2026-08-23: **corte v5** — 3:13, con subtítulos quemados, tipeo en las pantallas de chat y
+  transiciones fluidas. Produce el guion `guion-v5.md`. Tipografía reescalada para video.
 - 2026-08-22: **corte v4** — reescritura: 1:47 en vez de 3:29, con el contenido escrito en
   pantalla y el paralelo hoy/Velaria como la misma tabla dos veces. Guion nuevo en `guion-v4.md`.
 - 2026-08-22: **corte v3** — 29 planos en vez de 20 y sistema de animación acelerado. Se corrige
