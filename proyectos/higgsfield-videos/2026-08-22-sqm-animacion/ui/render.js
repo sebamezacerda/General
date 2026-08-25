@@ -25,8 +25,22 @@ const OVER = [];
 (async () => {
   const only = process.argv[2];
   const jobs = only ? PLAN.filter(p => p[0] === only) : PLAN;
+  // el binario de Chromium vive en distinta ruta segun el entorno (aca chrome-linux,
+  // en el sandbox de Higgsfield chrome-linux64): se busca en vez de fijarlo
+  const roots = ['/opt/pw-browsers', '/ms-playwright'];
+  let exe = process.env.CHROME_BIN;
+  for (const r of roots) {
+    if (exe || !fs.existsSync(r)) continue;
+    for (const d of fs.readdirSync(r).filter(x => x.startsWith('chromium-')))
+      for (const sub of ['chrome-linux/chrome', 'chrome-linux64/chrome']) {
+        const c = path.join(r, d, sub);
+        if (!exe && fs.existsSync(c)) exe = c;
+      }
+  }
+  if (!exe) throw new Error('no se encontro el binario de Chromium');
+  console.log('chromium', exe);
   const b = await chromium.launch({ args: ['--no-sandbox', '--font-render-hinting=none'],
-    executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+    executablePath: exe });
   const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   // NOSUBS=1 rinde el mismo plan sin subtitulos, a su propio directorio
   const OUT = process.env.NOSUBS ? 'clips-nosubs' : 'clips';
