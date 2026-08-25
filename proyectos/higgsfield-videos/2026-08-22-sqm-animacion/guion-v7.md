@@ -117,20 +117,21 @@ reloj. Ahora la pregunta se enuncia entera y en pantalla, y es la misma que resp
 `ERP · TMS · CRM · BI · planillas · correo`
 `lunes: la pregunta → jueves: la decisión`
 
-### Eje 1 · Habilitación (0:46–0:56)
+### Eje 1 · Habilitación (26 s)
 
-**Locución (26 pal.):**
-> Con Velaria, Claude —el que ya usan— pasa a leer el ERP y el sistema comercial, con el
-> diccionario y los criterios de SQM adentro.
+**Locución (54 pal.):**
+> Con Velaria, Claude —el que ya usan— recibe tres cosas. **El diccionario de la empresa**:
+> acá cobertura es stock disponible dividido por demanda semanal proyectada. **Los criterios**:
+> bajo veintiún días de cobertura, se escala a Finanzas. Y **permiso de lectura** al ERP y al
+> sistema comercial. Con eso, la misma pregunta se responde así.
 
-**Pantalla:** la misma ventana de chat, la misma pregunta, y la respuesta llegando **con la
-fuente estampándose al lado de cada dato**:
+«Diccionario» y «criterios» son las dos palabras más abstractas del video, y la primera versión
+solo las nombraba. Acá cada una llega con su ejemplo real escrito en pantalla — una fórmula y
+una regla, no una definición de qué es un diccionario.
 
-`cobertura Brasil: 18 días` `[ ERP ]`
-`umbral: 21 días` `[ criterio SQM ]`
-`margen en riesgo: US$ 310k` `[ CRM ]`
-
-**Verbo visual:** las fuentes se estampan. Es lo que hace visible que ya no es un chat suelto.
+**Pantalla:** los tres ingredientes como filas, cada uno con su estado a la derecha
+(`[ FUENTE: ERP ]`, `[ POLÍTICA v1 ]`, `[ SOLO LECTURA ]`). Cuando llega la respuesta, el bloque
+de ingredientes **no desaparece: baja a segundo plano**, porque es lo que explica la respuesta.
 
 ### Eje 2 · Mejora continua (0:56–1:07)
 

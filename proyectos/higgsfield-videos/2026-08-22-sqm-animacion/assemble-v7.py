@@ -6,14 +6,14 @@ MP3 = ["hf_20260825_224804_1e659e28-37af-4e15-9d87-8da5bf55ae9e",
        "hf_20260825_231417_3ac45e41-dc99-4b73-903b-c5f9a005228b",
        "hf_20260825_231053_2e3eb2c0-7153-4ced-b44a-f9476c6998b4",
        "hf_20260825_231417_a9f43579-ae7c-48c0-bdcf-d48c91e1955e",
-       "hf_20260825_224803_a18e5e6e-6d1e-44dc-868b-073d401d1cbe",
+       "hf_20260825_231804_63750fd9-327a-4cca-afc9-252bd62c324d",
        "hf_20260825_224804_35b7137c-decb-4aa0-8992-2ffc1e807ff8",
        "hf_20260825_224812_2e194e7f-c8b3-4e80-9d03-550699fcbcb5",
        "hf_20260825_224803_ed5339b2-0a47-4bbf-adcc-ec592e8b4217",
        "hf_20260825_224812_883a734f-cb56-4b07-8434-3f587e584efd"]
 WIN = [w for _, w in json.load(open("ui/plan-v7.json"))]
 # la escena 2 vino con 6 s de audio alucinado despues de "equipo": se corta ahi
-TRIM = {2: 12.5}
+TRIM = {2: 12.5, 5: 23.0}
 FPS = 25
 os.makedirs("src7", exist_ok=True); os.makedirs("seg7", exist_ok=True)
 def sh(c): subprocess.run(c, shell=True, check=True, capture_output=True)
