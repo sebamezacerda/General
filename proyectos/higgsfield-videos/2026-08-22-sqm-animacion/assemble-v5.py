@@ -7,8 +7,8 @@ JOBS = ["418867af-5a06-4543-b22b-ceef73795345","06909148-9740-4d33-9350-69dc11d5
         "ca770c3f-918f-40b8-a314-a1663f1c831a","a5122b55-5320-4529-8e70-2c9fa36f6b64",
         "3c1db039-80d2-4a0f-bf70-1868fbe4cbc6","8feeb4a6-1491-4025-bd5c-519b6326a7eb",
         "2315ebc6-d027-4c6d-928c-dc2e07f66593","cac111d0-4acd-40ce-9b93-f69f510056fa"]
-WIN = [16.8, 20.2, 18.9, 21.0, 21.6, 19.1, 19.5, 18.7, 18.8, 14.6]
-PRE = 4.0
+WIN = [13.6, 15.0, 13.7, 15.8, 15.4, 14.9, 11.3, 15.5, 13.6, 14.0]
+PRE = 3.2
 FPS = 25
 os.makedirs("src5", exist_ok=True); os.makedirs("seg5", exist_ok=True)
 def sh(c): subprocess.run(c, shell=True, check=True, capture_output=True)

@@ -7,8 +7,8 @@ JOBS = ["418867af-5a06-4543-b22b-ceef73795345","06909148-9740-4d33-9350-69dc11d5
         "ca770c3f-918f-40b8-a314-a1663f1c831a","a5122b55-5320-4529-8e70-2c9fa36f6b64",
         "3c1db039-80d2-4a0f-bf70-1868fbe4cbc6","8feeb4a6-1491-4025-bd5c-519b6326a7eb",
         "2315ebc6-d027-4c6d-928c-dc2e07f66593","cac111d0-4acd-40ce-9b93-f69f510056fa"]
-WIN = [16.8, 20.2, 18.9, 21.0, 21.6, 19.1, 19.5, 18.7, 18.8, 14.6]
-PRE = 4.0
+WIN = [13.6, 15.0, 13.7, 15.8, 15.4, 14.9, 11.3, 15.5, 13.6, 14.0]
+PRE = 3.2
 FPS = 25
 os.makedirs("src5", exist_ok=True); os.makedirs("seg5b", exist_ok=True)
 def sh(c): subprocess.run(c, shell=True, check=True, capture_output=True)
@@ -22,9 +22,9 @@ for i, j in enumerate(JOBS, 1):
 
 # ---- video: una toma por escena. Las pantallas llevan subtitulo fijo abajo, asi que
 # un corte con zoom lo recortaria: la fluidez la da la envolvente de fundido de cada escena.
-segs = ["ui/clips/plate.mp4"]
+segs = ["ui/clips-nosubs/plate.mp4"]
 for i, w in enumerate(WIN, 1):
-    src = f"ui/clips/v5-{i:02d}.mp4"
+    src = f"ui/clips-nosubs/v5-{i:02d}.mp4"
     out = f"seg5b/s{i}.mp4"
     sh(f"ffmpeg -y -v error -i '{src}' -vf 'scale=1920:1080:flags=lanczos,setsar=1,fps={FPS}' "
        f"-t {w:.3f} -an -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p '{out}'")

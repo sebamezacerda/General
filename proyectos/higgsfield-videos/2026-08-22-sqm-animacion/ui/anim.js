@@ -37,8 +37,10 @@
       return true;
     });
     var n = els.length || 1;
-    var t0 = clipDur * 0.05, t1 = clipDur * 0.62;
-    var step = Math.min((t1 - t0) / n, 0.55);
+    // las entradas se reparten por casi toda la ventana: mientras la voz calla,
+    // en pantalla todavia esta llegando algo. El ultimo 14 % queda para leer.
+    var t0 = clipDur * 0.04, t1 = clipDur * 0.86;
+    var step = Math.max((t1 - t0) / n, 0.25);
     items = els.map(function (e, i) { return { el: e, t: t0 + i * step }; });
 
     nums = [];
