@@ -74,11 +74,16 @@ Y debajo, chico, en mono acero: `1 persona · 1 cuenta · 0 registro`
 
 ---
 
-## BLOQUE 2 · Velaria y los tres ejes — 0:27–0:38
+## BLOQUE 2 · Velaria y los tres ejes — 23 s
 
-**Locución (21 pal.):**
-> Velaria es la capa que convierte ese uso individual en capacidad de la empresa. Hace tres
-> cosas: habilita, aprende y gobierna.
+**Locución (50 pal.):**
+> Velaria convierte el uso individual de inteligencia artificial en capacidad de la empresa.
+> Con tres ejes. **Habilitación**: la IA que ya usan, ahora con el contexto y los criterios de
+> la empresa. **Mejora continua**: lo que le funciona a uno se vuelve capacidad de todos. Y
+> **gobernanza**: con reglas, permisos y registro.
+
+La voz lee cada eje. Es la única escena definicional del video y la columna vertebral de todo
+lo que viene después: acá la redundancia entre voz y pantalla no se paga, se cobra.
 
 **Pantalla:** los tres ejes entran uno por palabra —habilita, aprende, gobierna— y quedan
 como la estructura del resto del video.
