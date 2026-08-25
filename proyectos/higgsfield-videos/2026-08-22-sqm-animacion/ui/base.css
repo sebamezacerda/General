@@ -192,3 +192,6 @@ body.ov{background:transparent;display:block;padding:70px 90px}
 .two .c2:nth-child(odd){border-right:1px solid var(--hair)}
 .two .h:nth-child(odd){border-right:1px solid var(--hair)}
 .two .c2.on{color:var(--accent-hi)}
+
+/* el mismo render puede salir con o sin subtitulos: lo decide una clase en body */
+body.nosubs .subs{display:none !important}

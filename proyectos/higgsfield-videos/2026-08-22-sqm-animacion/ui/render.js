@@ -57,6 +57,7 @@ const OVER = [];
     fs.mkdirSync(out, { recursive: true });
     await p.goto('file://' + __dirname + '/' + name + '.html');
     await p.evaluate(async () => { await document.fonts.ready; return true; });
+    if (process.env.NOSUBS) await p.evaluate(() => document.body.classList.add('nosubs'));
     await p.evaluate(d => window.buildAnim(d), dur);
     const N = Math.round(dur * FPS);
     for (let i = 0; i < N; i++) {
