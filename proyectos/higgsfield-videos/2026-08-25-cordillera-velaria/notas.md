@@ -25,3 +25,14 @@ ahorro de horas invita a la pregunta equivocada. La promesa es la frase de cierr
 
 ## Bitácora
 - 2026-08-25: se crea el proyecto y se escribe `guion.md`.
+- 2026-08-25: **corte v1 entregado** — 3:41 · 1920×1080 · con subtítulos.
+  https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/b8c3c75a-5945-45f1-9f23-4a479639135d.mp4
+
+  12 escenas. Locución medida: 134s; el resto es aire de lectura, que en este video pesa más
+  que en los anteriores porque las pantallas llevan tablas densas (el Excel de las 09:00, los
+  criterios, el comparativo de política).
+
+  Reutiliza entero el sistema del proyecto SQM: `anim.js` con scrub determinista, subtítulos
+  calculados desde la duración real de cada pista, tipeo carácter por carácter en la escena 8,
+  y montaje en el sandbox de Higgsfield. No hubo que escribir infraestructura nueva — solo
+  pantallas.
