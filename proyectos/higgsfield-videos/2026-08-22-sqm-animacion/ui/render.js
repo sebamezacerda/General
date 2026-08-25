@@ -47,6 +47,10 @@ const OVER = [];
   fs.mkdirSync(OUT, { recursive: true });
 
   for (const [name, dur] of jobs) {
+    // reanudable: un clip ya rendido no se vuelve a hacer (el sandbox tiene lease corto)
+    if (fs.existsSync(OUT + '/' + name + '.mp4') && !process.env.FORCE) {
+      console.log('salta', name); continue;
+    }
     const tmp = fs.mkdtempSync(path.join(__dirname, '.fr-'));
     await p.goto('file://' + __dirname + '/' + name + '.html');
     await p.evaluate(async () => { await document.fonts.ready; return true; });
@@ -56,11 +60,12 @@ const OVER = [];
     console.log('  render', name, N, 'frames ->', tmp);
     for (let i = 0; i < N; i++) {
       await p.evaluate(([t, d]) => window.scrub(t, d), [i / FPS, dur]);
-      await p.screenshot({ path: path.join(tmp, String(i).padStart(5, '0') + '.png') });
+      await p.screenshot({ path: path.join(tmp, String(i).padStart(5, '0') + '.jpg'),
+                           type: 'jpeg', quality: 94 });
     }
     // este entorno solo trae el ffmpeg reducido de Playwright: VP8/WebM, sin H.264
     execFileSync(FF, ['-y', '-loglevel', 'error', '-framerate', String(FPS),
-      '-i', path.join(tmp, '%05d.png'), '-c:v', 'libx264', '-preset', 'slow',
+      '-i', path.join(tmp, '%05d.jpg'), '-c:v', 'libx264', '-preset', 'slow',
       '-crf', '16', '-pix_fmt', 'yuv420p', OUT + '/' + name + '.mp4']);
     fs.rmSync(tmp, { recursive: true, force: true });
     console.log('clip', name, dur + 's', N + 'f');
