@@ -68,6 +68,10 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-25: **corte v7b** — 2:16. Se corrige lo que la voz dejaba sin decir: la locución lee
+  los tres ejes, el problema de Brasil se enuncia entero, y diccionario y criterios llegan con
+  su ejemplo real. El villano pasa de diez cuadros ilegibles a tres personas con lo que cada una
+  construyó. Los cues salen de whisper. Deja de ser pitch de 90 s: es la versión didáctica.
 - 2026-08-25: **corte v7 — pitch de 90 s** (1:36). Estructura nueva: reconocimiento →
   villano → Velaria y sus tres ejes (Habilitación · Mejora Continua · Gobernanza) → el caso
   atravesando los tres → impacto → cierre. Registro de pitch, no de explainer: la pantalla

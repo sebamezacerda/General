@@ -642,3 +642,43 @@ Música y diseño sonoro. Es lo que más falta: hoy sigue siendo voz sobre silen
 ritmo de corte una cama con los cortes cayendo en el beat cambia la producción percibida
 más que cualquier ajuste visual. También quedan afuera las tres tomas generativas de 2 s
 como respiro.
+
+
+## Corte v7b — 25/08/2026
+
+**2:16 · 1920×1080 · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/23936bbd-299e-4eb3-8f04-e373eed53087.mp4
+
+Cuatro correcciones sobre el v7, todas del mismo tipo: **lo que la pantalla afirmaba, la voz
+no lo decía, o lo decía en abstracto.**
+
+| Escena | Qué pasaba | Qué se hizo |
+|---|---|---|
+| 2 · Ejes | La pantalla mostraba tres ejes con su definición y la voz solo decía «habilita, aprende y gobierna» | La locución lee los tres. Es la columna vertebral del video: acá la redundancia se cobra, no se paga |
+| 1 · Villano | Diez cuadros de 150 px; el texto de la única persona con contenido no se leía | Tres personas en tarjetas anchas, a 27 px, con lo que cada una construyó. El resto del equipo queda en una línea |
+| 3a · Caso | Se decía que la demanda subía 14% y nunca qué había que decidir | La decisión se enuncia entera —adelantar producción local o transferir stock desde México— contra el embarque del jueves |
+| 3b · Habilitación | «Diccionario» y «criterios» eran las dos palabras más abstractas del video y solo se nombraban | Cada una llega con su ejemplo real: la fórmula de cobertura y la regla de los 21 días |
+
+### Los cues salen de whisper, no de estimaciones
+
+Desde este corte, cada locución se transcribe con `faster-whisper` y `word_timestamps`, y los
+`data-in` de la escena se calculan contra los tiempos reales de palabra menos 0,15 s —lo que
+dura la entrada— para que el elemento termine de llegar justo cuando se lo nombra. En la escena
+de los ejes: habilitación 6,66 s, mejora continua 12,38 s, gobernanza 18,60 s.
+
+### El TTS alucina colas
+
+Dos de las tres locuciones nuevas trajeron audio inventado después de la última palabra: la
+escena 2 seis segundos de balbuceo, la escena 5 cuatro «A» sueltas. No se oye en el prompt ni
+en la duración esperada; se detecta transcribiendo. Se corta con el mapa `TRIM` de
+`assemble-v7.py`, que aplica `-t` más un fade de 0,2 s. **Transcribir cada pista nueva antes de
+montarla ya no es opcional.**
+
+### Consecuencia de las cuatro correcciones
+
+El corte pasó de 1:36 a **2:16**. Las tres primeras sumaron contenido hablado que antes solo
+estaba escrito, y eso es tiempo. Deja de ser un pitch de 90 s y pasa a ser la versión didáctica:
+sigue el registro de pitch —tipografía a sangre, corte duro, un verbo visual por escena— pero
+explica. Si se quiere además la pieza corta de verdad, sale de esta sacando las escenas 3d y 4
+y recortando la 2.
