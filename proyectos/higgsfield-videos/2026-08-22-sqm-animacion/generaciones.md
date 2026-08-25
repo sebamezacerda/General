@@ -600,3 +600,45 @@ hace que las dos pasadas quepan en el lease del sandbox. El encode final sigue e
 crf 16. `render.js` además salta los clips ya hechos, así que una pasada interrumpida se
 reanuda, y busca el binario de Chromium en vez de tenerlo fijo (`chrome-linux` acá,
 `chrome-linux64` en el sandbox).
+
+
+## Corte v7 — pitch de 90 segundos · 25/08/2026
+
+**1:36 · 1920×1080 · H.264 + AAC · 7,9 MB · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/6fcae5b4-0c27-4b39-8270-a1e82f8953c6.mp4
+
+Nueve escenas, una por bloque del guion. 87,3 s de locución y 8,7 s de aire repartido
+—entre 0,7 y 1,6 s por escena—, contra los 6 a 11 s del v5.
+
+### Lo que cambia respecto del v5
+
+**Las entradas están ancladas a la voz.** `anim7.js` reemplaza el reparto por fórmula:
+cada elemento lleva `data-in` en fracción de la locución (0..1) y se escala por `window.VO`,
+que es la duración medida del audio de esa escena. Cuando la voz dice «habilita», entra
+Habilitación.
+
+**Un verbo visual distinto por escena.** El v5 tenía uno solo —aparecer— en diez escenas.
+Acá: acumulación (b0), sustracción (b1), construcción (b2), estampado de fuentes (b3b),
+colapso y propagación (b3c), conteo (b4).
+
+**El plano héroe.** `v7-06`: las siete formulaciones distintas de la misma pregunta
+convergen geométricamente hacia el bloque de la Skill —el desplazamiento se mide en
+`buildExtra` con `getBoundingClientRect`, no se anima a ojo— y después la Skill se abre
+hacia los diez puestos que quedaron vacíos en `v7-02`. Es la frase de cierre ejecutada como
+movimiento en vez de dicha.
+
+### Error corregido en el camino
+
+`v7.css` definía `.lg` para las frases grandes, pero `base.css` ya usaba `.lg` para las
+filas del log wall —mono, acero, opacidad .55—. Como v7.css no declaraba `font-family` ni
+`color`, las frases de 64 px salían en monoespaciada y grises. Se resolvió prefijando todo
+el archivo con `.v7`, que es el `body` de estas pantallas, y declarando explícitamente la
+familia y el color en `.lg`.
+
+### Pendiente
+
+Música y diseño sonoro. Es lo que más falta: hoy sigue siendo voz sobre silencio, y a este
+ritmo de corte una cama con los cortes cayendo en el beat cambia la producción percibida
+más que cualquier ajuste visual. También quedan afuera las tres tomas generativas de 2 s
+como respiro.

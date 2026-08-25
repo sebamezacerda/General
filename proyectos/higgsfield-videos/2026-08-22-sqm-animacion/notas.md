@@ -68,6 +68,11 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-25: **corte v7 — pitch de 90 s** (1:36). Estructura nueva: reconocimiento →
+  villano → Velaria y sus tres ejes (Habilitación · Mejora Continua · Gobernanza) → el caso
+  atravesando los tres → impacto → cierre. Registro de pitch, no de explainer: la pantalla
+  repite a la voz en las palabras clave, tipografía a sangre, corte duro. Se nombra Claude
+  como la IA del ejemplo. Guion en `guion-v7.md`, motor nuevo en `ui/anim7.js`.
 - 2026-08-25: **corte v6** — 2:26. Dos arreglos sobre el v5: (1) la version "sin
   subtitulos" salia con subtitulos porque `render.js` tenia el bucle principal roto y la
   linea de `NOSUBS` habia quedado en el bucle muerto de `OVER`; ahora cada corte escribe a
