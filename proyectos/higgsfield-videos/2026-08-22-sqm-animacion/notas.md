@@ -68,6 +68,14 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-25: **corte v6** — 2:26. Dos arreglos sobre el v5: (1) la version "sin
+  subtitulos" salia con subtitulos porque `render.js` tenia el bucle principal roto y la
+  linea de `NOSUBS` habia quedado en el bucle muerto de `OVER`; ahora cada corte escribe a
+  su propio directorio (`clips` / `clips-nosubs`), verificado midiendo la banda inferior
+  del frame rendido. (2) el tiempo muerto al final de cada lamina: el aire por escena baja
+  de 6-11 s a 2,8 s y las entradas se reparten hasta el 86 % de la ventana, no el 62 %,
+  sin tope superior de paso. Ademas el render captura en JPEG 94 (18 fps en vez de 5,3)
+  y es reanudable, para que quepa en el lease del sandbox.
 - 2026-08-22: se crea el proyecto a partir de la plantilla. Se recibe y documenta el guion
   completo (12 escenas, locución + texto en pantalla) en `guion.md`.
 - 2026-08-22: se extiende el enfoque HTML a los diagramas (escenas 4, 6, 7 y 9). Quedan 13

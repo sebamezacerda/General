@@ -559,3 +559,44 @@ El sandbox se recicla si pasa demasiado tiempo entre llamadas: durante una pausa
 perdieron los temporales y hubo que relanzar el pipeline completo. No es un problema —el repo
 tiene todo y el sandbox reconstruye desde cero— pero conviene saberlo: **nada de lo que vive
 solo en el sandbox sobrevive.**
+
+
+## Corte v6 — 25/08/2026
+
+Mismo guion v5, dos entregas del mismo montaje. **2:26 · 1920×1080 · H.264 + AAC.**
+
+- **Con subtítulos:**
+  https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/9c3c28ec-3445-47e9-a62d-5912fd0ec44f.mp4
+- **Sin subtítulos:**
+  https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/12f41efd-8f7a-4bb0-89be-6ac110f1f11f.mp4
+
+### Los dos bugs que corrige
+
+**El corte "sin subtítulos" del v5 salía con subtítulos.** El commit que agregó el
+interruptor dejó `render.js` mal: el bloque de capas se coló dentro del bucle principal y
+la línea `if (process.env.NOSUBS) …` quedó en el bucle de `OVER`, que nunca corre porque
+`OVER` está vacío. El CSS y la clase funcionaban — por eso la prueba aislada daba bien —
+pero jamás se aplicaban al render real. Ahora cada corte escribe a su propio directorio, y
+la verificación se hace sobre el frame rendido, no sobre el DOM: en la banda inferior del
+segundo 6 de la escena 1 hay 6.653 píxeles claros con subtítulo y 0 sin él.
+
+**Se quedaba pegado al terminar la locución.** Dos causas sumadas: la ventana de cada
+escena tenía 6 a 11 s de aire después de la voz, y `anim.js` repartía las entradas solo
+entre el 5 % y el 62 % de la ventana, con el paso topado en 0,55 s — así que en una escena
+densa todo terminaba de entrar en los primeros 7 s. El último tercio quedaba congelado.
+Ahora el aire es 2,8 s y las entradas llegan hasta el 86 %, sin tope de paso: mientras la
+voz calla, en pantalla todavía está llegando algo, y el 14 % final queda para leer.
+
+| | v5 | v6 |
+|---|---|---|
+| Duración | 3:13 | 2:26 |
+| Aire por escena | 6–11 s | 2,8 s |
+| Entradas repartidas hasta | 62 % de la ventana | 86 % |
+
+### Render
+
+Los frames se capturan en JPEG 94 en vez de PNG: **18 fps contra 5,3**, que es lo que
+hace que las dos pasadas quepan en el lease del sandbox. El encode final sigue en H.264
+crf 16. `render.js` además salta los clips ya hechos, así que una pasada interrumpida se
+reanuda, y busca el binario de Chromium en vez de tenerlo fijo (`chrome-linux` acá,
+`chrome-linux64` en el sandbox).
