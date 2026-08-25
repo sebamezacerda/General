@@ -9,3 +9,4 @@ proyectos/**/exports/*
 
 # frames temporales del render
 proyectos/**/ui/.fr-*
+node_modules/

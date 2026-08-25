@@ -1,0 +1,72 @@
+/* ---- corte v7: pitch. Escala tipografica de video, corte duro, un solo azul ---- */
+body.v7{display:flex;flex-direction:column;padding:64px 90px;background:var(--ink)}
+.v7 .head{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--hair);padding-bottom:20px;margin-bottom:auto}
+.v7 .stage{flex:1;display:flex;flex-direction:column;justify-content:center;gap:30px;
+  padding:36px 0}
+.v7 .foot{border-top:1px solid var(--hair);padding-top:20px;display:flex;
+  justify-content:space-between;align-items:center}
+
+/* marcador de eje: siempre se sabe donde va el video */
+.v7 .ejes{display:flex;gap:10px;align-items:center}
+.v7 .ejes b{width:26px;height:3px;background:var(--hair2);display:block}
+.v7 .ejes b.on{background:var(--accent-hi)}
+
+.v7 .xl{font-size:104px;font-weight:600;letter-spacing:-3px;line-height:1.02}
+.v7 .lg{font-size:64px;font-weight:500;letter-spacing:-1.6px;line-height:1.1;display:block;
+  font-family:'IBM Plex Sans',Helvetica,sans-serif;color:var(--light);opacity:1;gap:0}
+.v7 .md{font-size:44px;font-weight:400;letter-spacing:-.6px;line-height:1.25}
+.v7 .sm{font-size:30px;font-weight:400;color:var(--steel);line-height:1.4}
+.v7 .hi{color:var(--accent-hi)}
+.v7 .dim{color:var(--steel)}
+.v7 .mlbl{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;
+  text-transform:uppercase;letter-spacing:3.4px;color:var(--steel)}
+.v7 .mval{font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:.5px}
+.v7 .rule{height:1px;background:var(--hair2)}
+
+/* filas de verbo del bloque 0 */
+.v7 .vrow{display:flex;align-items:baseline;gap:26px;padding:14px 0;border-bottom:1px solid var(--hair)}
+.v7 .vrow .n{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--steel);width:52px}
+
+/* los diez puestos del equipo */
+.v7 .team{display:flex;gap:12px}
+.v7 .team .slot{flex:1;height:150px;background:var(--ink2);border:1px solid var(--hair);
+  border-top:3px solid transparent;padding:16px 14px;display:flex;flex-direction:column;
+  justify-content:space-between}
+.v7 .team .slot.full{border-top-color:var(--accent-hi)}
+.v7 .team .slot .who{font-family:'IBM Plex Mono',monospace;font-size:16px;letter-spacing:1.4px;
+  color:var(--steel)}
+.v7 .team .slot .has{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--accent-hi);
+  line-height:1.5}
+.v7 .team .slot .empty{font-family:'IBM Plex Mono',monospace;font-size:15px;color:rgba(138,148,166,.45)}
+
+/* las siete formulaciones */
+.v7 .qs{display:flex;flex-direction:column;gap:11px}
+.v7 .q{font-family:'IBM Plex Mono',monospace;font-size:27px;color:var(--steel);
+  padding:9px 20px;border-left:2px solid var(--hair2)}
+.v7 .q em{font-style:normal;color:rgba(138,148,166,.6);font-size:22px;margin-left:16px}
+
+/* bloque de Skill */
+.v7 .skill{background:var(--ink2);border:1px solid var(--hair);border-left:3px solid var(--accent-hi);
+  padding:28px 34px;display:flex;justify-content:space-between;align-items:center}
+.v7 .skill .nm{font-size:40px;font-weight:500;letter-spacing:-.5px}
+.v7 .skill .mt{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--steel);margin-top:8px}
+.v7 .state{font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:2.4px;color:var(--accent-hi)}
+
+/* filas con fuente estampada / estado entre corchetes */
+.v7 .krow{display:flex;justify-content:space-between;align-items:baseline;gap:30px;
+  padding:20px 0;border-bottom:1px solid var(--hair)}
+.v7 .krow .k{font-size:38px;letter-spacing:-.4px}
+.v7 .krow .src{font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:2px;
+  color:var(--accent-hi);white-space:nowrap}
+.v7 .krow .src.no{color:var(--steel)}
+
+/* placa de cifra a sangre */
+.v7 .big{font-family:'IBM Plex Mono',monospace;font-size:190px;font-weight:500;letter-spacing:-6px;
+  line-height:1}
+.v7 .caret::after{content:'_';color:var(--accent-hi)}
+
+/* ---- plano heroe: los dos grupos comparten el centro, no se empujan ---- */
+.v7 .stage.hero{position:relative;justify-content:center}
+.v7 .stage.hero > *{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
+.v7 #out{display:flex;flex-direction:column;gap:30px}

@@ -1,0 +1,77 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="v7.css"><title>Mejora continua</title></head><body class="v7">
+<div class="head"><div class="mlbl">Eje 2 · Mejora continua</div>
+  <div class="ejes"><b></b><b class="on"></b><b></b></div></div>
+<div class="stage hero">
+  <div class="qs" id="qs">
+    <div class="q" data-in="0.02">"¿cómo vamos con la cobertura de Brasil?"<em>C. ROJAS</em></div>
+    <div class="q" data-in="0.06" style="margin-left:34px">"revisa el stock de Producto X en Brasil"<em>M. DÍAZ</em></div>
+    <div class="q" data-in="0.10" style="margin-left:12px">"¿tenemos capacidad para el alza de Brasil?"<em>P. SOTO</em></div>
+    <div class="q" data-in="0.14" style="margin-left:58px">"cobertura Brasil semana 36"<em>A. LEÓN</em></div>
+    <div class="q" data-in="0.18" style="margin-left:22px">"qué pasa si sube 14% la demanda"<em>J. MUÑOZ</em></div>
+    <div class="q" data-in="0.22" style="margin-left:70px">"riesgo de quiebre Brasil Producto X"<em>V. TAPIA</em></div>
+    <div class="q" data-in="0.26" style="margin-left:40px">"necesito el cuadro de cobertura por centro"<em>R. ORTIZ</em></div>
+    <div class="mval dim" id="lbl" data-in="0.30" style="margin-top:18px">7 personas · 5 áreas · todas las semanas · nadie lo había escrito</div>
+  </div>
+  <div id="out"><div class="skill" id="skill" data-in="0.44">
+    <div><div class="nm">Weekly S&amp;OP Exception Review</div>
+      <div class="mt">6 pasos · fuentes: ERP · TMS · CRM · criterio: cobertura &lt; 21 días</div></div>
+    <div class="state" data-in="0.58">[ v1 · DEFINIDA POR EL ÁREA ]</div></div>
+  <div class="team" id="team">
+    <div class="slot"><div class="who">C. ROJAS</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">M. DÍAZ</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">P. SOTO</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">A. LEÓN</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">J. MUÑOZ</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">V. TAPIA</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">R. ORTIZ</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">N. FUENTES</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">L. BRAVO</div><div class="has">Skill v1</div></div>
+    <div class="slot"><div class="who">S. HERRERA</div><div class="has">Skill v1</div></div>
+  </div></div>
+</div>
+<div class="foot"><div class="mlbl" id="fin">Lo que sabía una · disponible para las diez</div>
+  <div class="mval hi" id="cnt">0 / 10</div></div>
+<script>
+// Plano heroe: las siete formulaciones COLAPSAN en la Skill, y la Skill se ABRE a los diez.
+window.VO = 8.964;
+var QS = [], SK, TEAM, FIN, CNT, TA, TB, FILL = [];
+window.buildExtra = function (clip, VO) {
+  SK = document.getElementById('skill'); TEAM = document.getElementById('team');
+  FIN = document.getElementById('fin'); CNT = document.getElementById('cnt');
+  var r = SK.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  QS = [].slice.call(document.querySelectorAll('#qs .q')).map(function (e) {
+    var b = e.getBoundingClientRect();
+    return { el: e, dx: cx - (b.left + b.width / 2), dy: cy - (b.top + b.height / 2) };
+  });
+  document.getElementById('lbl').dataset.collapse = '1';
+  TA = 0.34 * VO; TB = 0.48 * VO;
+  FILL = [];
+  for (var i = 0; i < 10; i++) FILL.push((0.64 + i * 0.030) * VO);
+  FIN.style.opacity = 0; CNT.style.opacity = 0;
+  [].slice.call(TEAM.children).forEach(function (s) { s.style.opacity = 0; });
+};
+window.scrubExtra = function (t, clip, VO) {
+  var p = t <= TA ? 0 : t >= TB ? 1 : (t - TA) / (TB - TA);
+  p = p * (2 - p);
+  if (p > 0) QS.forEach(function (q) {
+    q.el.style.transform = 'translate(' + (q.dx * p).toFixed(1) + 'px,' + (q.dy * p).toFixed(1)
+      + 'px) scale(' + (1 - 0.5 * p).toFixed(3) + ')';
+    q.el.style.opacity = (1 - p).toFixed(3);
+  });
+  var lbl = document.getElementById('lbl');
+  if (p > 0) { lbl.style.opacity = (1 - p).toFixed(3); }
+  // propagacion: los diez puestos se llenan uno a uno
+  var n = 0;
+  [].slice.call(TEAM.children).forEach(function (s, i) {
+    var u = t < FILL[i] ? 0 : Math.min(1, (t - FILL[i]) / 0.22);
+    s.style.opacity = u; s.style.transform = 'translateY(' + ((1 - u) * 14).toFixed(1) + 'px)';
+    s.classList.toggle('full', u > 0.5);
+    if (u > 0.5) n++;
+  });
+  CNT.textContent = n + ' / 10';
+  var uf = t < FILL[0] ? 0 : Math.min(1, (t - FILL[0]) / 0.3);
+  CNT.style.opacity = uf;
+  var ul = t < FILL[9] ? 0 : Math.min(1, (t - FILL[9]) / 0.35);
+  FIN.style.opacity = ul;
+};
+</script><script src="anim7.js"></script></body></html>

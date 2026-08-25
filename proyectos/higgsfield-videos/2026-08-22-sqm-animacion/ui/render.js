@@ -5,19 +5,8 @@ const FF = require('@ffmpeg-installer/ffmpeg').path;
 const FPS = 25;
 
 // pantalla -> segundos que ocupa en el montaje (ver montaje.md)
-const PLAN = [
-  ['plate', 3.2],
-  ['v5-01', 13.6],
-  ['v5-02', 15.0],
-  ['v5-03', 13.7],
-  ['v5-04', 15.8],
-  ['v5-05', 15.4],
-  ['v5-06', 14.9],
-  ['v5-07', 11.3],
-  ['v5-08', 15.5],
-  ['v5-09', 13.6],
-  ['v5-10', 14.0],
-];
+// el plan vive en plan-<set>.json; SET elige la version (v5 por defecto)
+const PLAN = require('./plan-' + (process.env.SET || 'v5') + '.json');
 
 // capas transparentes que se superponen a los planos generados
 const OVER = [];
