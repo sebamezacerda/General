@@ -3,15 +3,17 @@
 import subprocess, os, json
 B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
 MP3 = ["hf_20260825_224804_1e659e28-37af-4e15-9d87-8da5bf55ae9e",
-       "hf_20260825_224803_8c2f052b-38d5-440c-a8d7-c59049fabd58",
+       "hf_20260825_231417_3ac45e41-dc99-4b73-903b-c5f9a005228b",
        "hf_20260825_231053_2e3eb2c0-7153-4ced-b44a-f9476c6998b4",
-       "hf_20260825_224804_a7b067cf-c62f-4332-a374-6a7108a48eb8",
+       "hf_20260825_231417_a9f43579-ae7c-48c0-bdcf-d48c91e1955e",
        "hf_20260825_224803_a18e5e6e-6d1e-44dc-868b-073d401d1cbe",
        "hf_20260825_224804_35b7137c-decb-4aa0-8992-2ffc1e807ff8",
        "hf_20260825_224812_2e194e7f-c8b3-4e80-9d03-550699fcbcb5",
        "hf_20260825_224803_ed5339b2-0a47-4bbf-adcc-ec592e8b4217",
        "hf_20260825_224812_883a734f-cb56-4b07-8434-3f587e584efd"]
 WIN = [w for _, w in json.load(open("ui/plan-v7.json"))]
+# la escena 2 vino con 6 s de audio alucinado despues de "equipo": se corta ahi
+TRIM = {2: 12.5}
 FPS = 25
 os.makedirs("src7", exist_ok=True); os.makedirs("seg7", exist_ok=True)
 def sh(c): subprocess.run(c, shell=True, check=True, capture_output=True)
@@ -39,7 +41,9 @@ sh("ffmpeg -y -v error -f concat -safe 0 -i seg7/list.txt -c copy seg7/video.mp4
 # ---- audio: cada escena es su locucion mas el aire que la separa de la siguiente
 parts = []
 for i, w in enumerate(WIN, 1):
-    sh(f"ffmpeg -y -v error -i src7/a{i}.mp3 -ar 48000 -ac 2 seg7/a{i}.wav")
+    t = TRIM.get(i)
+    cut = f"-t {t} -af afade=t=out:st={t-0.2}:d=0.2" if t else ""
+    sh(f"ffmpeg -y -v error -i src7/a{i}.mp3 {cut} -ar 48000 -ac 2 seg7/a{i}.wav")
     parts.append(f"seg7/a{i}.wav")
     g = round(w - dur(f"seg7/a{i}.wav"), 3)
     if g < 0: print("VENTANA CORTA en escena", i, g); g = 0.05

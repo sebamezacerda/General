@@ -70,3 +70,13 @@ body.v7{display:flex;flex-direction:column;padding:64px 90px;background:var(--in
 .v7 .stage.hero{position:relative;justify-content:center}
 .v7 .stage.hero > *{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
 .v7 #out{display:flex;flex-direction:column;gap:30px}
+
+/* ---- tarjeta de persona: lo que cada uno construyo, legible en video ---- */
+.v7 .people{display:flex;gap:18px}
+.v7 .pcard{flex:1;background:var(--ink2);border:1px solid var(--hair);
+  border-top:3px solid var(--accent-hi);padding:26px 28px;min-height:250px}
+.v7 .pcard .who{font-family:'IBM Plex Mono',monospace;font-size:20px;letter-spacing:2.2px;
+  color:var(--steel);padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--hair)}
+.v7 .pcard .did{font-size:27px;line-height:1.45;color:var(--accent-hi)}
+.v7 .pcard .did span{display:block;margin-bottom:10px}
+.v7 .pcard .did span.q{color:var(--steel)}

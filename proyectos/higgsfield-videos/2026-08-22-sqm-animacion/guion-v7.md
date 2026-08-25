@@ -57,13 +57,16 @@ Y una línea de cierre del bloque: `Claude · ChatGPT · Gemini — el que sea.`
 
 ## BLOQUE 1 · El villano — 0:13–0:27
 
-**Locución (35 pal.):**
-> El problema no es la IA. Es dónde queda lo que aprendió. Queda en una persona. A veces en
-> una cuenta que la empresa ni siquiera ve. Y no se comparte con nadie.
+**Locución (34 pal.):**
+> El problema no es la inteligencia artificial. Es dónde queda lo que aprendió: en la persona
+> que lo hizo. A veces en una cuenta que la empresa ni siquiera ve. Y no llega al resto del
+> equipo.
 
-**Pantalla:** una fila de diez bloques; solo uno tiene contenido adentro — todo lo que esa
-persona aprendió. Los otros nueve, vacíos. Después el bloque lleno **se va del cuadro** y
-la fila queda entera vacía.
+**Pantalla:** **tres personas**, en tarjetas anchas, con lo que cada una construyó escrito
+grande y legible — no diez cuadritos ilegibles. Comercial conectó el ERP a su IA; Logística
+cruza el TMS con las planillas de puerto, en su cuenta personal; Planificación escribió los
+pasos en un documento suyo. Debajo: `+ 7 personas más · cada una con lo suyo · 0 registro`.
+Después el contenido de las tres tarjetas **se va**, y quedan los marcos vacíos.
 
 El villano, nombrado en pantalla:
 `EL APRENDIZAJE NO SALE DE AHÍ.`
@@ -98,9 +101,15 @@ como la estructura del resto del video.
 
 ### Planteo (0:38–0:46)
 
-**Locución (19 pal.):**
-> Un equipo de diez personas. La demanda en Brasil sube catorce por ciento. Hoy la respuesta
-> toma tres días.
+**Locución (44 pal.):**
+> Un equipo de diez personas. La demanda en Brasil sube catorce por ciento y la cobertura cae
+> bajo el umbral. Hay que decidir si se adelanta producción local o se transfiere stock desde
+> México, antes de que salga el embarque del jueves. Hoy esa decisión toma tres días.
+
+El dato no es el problema. La primera versión decía que la demanda subía 14% y se quedaba ahí:
+un alza de demanda es una buena noticia hasta que alguien dice qué hay que decidir y contra qué
+reloj. Ahora la pregunta se enuncia entera y en pantalla, y es la misma que responden la escena
+5 y la escena 8.
 
 **Pantalla:** el equipo y el stack, en una línea cada uno, sin tabla.
 
