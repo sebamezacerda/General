@@ -2,7 +2,7 @@
 """Montaje del corte v8 de SQM, con cama musical. Corre en el sandbox de Higgsfield."""
 import subprocess, os, json
 B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
-MP3 = ["hf_20260823_020532_418867af-5a06-4543-b22b-ceef73795345",  # 01 tu equipo ya usa IA
+MP3 = ["hf_20260825_224804_1e659e28-37af-4e15-9d87-8da5bf55ae9e",  # 01 tu equipo ya usa IA
        "hf_20260826_125404_89c97e27-b40a-4938-b25e-903920b7e0b9",  # 02 villano
        "hf_20260825_231053_2e3eb2c0-7153-4ced-b44a-f9476c6998b4",  # 03 los tres ejes
        "hf_20260826_125404_dfb911b1-117e-494e-ad24-be18efec108b",  # 04 veamos un ejemplo
@@ -68,7 +68,9 @@ for i, f in enumerate(BEDS, 1):
 corte = []
 for k, (ini, fin) in enumerate(BLOQUES, 1):
     L = round(sum(WIN[ini - 1:fin]), 3)
-    # cada pieza dura 60 s; se encadena consigo misma hasta cubrir su bloque
+    # cada bloque se rinde 2 s mas largo salvo el ultimo: ese sobrante lo consume el
+    # acrossfade con el bloque siguiente, y asi la suma vuelve a dar la duracion exacta
+    if k < len(BLOQUES): L += 2.0
     n = max(1, -(-int(L) // 55))
     ins = " ".join(f"-i src8/b{k}.m4a" for _ in range(n))
     if n == 1:
@@ -78,13 +80,17 @@ for k, (ini, fin) in enumerate(BLOQUES, 1):
             f"[x{j}][{j + 1}]acrossfade=d=2[x{j + 1}];" for j in range(1, n - 1)) + f"[x{n - 1}]anull[c]"
     sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[c]' -ar 48000 -ac 2 seg8/bl{k}_raw.wav")
     # volumen fijo, no loudnorm: en una pieza larga el loudnorm de una pasada bombea
-    sh(f"ffmpeg -y -v error -i seg8/bl{k}_raw.wav -af "
-       f"'atrim=0:{L},asetpts=N/SR/TB,volume=-19dB,afade=t=in:d=1.2,afade=t=out:st={L - 1.2:.3f}:d=1.2' "
+    sh(f"ffmpeg -y -v error -i seg8/bl{k}_raw.wav -af 'atrim=0:{L},asetpts=N/SR/TB,volume=-19dB' "
        f"seg8/bl{k}.wav")
     corte.append(f"seg8/bl{k}.wav")
-with open("seg8/blist.txt", "w") as fh:
-    for p in corte: fh.write(f"file '{os.path.abspath(p)}'\n")
-sh("ffmpeg -y -v error -f concat -safe 0 -i seg8/blist.txt -c copy seg8/bed.wav")
+
+# encadenado de bloque a bloque: sin hueco de silencio en el corte
+ins = " ".join(f"-i {p}" for p in corte)
+fc = "[0][1]acrossfade=d=2[y1];" + "".join(
+    f"[y{j}][{j + 1}]acrossfade=d=2[y{j + 1}];" for j in range(1, len(corte) - 1)) + f"[y{len(corte) - 1}]anull[z]"
+sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[z]' -ar 48000 -ac 2 seg8/bed_raw.wav")
+sh(f"ffmpeg -y -v error -i seg8/bed_raw.wav -af "
+   f"'atrim=0:{T:.3f},asetpts=N/SR/TB,afade=t=in:d=1.5,afade=t=out:st={T - 2.5:.3f}:d=2.5' seg8/bed.wav")
 
 # ---- mezcla: la cama se agacha bajo la voz. Release largo (900 ms) y ratio suave:
 # con release corto la cama saltaba de vuelta en cada silencio y eso se oia como un golpe.
