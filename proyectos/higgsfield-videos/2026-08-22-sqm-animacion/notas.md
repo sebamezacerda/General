@@ -68,6 +68,10 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-26: **corte v9** — 3:08. Sale el nombre de SQM, el aire baja a 0,4 s, la IA del
+  ejercicio deja de nombrarse, los rótulos de eje se agrandan y entran primero, y la música
+  pasa a cuatro piezas electrónicas por bloque. Se arregla el golpe de la cama al soltar el
+  ducking en los silencios.
 - 2026-08-26: **corte v8** — 3:26. Se abre el par «Hoy sin Velaria / Con Velaria», el ejercicio
   declara que la IA es Claude, y aparece el puente que faltaba: la operación se repite semanas
   antes de que Velaria proponga la Skill. Se corrigen los tiempos del impacto, que no daban

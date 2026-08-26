@@ -739,3 +739,43 @@ que hay música, está muy arriba.
 villano, la declaración de que el stack funciona bien, y la etiqueta `[ SKILL ]` con su cuadro.
 El sistema lo reserva para badges de estado; usarlo como acento tipográfico es una licencia
 pedida por el cliente y conviene registrarla como tal.
+
+
+## Corte v9 — 26/08/2026
+
+**3:08 · 1920×1080 · música electrónica por bloque**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/9764f3e8-050c-4332-9b93-a61a88880777.mp4
+
+| Cambio | Detalle |
+|---|---|
+| Sin marca del caso | El disclaimer deja de nombrar a SQM. El video sirve para cualquier cliente |
+| Pace | El aire entre escenas baja de 1,2–2,0 s a **0,4 s**. Era la pausa que se sentía después de cada remate. 3:26 → 3:08 sin sacar una sola palabra |
+| Sin nombrar la IA | «la que define la empresa, sugerida por Velaria». Antes: «alguna herramienta de IA, personal o de la empresa» |
+| Menos lectura | Diccionario, criterios y conexiones ya no se leen en detalle: la voz los nombra, la pantalla los explica |
+| Rótulos de sección | `EJE 1 DE 3 · HABILITACIÓN` a 64 px, con regla accent, entrando **antes** que el resto de la lámina |
+| Música | Cuatro piezas electrónicas con pulso —una por bloque narrativo— en vez de un pad plano |
+
+### El ruido después de Mejora continua
+
+Era la cama, no la voz. El `sidechaincompress` tenía `release=450`, así que en cada silencio
+de la locución la música volvía de golpe a su nivel: con 1,6 s de aire al final de esa escena,
+el salto se oía como un golpe justo antes de Gobernanza. Tres arreglos: `release=900`,
+`ratio` de 6 a 4, y **volumen fijo en vez de `loudnorm`** — el loudnorm de una pasada sobre una
+pieza de casi cuatro minutos bombea por diseño. Sumado a que el aire bajó a 0,4 s, el silencio
+donde se oía ya no existe.
+
+### La música, en concreto
+
+Cuatro piezas de 60 s generadas con `sonilo_music`, asignadas por bloque:
+
+| Bloque | Escenas | Carácter |
+|---|---|---|
+| A | 1–3 | 108 BPM, kick sobrio, pluck corto |
+| B | 4–6 | tenso, bajo en semicorcheas, tonalidad menor |
+| C | 7–9 | 112 BPM, brillante, arpegio en mayor |
+| D | 10–12 | 104 BPM, resuelto, pad sostenido |
+
+Cada pieza se encadena consigo misma hasta cubrir su bloque y va a **−19 dB**, con ducking
+contra la voz. El corte de una pieza a la siguiente cae en el corte de escena, así que se lee
+como cambio de sección y no como error.
