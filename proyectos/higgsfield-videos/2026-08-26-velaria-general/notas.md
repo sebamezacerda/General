@@ -1,4 +1,4 @@
-# Video del mecanismo de Velaria (guion Tito)
+# Velaria General — video del mecanismo
 
 Genérico, sin caso de cliente: los cinco pasos de cómo funciona Velaria. El guion original
 está en `guion.md` tal como llegó, con la locución ya escrita — se usa textual.

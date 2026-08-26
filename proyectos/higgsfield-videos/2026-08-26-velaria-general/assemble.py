@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Montaje del video del mecanismo (guion Tito). Corre en el sandbox de Higgsfield."""
+"""Montaje de Velaria General. Corre en el sandbox de Higgsfield."""
 import subprocess, os, json
 B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
 MP3 = ["hf_20260826_115500_c1c23fd9-a8c4-4ac6-b79e-7849c52c625b",  # 1 que hace Velaria

@@ -1,4 +1,4 @@
-# Generaciones
+# Generaciones — Velaria General
 
 ## Corte v1 — 26/08/2026
 
