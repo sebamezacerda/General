@@ -45,3 +45,31 @@ Se detectó capturando frames antes de renderizar el corte completo, no después
   gráfico. Van como planos de respiro entre láminas, no como fondo con texto encima: el sistema
   prohíbe que algo flote.
 - **Música.** Cama sobria y baja. El guion prohíbe explícitamente la música épica que sube.
+
+
+## Corte v2 — 26/08/2026
+
+**2:57 · diez láminas · con música**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/941ceeee-c056-45e5-a747-01802bc60783.mp4
+
+| Cambio | Detalle |
+|---|---|
+| El ejemplo se anuncia | Lámina nueva antes de las piezas: **«Veamos un ejemplo: un equipo que hace cotizaciones.»** El guion original decía que la cotización es el hilo desde la escena 5, pero nunca lo declaraba: entraba de contrabando dentro de la explicación de las piezas |
+| Sin «acá» | Tres frases lo tenían: «cómo se hacen las cosas acá» → «la forma en que se hacen las cosas» · «cómo se cotiza acá» → «cómo se cotiza» · «Y acá está lo importante» → «Y esto es lo importante» |
+| Música | Las mismas cuatro piezas electrónicas del corte de SQM, una por bloque, encadenadas entre sí y a nivel fijo −17 dB sin ducking |
+| El cierre | Suma la bajada de la web —«Guíala con tu visión.»— y se corta antes de la palabra «Velaria» suelta |
+
+### La voz rara del final
+
+No era acento: era **cola alucinada del TTS**. La pista del cierre dura 12,5 s pero la
+locución real termina a los 5,1 s; los 7,4 s siguientes son balbuceo que el modelo inventa
+después del texto. Es el mismo modo de falla que ya había aparecido dos veces en este proyecto,
+y suena a idioma extranjero porque literalmente no es español: es fonética sin lengua.
+
+El corte se hace **antes** de la palabra «Velaria» aislada, no después. Una marca suelta al
+final de una frase es donde más drifta la prosodia del modelo, y en pantalla el wordmark ya
+está: decirlo no aportaba nada y era el único punto de riesgo.
+
+**Regla que queda para este proyecto:** ninguna pista se monta sin transcribirla antes. Las
+colas no aparecen en la duración esperada ni en el prompt — solo en el transcript.

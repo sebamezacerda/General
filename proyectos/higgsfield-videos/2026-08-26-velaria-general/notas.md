@@ -31,6 +31,11 @@ A diferencia del video de SQM, este va sobre **light** (`#F5F7FA`, texto `#11182
 sobre light, tarjetas blancas con barra superior accent. La escena 2 (la consola con la
 pregunta) y el cierre van sobre ink.
 
+## Bitácora
+- 2026-08-26: **corte v2** — 2:57. Se anuncia el ejemplo (un equipo que hace cotizaciones), se
+  quita el «acá» de tres frases, entra la música electrónica por bloques y el cierre suma la
+  bajada de la web. La voz rara del final era cola alucinada del TTS: se corta.
+
 ## Estado
 
 - [x] Locución generada, transcrita y medida
