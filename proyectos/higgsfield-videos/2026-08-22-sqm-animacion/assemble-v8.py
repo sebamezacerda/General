@@ -7,8 +7,8 @@ MP3 = ["hf_20260823_020532_418867af-5a06-4543-b22b-ceef73795345",  # 01 tu equip
        "hf_20260825_231053_2e3eb2c0-7153-4ced-b44a-f9476c6998b4",  # 03 los tres ejes
        "hf_20260826_125404_dfb911b1-117e-494e-ad24-be18efec108b",  # 04 veamos un ejemplo
        "hf_20260826_125404_9a02bcab-3ed0-40ca-8465-1d3ab6663298",  # 05 el caso
-       "hf_20260826_125404_cad7cbff-7de4-484a-8333-f61a18fb4215",  # 06 hoy sin Velaria
-       "hf_20260826_125404_3835cbb4-3e3f-4ef0-8072-920dfa14215b",  # 07 con Velaria
+       "hf_20260826_135133_72856ec7-c721-4dc7-8228-901cabeef414",  # 06 hoy sin Velaria
+       "hf_20260826_135133_0d06c8ff-b9ea-406e-9c4c-59e70949745b",  # 07 con Velaria
        "hf_20260826_125404_239047de-57f0-41d8-9a46-1538b2b884d8",  # 08 Velaria aprende
        "hf_20260826_125404_dd85dfa3-22bf-4b00-8d72-c4ad57c83144",  # 09 la Skill repartida
        "hf_20260825_224812_2e194e7f-c8b3-4e80-9d03-550699fcbcb5",  # 10 gobernanza
@@ -55,18 +55,41 @@ with open("seg8/alist.txt", "w") as fh:
 sh("ffmpeg -y -v error -f concat -safe 0 -i seg8/alist.txt -c copy seg8/voz.wav")
 T = dur("seg8/voz.wav")
 
-# ---- cama: la pieza generada dura 60 s, asi que se encadena consigo misma con
-# crossfades de 2 s. Es un pad sostenido sin melodia, asi que la costura no se oye.
-sh("ffmpeg -y -v error -i src8/mus.m4a -i src8/mus.m4a -i src8/mus.m4a -i src8/mus.m4a "
-   "-filter_complex '[0][1]acrossfade=d=2[a];[a][2]acrossfade=d=2[b];[b][3]acrossfade=d=2[c]' "
-   "-map '[c]' -ar 48000 -ac 2 seg8/bed.wav")
+# ---- cama: cuatro piezas electronicas, una por bloque narrativo, para que la
+# musica cambie con el relato en vez de ser un loop plano de tres minutos.
+BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # A intro y villano
+        "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # B el caso, sin Velaria
+        "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # C con Velaria
+        "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # D gobernanza, impacto, cierre
+BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 12)]   # escenas de cada bloque, inclusivo
+for i, f in enumerate(BEDS, 1):
+    if not os.path.exists(f"src8/b{i}.m4a"): sh(f"curl -sfo src8/b{i}.m4a '{B}{f}'")
 
-# ---- mezcla: la cama a -30 LUFS y ademas agachandose 6 dB cuando ella habla.
-# Se tiene que sentir, no oir.
+corte = []
+for k, (ini, fin) in enumerate(BLOQUES, 1):
+    L = round(sum(WIN[ini - 1:fin]), 3)
+    # cada pieza dura 60 s; se encadena consigo misma hasta cubrir su bloque
+    n = max(1, -(-int(L) // 55))
+    ins = " ".join(f"-i src8/b{k}.m4a" for _ in range(n))
+    if n == 1:
+        fc = "[0:a]anull[c]"
+    else:
+        fc = "[0][1]acrossfade=d=2[x1];" + "".join(
+            f"[x{j}][{j + 1}]acrossfade=d=2[x{j + 1}];" for j in range(1, n - 1)) + f"[x{n - 1}]anull[c]"
+    sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[c]' -ar 48000 -ac 2 seg8/bl{k}_raw.wav")
+    # volumen fijo, no loudnorm: en una pieza larga el loudnorm de una pasada bombea
+    sh(f"ffmpeg -y -v error -i seg8/bl{k}_raw.wav -af "
+       f"'atrim=0:{L},asetpts=N/SR/TB,volume=-19dB,afade=t=in:d=1.2,afade=t=out:st={L - 1.2:.3f}:d=1.2' "
+       f"seg8/bl{k}.wav")
+    corte.append(f"seg8/bl{k}.wav")
+with open("seg8/blist.txt", "w") as fh:
+    for p in corte: fh.write(f"file '{os.path.abspath(p)}'\n")
+sh("ffmpeg -y -v error -f concat -safe 0 -i seg8/blist.txt -c copy seg8/bed.wav")
+
+# ---- mezcla: la cama se agacha bajo la voz. Release largo (900 ms) y ratio suave:
+# con release corto la cama saltaba de vuelta en cada silencio y eso se oia como un golpe.
 sh(f"ffmpeg -y -v error -i seg8/voz.wav -i seg8/bed.wav -filter_complex "
-   f"\"[1:a]atrim=0:{T:.3f},asetpts=N/SR/TB,loudnorm=I=-30:TP=-6:LRA=7,"
-   f"afade=t=in:d=2.5,afade=t=out:st={T-3.5:.3f}:d=3.5[m];"
-   f"[m][0:a]sidechaincompress=threshold=0.025:ratio=6:attack=25:release=450:makeup=1[duck];"
+   f"\"[1:a][0:a]sidechaincompress=threshold=0.03:ratio=4:attack=60:release=900:makeup=1[duck];"
    f"[duck][0:a]amix=inputs=2:duration=first:normalize=0[mix]\" "
    f"-map '[mix]' -ar 48000 -ac 2 seg8/mezcla.wav")
 
