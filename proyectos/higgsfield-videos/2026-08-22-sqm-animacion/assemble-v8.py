@@ -8,7 +8,7 @@ MP3 = ["hf_20260825_224804_1e659e28-37af-4e15-9d87-8da5bf55ae9e",  # 01 tu equip
        "hf_20260826_125404_dfb911b1-117e-494e-ad24-be18efec108b",  # 04 veamos un ejemplo
        "hf_20260826_125404_9a02bcab-3ed0-40ca-8465-1d3ab6663298",  # 05 el caso
        "hf_20260826_135133_72856ec7-c721-4dc7-8228-901cabeef414",  # 06 hoy sin Velaria
-       "hf_20260826_135133_0d06c8ff-b9ea-406e-9c4c-59e70949745b",  # 07 con Velaria
+       "hf_20260826_164135_95cfe835-9edf-43d1-8a45-a79f69214eef",  # 07 con Velaria
        "hf_20260826_125404_239047de-57f0-41d8-9a46-1538b2b884d8",  # 08 Velaria aprende
        "hf_20260826_125404_dd85dfa3-22bf-4b00-8d72-c4ad57c83144",  # 09 la Skill repartida
        "hf_20260825_224812_2e194e7f-c8b3-4e80-9d03-550699fcbcb5",  # 10 gobernanza
@@ -84,7 +84,7 @@ for k, (ini, fin) in enumerate(BLOQUES, 1):
             f"[x{j}][{j + 1}]acrossfade=d=2[x{j + 1}];" for j in range(1, n - 1)) + f"[x{n - 1}]anull[c]"
     sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[c]' -ar 48000 -ac 2 seg8/bl{k}_raw.wav")
     # volumen fijo, no loudnorm: en una pieza larga el loudnorm de una pasada bombea
-    sh(f"ffmpeg -y -v error -i seg8/bl{k}_raw.wav -af 'atrim=0:{L},asetpts=N/SR/TB,volume=-19dB' "
+    sh(f"ffmpeg -y -v error -i seg8/bl{k}_raw.wav -af 'atrim=0:{L},asetpts=N/SR/TB,volume=-17dB' "
        f"seg8/bl{k}.wav")
     corte.append(f"seg8/bl{k}.wav")
 
@@ -96,11 +96,9 @@ sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[z]' -ar 48000 -ac 2 
 sh(f"ffmpeg -y -v error -i seg8/bed_raw.wav -af "
    f"'atrim=0:{T:.3f},asetpts=N/SR/TB,afade=t=in:d=1.5,afade=t=out:st={T - 2.5:.3f}:d=2.5' seg8/bed.wav")
 
-# ---- mezcla: la cama se agacha bajo la voz. Release largo (900 ms) y ratio suave:
-# con release corto la cama saltaba de vuelta en cada silencio y eso se oia como un golpe.
+# ---- mezcla: nivel fijo, sin ducking. Agacharla en cada frase sonaba a bombeo.
 sh(f"ffmpeg -y -v error -i seg8/voz.wav -i seg8/bed.wav -filter_complex "
-   f"\"[1:a][0:a]sidechaincompress=threshold=0.03:ratio=4:attack=60:release=900:makeup=1[duck];"
-   f"[duck][0:a]amix=inputs=2:duration=first:normalize=0[mix]\" "
+   f"\"[0:a][1:a]amix=inputs=2:duration=first:normalize=0[mix]\" "
    f"-map '[mix]' -ar 48000 -ac 2 seg8/mezcla.wav")
 
 sh("ffmpeg -y -v error -i seg8/video.mp4 -i seg8/mezcla.wav -c:v copy -c:a aac -b:a 192k corte-v8.mp4")
