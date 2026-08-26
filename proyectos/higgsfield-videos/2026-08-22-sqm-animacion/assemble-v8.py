@@ -13,7 +13,8 @@ MP3 = ["hf_20260825_224804_1e659e28-37af-4e15-9d87-8da5bf55ae9e",  # 01 tu equip
        "hf_20260826_125404_dd85dfa3-22bf-4b00-8d72-c4ad57c83144",  # 09 la Skill repartida
        "hf_20260825_224812_2e194e7f-c8b3-4e80-9d03-550699fcbcb5",  # 10 gobernanza
        "hf_20260826_125404_c080551e-171e-4975-a622-b0a04a9462f4",  # 11 impacto
-       "hf_20260825_224812_883a734f-cb56-4b07-8434-3f587e584efd"]  # 12 cierre
+       "hf_20260825_224812_883a734f-cb56-4b07-8434-3f587e584efd",  # 12 cierre
+       None]                                                       # 13 placa de marca
 MUS = "hf_20260826_125423_e30abb49-79a0-4b66-a08a-e3a2e0bbb6fa.m4a"
 WIN = [w for _, w in json.load(open("ui/plan-v8.json"))]
 FPS = 25
@@ -25,7 +26,7 @@ def dur(p):
     return float(json.loads(r.stdout)["format"]["duration"])
 
 for i, f in enumerate(MP3, 1):
-    if not os.path.exists(f"src8/a{i}.mp3"): sh(f"curl -sfo src8/a{i}.mp3 '{B}{f}.mp3'")
+    if f and not os.path.exists(f"src8/a{i}.mp3"): sh(f"curl -sfo src8/a{i}.mp3 '{B}{f}.mp3'")
 if not os.path.exists("src8/mus.m4a"): sh(f"curl -sfo src8/mus.m4a '{B}{MUS}'")
 
 # ---- video
@@ -44,7 +45,10 @@ sh("ffmpeg -y -v error -f concat -safe 0 -i seg8/list.txt -c copy seg8/video.mp4
 # ---- voz: cada escena mas el aire que la separa de la siguiente
 parts = []
 for i, w in enumerate(WIN, 1):
-    sh(f"ffmpeg -y -v error -i src8/a{i}.mp3 -ar 48000 -ac 2 seg8/a{i}.wav")
+    if MP3[i - 1] is None:
+        sh(f"ffmpeg -y -v error -f lavfi -i anullsrc=r=48000:cl=stereo -t {w} seg8/a{i}.wav")
+    else:
+        sh(f"ffmpeg -y -v error -i src8/a{i}.mp3 -ar 48000 -ac 2 seg8/a{i}.wav")
     parts.append(f"seg8/a{i}.wav")
     g = round(w - dur(f"seg8/a{i}.wav"), 3)
     if g < 0: print("VENTANA CORTA en escena", i, g); g = 0.05
@@ -61,7 +65,7 @@ BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # A intr
         "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # B el caso, sin Velaria
         "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # C con Velaria
         "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # D gobernanza, impacto, cierre
-BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 12)]   # escenas de cada bloque, inclusivo
+BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 13)]   # escenas de cada bloque, inclusivo
 for i, f in enumerate(BEDS, 1):
     if not os.path.exists(f"src8/b{i}.m4a"): sh(f"curl -sfo src8/b{i}.m4a '{B}{f}'")
 
