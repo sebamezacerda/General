@@ -8,6 +8,8 @@ Repo global de Sebastián: specs, resúmenes y decisiones de sus proyectos con I
 - **Casa Sanz** (terminal) — `proyectos/casa-sanz/spec.md`
 - **VELARIA** (colaboración, invitado) — `proyectos/velaria/spec.md`. Repo real: `Velaria-HQ/velaria-delivery` (no accesible desde sesiones de este repo). Incluye el **sistema de diseño** completo, que rige todo diseño nuevo de Velaria.
 - **Higgsfield — videos** (web) — `proyectos/higgsfield-videos/`. Los videos generados acá pueden ser para Bidasoa, para Casa Sanz, o generales — cada proyecto de video lo indica en su `notas.md`.
+- **Velaria General** (video, web) — `proyectos/higgsfield-videos/2026-08-26-velaria-general/`.
+  Genérico, sin caso de cliente: los cinco pasos de cómo funciona Velaria. 3:05, piel clara.
 - **Caso sintético Minera Cordillera × Velaria** (video, web) — `proyectos/higgsfield-videos/2026-08-25-cordillera-velaria/`. Guion en `guion.md`, video de 3:41 con subtítulos.
 - **Caso sintético SQM × Velaria** (video, web) — `proyectos/higgsfield-videos/2026-08-22-sqm-animacion/`. Guion cerrado en `guion.md`, prompts por escena en `prompts.md`.
 
