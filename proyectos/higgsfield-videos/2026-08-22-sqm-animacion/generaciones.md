@@ -818,3 +818,36 @@ la suma vuelve a dar la duración exacta del video sin que la música desaparezc
 Verificado sobre las doce láminas y las doce pistas: **cero menciones a SQM**, escritas o
 habladas. El video queda reutilizable para cualquier cliente — Velaria primero, el ejemplo
 después, y el ejemplo no nombra a nadie.
+
+
+## Corte v11 — 26/08/2026
+
+**3:13 · trece láminas · cierra con la placa de marca**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/a0646896-7436-4072-ad20-d38b32f7534c.mp4
+
+### Placa final
+
+Lámina 13, nueva: símbolo del kit —anillo, arco accent y punto, con la geometría exacta del
+`viewBox 0 0 48 48`— más el wordmark y la bajada de la web:
+
+> **Libera el poder de la IA. Guíala con tu visión.**
+
+Sin cabecera, sin pie, sin marcador de ejes y **sin locución**: solo la cama. El cierre
+anterior suelta el wordmark de su pie para no duplicarlo. El montaje ahora acepta escenas
+mudas: un `None` en `MP3` genera silencio del largo de su ventana.
+
+### Habilitación abre por el principio
+
+Antes daba la IA por definida («la IA es la que define la empresa»). Ahora el orden es el real:
+
+> Velaria **sugiere qué IA usar**, y la define junto a la empresa.
+
+y recién después vienen diccionario, criterios y conexiones.
+
+### La música deja de agacharse
+
+Se elimina el `sidechaincompress`. Bajar la cama en cada frase de la locución y devolverla en
+cada silencio es exactamente lo que se oía como bombeo, y ningún ajuste de release lo arregla
+del todo cuando la voz entra y sale cada dos segundos. Ahora es **nivel fijo a −17 dB** —dos dB
+más arriba que antes— y la mezcla es una simple suma. Más simple y suena mejor.

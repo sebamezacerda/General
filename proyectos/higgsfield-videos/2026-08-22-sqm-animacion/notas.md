@@ -68,6 +68,8 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-26: **corte v11** — 3:13. Cierra con la placa de marca y la bajada de la web.
+  Habilitación abre en que Velaria sugiere qué IA usar. La música pasa a nivel fijo sin ducking.
 - 2026-08-26: **corte v10** — 3:08. La escena 1 apuntaba a la locución del v5, que nombraba a
   SQM; corregida, y la intro termina en «Y funciona». Los bloques de música se encadenan en vez
   de fundirse a silencio. El video ya no menciona a SQM en ninguna parte.
