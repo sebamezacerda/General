@@ -68,6 +68,9 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-26: **corte v10** — 3:08. La escena 1 apuntaba a la locución del v5, que nombraba a
+  SQM; corregida, y la intro termina en «Y funciona». Los bloques de música se encadenan en vez
+  de fundirse a silencio. El video ya no menciona a SQM en ninguna parte.
 - 2026-08-26: **corte v9** — 3:08. Sale el nombre de SQM, el aire baja a 0,4 s, la IA del
   ejercicio deja de nombrarse, los rótulos de eje se agrandan y entran primero, y la música
   pasa a cuatro piezas electrónicas por bloque. Se arregla el golpe de la cama al soltar el

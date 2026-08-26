@@ -779,3 +779,42 @@ Cuatro piezas de 60 s generadas con `sonilo_music`, asignadas por bloque:
 Cada pieza se encadena consigo misma hasta cubrir su bloque y va a **−19 dB**, con ducking
 contra la voz. El corte de una pieza a la siguiente cae en el corte de escena, así que se lee
 como cambio de sección y no como error.
+
+
+## Corte v10 — 26/08/2026
+
+**3:08 · sin ninguna mención a SQM**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/7f14dbb7-98fd-488b-9e92-b11891dfd737.mp4
+
+Dos errores propios, y los dos con la misma raíz de descuido al reutilizar material viejo.
+
+### La escena 1 usaba la pista del v5
+
+`assemble-v8.py` apuntaba la escena 1 a `418867af`, que es la locución **del corte v5** y dice
+textualmente *«Probemos con una pregunta real de SQM»*. La duración del plan (11,52 s) sí era la
+de la pista del v7, así que el montaje calzaba y nada falló: simplemente sonaba otra voz en off
+que la que correspondía. De ahí salían las dos quejas a la vez —«esa no es la intro del v7» y
+«hay una referencia a SQM antes del ejemplo»—, que parecían dos cosas distintas y eran una sola.
+
+Ahora usa `1e659e28` y la lámina termina en «Y funciona»: se retira el pie que enumeraba
+`Claude · ChatGPT · Gemini`.
+
+**Regla que queda:** cuando una escena reutiliza audio de un corte anterior, verificar el job
+id contra su texto, no contra su duración. La duración calza por casualidad más seguido de lo
+que uno cree.
+
+### El hueco de música antes de Gobernanza
+
+No era el ducking —eso ya se había arreglado en el v9—. Era el corte entre bloques musicales:
+cada bloque llevaba `afade` de salida y el siguiente uno de entrada, así que la cama **se iba a
+silencio y volvía** justo en el límite entre Mejora continua y Gobernanza. Eso es el hueco, y la
+reentrada es el sonido raro. Ahora los cuatro bloques se encadenan con `acrossfade=d=2`: cada
+bloque se rinde 2 s más largo salvo el último, y el sobrante lo consume el encadenado, así que
+la suma vuelve a dar la duración exacta del video sin que la música desaparezca nunca.
+
+### Barrido de marca
+
+Verificado sobre las doce láminas y las doce pistas: **cero menciones a SQM**, escritas o
+habladas. El video queda reutilizable para cualquier cliente — Velaria primero, el ejemplo
+después, y el ejemplo no nombra a nadie.
