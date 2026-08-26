@@ -1,0 +1,33 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="v7.css"><title>Con Velaria · Habilitación</title></head><body class="v7">
+<div class="head"><div class="mlbl">Con Velaria · Eje 1 · Habilitación</div>
+  <div class="ejes"><b class="on"></b><b></b><b></b></div></div>
+<div class="stage" style="gap:16px">
+  <div class="xl" data-in="0.005" style="font-size:76px">Con Velaria.</div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline" data-in="0.088">
+    <span class="lg">Para el ejercicio, la IA es <b class="hi">Claude</b> <span class="dim">— la misma que ya usan</span></span>
+    <span class="state">[ CONECTADO POR VELARIA ]</span></div>
+  <div id="adentro">
+    <div class="krow" data-in="0.230"><span class="k"><b class="mval hi">DICCIONARIO</b><br>
+      <span data-in="0.339">«cobertura» = stock disponible ÷ demanda semanal proyectada</span></span>
+      <span class="src">[ FUENTE: ERP ]</span></div>
+    <div class="krow" data-in="0.515"><span class="k"><b class="mval hi">CRITERIOS</b><br>
+      Cobertura bajo 21 días → escala a Finanzas</span><span class="src">[ POLÍTICA v1 ]</span></div>
+    <div class="krow" data-in="0.667"><span class="k"><b class="mval hi">CONEXIONES</b><br>
+      Lee el ERP y el sistema comercial</span><span class="src">[ SOLO LECTURA ]</span></div>
+  </div>
+  <div id="resp">
+    <div class="md" data-in="0.795" style="margin-top:8px">Cualquiera del equipo pregunta
+      <span data-in="0.859">y recibe el análisis completo, <b class="hi">con la fuente de cada dato</b>, en minutos.</span></div>
+  </div>
+</div>
+<div class="foot"><div class="mlbl">Mismo Claude · ahora con el contexto y los criterios de la empresa</div>
+  <div class="mlbl"></div></div>
+<script>
+window.VO = 29.268;
+var AD, TR;
+window.buildExtra = function (clip, VO) { AD = document.getElementById('adentro'); TR = 0.795 * VO; };
+window.scrubExtra = function (t) {
+  var u = t < TR ? 0 : Math.min(1, (t - TR) / 0.5);
+  AD.style.opacity = (1 - 0.5 * u).toFixed(3);
+};
+</script><script src="anim7.js"></script></body></html>

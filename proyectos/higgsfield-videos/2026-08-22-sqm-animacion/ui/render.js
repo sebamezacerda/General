@@ -6,7 +6,7 @@ const FPS = 25;
 
 // pantalla -> segundos que ocupa en el montaje (ver montaje.md)
 // el plan vive en plan-<set>.json; SET elige la version (v5 por defecto)
-const PLAN = require('./plan-' + (process.env.SET || 'v5') + '.json');
+const PLAN = require('./plan-' + (process.env.SET || 'v8') + '.json');
 
 // capas transparentes que se superponen a los planos generados
 const OVER = [];

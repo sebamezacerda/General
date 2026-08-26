@@ -1,0 +1,53 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="v7.css"><title>La Skill repartida</title></head><body class="v7">
+<div class="head"><div class="mlbl">Con Velaria · Eje 2 · Mejora continua</div>
+  <div class="ejes"><b></b><b class="on"></b><b></b></div></div>
+<div class="stage hero">
+  <div id="out">
+    <div class="skill" id="skill" style="border-left-color:var(--warn)">
+      <div><div class="nm">Weekly S&amp;OP Exception Review</div>
+        <div class="mt">6 pasos · fuentes: ERP · TMS · CRM · criterio: cobertura &lt; 21 días</div></div>
+      <div class="state" id="tag" style="color:var(--warn)">[ SKILL · PROPUESTA ]</div></div>
+    <div class="team" id="team">
+      <div class="slot"><div class="who">C. ROJAS</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">M. DÍAZ</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">P. SOTO</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">A. LEÓN</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">J. MUÑOZ</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">V. TAPIA</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">R. ORTIZ</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">N. FUENTES</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">L. BRAVO</div><div class="has">Skill v1</div></div>
+      <div class="slot"><div class="who">S. HERRERA</div><div class="has">Skill v1</div></div>
+    </div>
+    <div class="mval" id="rev" style="margin-top:22px">El área la revisa, la aprueba y la publica.</div>
+  </div>
+</div>
+<div class="foot"><div class="mlbl" id="fin">Deja de ser el método de una persona</div>
+  <div class="mval hi" id="cnt">0 / 10</div></div>
+<script>
+// la propagacion: la Skill aprobada se instala en los diez
+window.VO = 10.152;
+var TEAM, CNT, FIN, TAG, REV, FILL = [], T;
+window.buildExtra = function (clip, VO) {
+  TEAM = document.getElementById('team'); CNT = document.getElementById('cnt');
+  FIN = document.getElementById('fin'); TAG = document.getElementById('tag'); REV = document.getElementById('rev');
+  FILL = []; for (var i = 0; i < 10; i++) FILL.push((0.637 + i * 0.020) * VO);
+  T = { rev: 0.005 * VO, apr: 0.356 * VO, due: 0.840 * VO };
+  [].slice.call(TEAM.children).forEach(function (s) { s.style.opacity = 0; });
+  CNT.style.opacity = 0; FIN.style.opacity = 0; REV.style.opacity = 0;
+};
+window.scrubExtra = function (t) {
+  REV.style.opacity = Math.min(1, Math.max(0, (t - T.rev) / 0.3));
+  if (t >= T.apr) { TAG.textContent = '[ SKILL v1 · EN PRODUCCIÓN ]'; }
+  var n = 0;
+  [].slice.call(TEAM.children).forEach(function (s, i) {
+    var u = t < FILL[i] ? 0 : Math.min(1, (t - FILL[i]) / 0.22);
+    s.style.opacity = u; s.style.transform = 'translateY(' + ((1 - u) * 14).toFixed(1) + 'px)';
+    s.classList.toggle('full', u > 0.5);
+    if (u > 0.5) n++;
+  });
+  CNT.textContent = n + ' / 10';
+  CNT.style.opacity = Math.min(1, Math.max(0, (t - FILL[0]) / 0.3));
+  FIN.style.opacity = Math.min(1, Math.max(0, (t - T.due) / 0.35));
+};
+</script><script src="anim7.js"></script></body></html>

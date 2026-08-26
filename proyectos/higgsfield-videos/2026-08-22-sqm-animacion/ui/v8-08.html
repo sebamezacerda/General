@@ -1,0 +1,56 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="v7.css"><title>Velaria aprende</title></head><body class="v7">
+<div class="head"><div class="mlbl">Con Velaria · Eje 2 · Mejora continua</div>
+  <div class="ejes"><b></b><b class="on"></b><b></b></div></div>
+<div class="stage hero">
+  <div class="qs" id="qs">
+    <div class="lg" data-in="0.005" style="margin-bottom:18px">Pasan las semanas<br>y esa misma operación se repite.</div>
+    <div class="q" data-in="0.020">"¿cómo vamos con la cobertura de Brasil?"<em>C. ROJAS</em></div>
+    <div class="q" data-in="0.048" style="margin-left:34px">"revisa el stock del producto en Brasil"<em>M. DÍAZ</em></div>
+    <div class="q" data-in="0.076" style="margin-left:12px">"¿tenemos capacidad para el alza?"<em>P. SOTO</em></div>
+    <div class="q" data-in="0.104" style="margin-left:58px">"cobertura Brasil semana 36"<em>A. LEÓN</em></div>
+    <div class="q" data-in="0.132" style="margin-left:22px">"qué pasa si sube 14% la demanda"<em>J. MUÑOZ</em></div>
+    <div class="q" data-in="0.160" style="margin-left:70px">"riesgo de quiebre en Brasil"<em>V. TAPIA</em></div>
+    <div class="q" data-in="0.180" style="margin-left:40px">"necesito el cuadro de cobertura por centro"<em>R. ORTIZ</em></div>
+    <div class="mval dim" id="lbl" data-in="0.194" style="margin-top:18px">7 personas · 5 áreas · resolviendo la excepción de la misma forma</div>
+  </div>
+  <div id="out">
+    <div class="mval" id="det" style="color:var(--warn);margin-bottom:18px">Velaria lo registra y detecta el patrón</div>
+    <div class="skill" id="skill" style="border-left-color:var(--warn)">
+      <div><div class="nm">Weekly S&amp;OP Exception Review</div>
+        <div class="mt" id="proc">el procedimiento escrito una sola vez · fuentes: ERP · TMS · CRM · criterio: cobertura &lt; 21 días</div></div>
+      <div class="state" id="tag" style="color:var(--warn)">[ SKILL · PROPUESTA ]</div></div>
+  </div>
+</div>
+<div class="foot"><div class="mlbl">Nadie lo había escrito · ahora existe</div><div class="mlbl"></div></div>
+<script>
+// el colapso: las siete formulaciones convergen en la Skill
+window.VO = 18.144;
+var QS = [], SK, DET, PROC, TAG, TA, TB;
+window.buildExtra = function (clip, VO) {
+  SK = document.getElementById('skill');
+  DET = document.getElementById('det'); PROC = document.getElementById('proc'); TAG = document.getElementById('tag');
+  var r = SK.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  QS = [].slice.call(document.querySelectorAll('#qs .q')).map(function (e) {
+    var b = e.getBoundingClientRect();
+    return { el: e, dx: cx - (b.left + b.width / 2), dy: cy - (b.top + b.height / 2) };
+  });
+  TA = 0.479 * VO; TB = 0.615 * VO;
+  DET.style.opacity = 0; SK.style.opacity = 0; PROC.style.opacity = 0; TAG.style.opacity = 0;
+  window.__t = { det: 0.479 * VO, sk: 0.632 * VO, proc: 0.749 * VO };
+};
+window.scrubExtra = function (t) {
+  var p = t <= TA ? 0 : t >= TB ? 1 : (t - TA) / (TB - TA); p = p * (2 - p);
+  if (p > 0) QS.forEach(function (q) {
+    q.el.style.transform = 'translate(' + (q.dx * p).toFixed(1) + 'px,' + (q.dy * p).toFixed(1)
+      + 'px) scale(' + (1 - 0.5 * p).toFixed(3) + ')';
+    q.el.style.opacity = (1 - p).toFixed(3);
+  });
+  var lbl = document.getElementById('lbl'), ttl = document.querySelector('#qs .lg');
+  if (p > 0) { lbl.style.opacity = (1 - p).toFixed(3); ttl.style.opacity = (1 - p).toFixed(3); }
+  var T = window.__t;
+  DET.style.opacity = Math.min(1, Math.max(0, (t - T.det) / 0.3));
+  SK.style.opacity = Math.min(1, Math.max(0, (t - T.sk) / 0.3));
+  TAG.style.opacity = Math.min(1, Math.max(0, (t - T.sk - 0.2) / 0.3));
+  PROC.style.opacity = Math.min(1, Math.max(0, (t - T.proc) / 0.3));
+};
+</script><script src="anim7.js"></script></body></html>
