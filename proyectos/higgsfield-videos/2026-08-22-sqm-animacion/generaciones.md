@@ -682,3 +682,60 @@ estaba escrito, y eso es tiempo. Deja de ser un pitch de 90 s y pasa a ser la ve
 sigue el registro de pitch —tipografía a sangre, corte duro, un verbo visual por escena— pero
 explica. Si se quiere además la pieza corta de verdad, sale de esta sacando las escenas 3d y 4
 y recortando la 2.
+
+
+## Corte v8 — 26/08/2026
+
+**3:26 · 1920×1080 · con música · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/f92c81c3-b2ca-4522-9378-17f320d814e7.mp4
+
+Doce láminas. La estructura cambia: entre el caso y Velaria se abre el par
+**Hoy · sin Velaria** / **Con Velaria**, y aparece el puente que faltaba.
+
+| # | Lámina | Ventana |
+|---|---|---|
+| 1 | Tu equipo ya usa IA | 12,8 s |
+| 2 | El villano — «el aprendizaje no sale de ahí», ahora dicha y en ámbar | 15,0 s |
+| 3 | Velaria · los tres ejes | 24,1 s |
+| 4 | **Veamos un ejemplo de uso** | 3,6 s |
+| 5 | El caso — el stack funciona, uno de los productos, el embarque del jueves | 23,9 s |
+| 6 | **Hoy · sin Velaria** — y el equipo ya usa Claude, cada uno por su lado | 22,2 s |
+| 7 | **Con Velaria** · Eje 1 — el ejercicio va con Claude | 30,9 s |
+| 8 | **Velaria registra, detecta el patrón y propone la Skill** | 19,6 s |
+| 9 | La Skill aprobada se instala en los diez | 11,8 s |
+| 10 | Eje 3 · Gobernanza | 8,1 s |
+| 11 | Impacto — con la aprobación humana visible | 19,9 s |
+| 12 | Cierre | 13,7 s |
+
+### El error de continuidad que corrige
+
+En el v7 la escena de Habilitación terminaba en «la misma pregunta se responde así», y la
+siguiente abría con siete personas haciendo lo mismo. Entre una y otra faltaba el hecho que
+las conecta: **que esa operación se repite durante semanas antes de que Velaria proponga
+nada.** Ahora ese es su propio bloque —la 8— y el colapso de las siete formulaciones ocurre
+ahí, no mezclado con el reparto. La 9 se queda solo con la propagación a los diez, después de
+que el área aprueba.
+
+### El error de tiempos que corrige
+
+El v7 decía que la excepción se resolvía a las 09:04 habiendo entrado a las 09:00. Cuatro
+minutos, con dos aprobaciones humanas de por medio, no lo cree nadie. Ahora la línea de tiempo
+está escrita y deja ver la revisión: entra 07:00, análisis listo 07:15, revisa Planificación,
+aprueba Finanzas, decisión antes del mediodía. Lo que sostiene el argumento no era el minuto:
+era **el mismo lunes en vez del jueves.**
+
+### Música
+
+Primera versión con cama. `sonilo_music`, 60 s de pad sostenido sin melodía ni progresión,
+encadenado consigo mismo cuatro veces con crossfades de 2 s —al no haber melodía la costura no
+se oye— hasta cubrir los 234 s. Normalizada a **−30 LUFS** y con `sidechaincompress` contra la
+voz, así que se agacha ~6 dB cada vez que ella habla. La regla de mezcla: si te das cuenta de
+que hay música, está muy arriba.
+
+### Ámbar
+
+`#D9A03C`, el `--warn` del sistema, entra como color de énfasis en tres lugares: la línea del
+villano, la declaración de que el stack funciona bien, y la etiqueta `[ SKILL ]` con su cuadro.
+El sistema lo reserva para badges de estado; usarlo como acento tipográfico es una licencia
+pedida por el cliente y conviene registrarla como tal.

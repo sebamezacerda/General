@@ -68,6 +68,10 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-26: **corte v8** — 3:26. Se abre el par «Hoy sin Velaria / Con Velaria», el ejercicio
+  declara que la IA es Claude, y aparece el puente que faltaba: la operación se repite semanas
+  antes de que Velaria proponga la Skill. Se corrigen los tiempos del impacto, que no daban
+  espacio a la aprobación humana. Primera versión con música.
 - 2026-08-25: **corte v7b** — 2:16. Se corrige lo que la voz dejaba sin decir: la locución lee
   los tres ejes, el problema de Brasil se enuncia entero, y diccionario y criterios llegan con
   su ejemplo real. El villano pasa de diez cuadros ilegibles a tres personas con lo que cada una
