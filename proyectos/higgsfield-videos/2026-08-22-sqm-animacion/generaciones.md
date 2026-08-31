@@ -899,3 +899,16 @@ saber dónde termina.
 | El lunes siguiente | **Sin cifra.** El énfasis va en «El mismo lunes» a 118 px, con «No el jueves» tachado al lado |
 | Placa final | Ahora lleva voz: «Velaria. Libera el poder de la IA. Guíala con tu visión.» |
 | Música | Tres pistas intercaladas: sobria · tensa · brillante · y vuelve la sobria para cerrar el arco |
+
+## Corte v13 — 31/08/2026
+
+**3:24 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/8e0fdab0-6203-4d15-9ece-3aabe42ba1be.mp4
+
+Mismo contenido de la v12 —las trece láminas y las cuatro tomas continuas— rehecho con el
+**arreglo de audio** descrito en `notas.md`. Video 204,44 s · voz 204,33 s · cama 204,33 s.
+
+Verificación posterior al montaje: se midió `mean_volume` por cuartos en cada una de las trece
+pistas de escena. Todas dan entre −14 y −23 dB en los cuatro cuartos; ninguna cae a silencio.
+En la v12, las escenas que no abrían toma se apagaban a media escena.

@@ -53,3 +53,15 @@ pregunta) y el cierre van sobre ink.
 - Voz de alguien explicando en una reunión, no de locutor de comercial.
 - Versión técnica aparte (Claude Code, CLAUDE.md, skills, hooks, MCP) — **no mezclar** con
   esta. Está descrita al final de `guion.md`.
+
+## Montaje
+
+- La locución va en **cuatro tomas continuas** que se cortan en escenas. Dentro de una toma el
+  modelo no cambia de tempo ni de acento; una generación por escena sí.
+- El corte usa `atrim + asetpts` **antes** de cualquier `afade`. Con `-ss/-to` de salida el
+  filtro sigue viendo los timestamps del original y el fade de cierre apaga la voz a media
+  escena (ver `notas.md` del proyecto de SQM).
+- `cortes-voz.json` admite varios tramos por escena: `[toma, [[ini,fin], …]]`. Sirve para sacar
+  una palabra suelta sin regenerar la toma.
+- Toda toma se transcribe con `faster-whisper` y `word_timestamps` antes de montar. Es lo único
+  que detecta colas alucinadas, que no se ven ni en la duración ni en el prompt.

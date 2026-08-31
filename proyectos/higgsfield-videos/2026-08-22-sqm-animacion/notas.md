@@ -146,3 +146,28 @@ Resumen operativo para el video:
 4. Generar frames clave de las escenas 5, 8 y 12 para validar arte antes de animar el resto.
 5. Animar cada frame aprobado y generar la locución (12 pistas).
 6. Montaje, música y mezcla; export a `exports/` (no versionado).
+
+## El fade que apagaba la voz (v12)
+
+Síntoma: en la v12 la voz desaparecía a media escena, en varias tomas y no en todas.
+
+Causa. El corte de cada escena se hacía con `-ss {ini} -to {fin}` **después** de `-i`, o sea
+seek de salida: ffmpeg descarta las muestras anteriores pero **no reescribe los timestamps**, así
+que el filtro `afade` seguía viendo el reloj del archivo original. El `st` del fade de cierre se
+calculaba sobre el reloj relativo (`d - 0.08`), de modo que en una escena que empezaba en el
+segundo 25 de la toma el fade se disparaba a los pocos segundos de clip y dejaba muda toda la
+segunda mitad. Las escenas con `ini = 0` —una por toma— salían intactas, y por eso el corte
+parecía tener voz «a ratos».
+
+Arreglo, aplicado a `assemble-v8.py` y a `assemble.py` de Velaria General:
+
+```
+-af 'atrim=start={ini}:end={fin},asetpts=N/SR/TB'   # reinicia el reloj
+```
+
+y recién sobre el resultado el `afade`. Además cada corte se mide y se imprime `CORTE MAL` si la
+duración no calza con lo pedido: el aviso hace ruidosa una falla que antes era invisible en el
+log.
+
+Regla que queda: **cualquier filtro que dependa del tiempo va después de `asetpts`**. Y el log
+del montaje se lee entero, no con `tail`; los avisos de corte salen al principio.

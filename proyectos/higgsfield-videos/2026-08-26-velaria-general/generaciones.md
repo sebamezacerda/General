@@ -73,3 +73,53 @@ está: decirlo no aportaba nada y era el único punto de riesgo.
 
 **Regla que queda para este proyecto:** ninguna pista se monta sin transcribirla antes. Las
 colas no aparecen en la duración esperada ni en el prompt — solo en el transcript.
+
+## Corte v3 — 31/08/2026
+
+**3:25 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/4f29ceb3-81f9-4c9b-bb3f-cc14e9971a7a.mp4
+
+Once láminas. Video 204,72 s · voz 204,67 s · cama 204,67 s.
+
+| # | Lámina | Ventana | Toma · corte |
+|---|---|---|---|
+| 1 | `m-01` Qué hace Velaria | 37,75 s | A 0,00–37,35 |
+| 2 | `m-02` Cómo funciona · los cinco pasos | 6,50 s | A 37,35–43,45 |
+| 3 | `m-03` Paso 1 · Tu equipo ya usa una herramienta de IA | 29,00 s | B 0,00–28,60 |
+| 4 | `m-04` Paso 1 · Ahora entra Velaria | 19,05 s | B 28,60–47,25 |
+| 5 | `m-04b` Paso 2 de 5 | 7,40 s | B 47,25–54,25 |
+| 6 | `m-05` Paso 2 · Las cuatro piezas clave | 27,95 s | C 0,00–27,55 |
+| 7 | `m-06` Paso 3 · Todo queda registrado | 22,64 s | C 27,55–49,79 |
+| 8 | `m-07` Paso 4 · La base de conocimiento | 17,35 s | D 0,00–16,95 |
+| 9 | `m-08` Paso 5 · El conocimiento se reparte | 20,20 s | D 17,05–18,60 + 19,85–38,10 |
+| 10 | `m-08b` Una empresa no captura valor… | 10,25 s | D 38,10–47,95 |
+| 11 | `m-09` Placa de marca | 6,58 s | D 47,95–53,53 |
+
+La escena 9 se arma con **dos tramos**: la toma D traía un «Es.» suelto entre medio y se saca
+recortando el hueco. `cortes-voz.json` pasó a formato multi-tramo `[toma, [[ini,fin], …]]` para
+poder hacerlo sin regenerar la toma.
+
+### Los cambios de la v3
+
+| | |
+|---|---|
+| Portada | **QUÉ HACE VELARIA** más grande, en azul de marca, versalitas |
+| Portada | «toma estos procesos y los **trabaja con IA**» |
+| Eje 1 | Redacción de Habilitación alineada con la web |
+| Cómo funciona | La locución **lee «Velaria»** en la frase |
+| Pasos | **PASO N°1** más grande y leído en voz alta; mismo trato para el Paso 2 de 5 |
+| Paso 1 | «Tu equipo **ya está usando** alguna herramienta de IA» |
+| Piel | Fondo `#EDF1F7`, tarjetas con borde `#D7DEE8`, banda de paso sobre tinta: menos blanco, más contraste |
+| Paso 1 | Se escribe y se lee **«ahora entra Velaria»**, con ejemplo concreto. Fuera «Todo lo que viene…» |
+| Paso 2 | «Velaria incluye **4 piezas clave** que se escriben una sola vez» |
+| Paso 2 | Fuera el texto gris repetido bajo cada tarjeta; los textos de abajo quedan destacados |
+| Paso 3 | «Todo lo que hace cada persona **queda registrado**» |
+| Paso 4 | «Con eso se comienza a crear algo fundamental: **la base de conocimiento de la empresa**». Fuera «se arma sola» |
+| Paso 4 | «ya resolvió **otro colega**» |
+| Paso 5 | **PROPUESTA DE SKILL** en ámbar, a la derecha |
+| Paso 5 | «Y luego **el conocimiento se reparte**» |
+| Paso 5 | «Quien dirige cada proyecto decide qué se activa, qué se automatiza, y mira el resultado en un **tablero de control**» |
+| Cierre | Nueva lámina `m-08b`: «Una empresa no captura valor…», la del corte de SQM |
+| Locución | Cuatro tomas continuas: sin alucinaciones, sin cambios de idioma, sin cambios de tempo |
+| Música | Cuatro pistas intercaladas —sobria · tensa · brillante · resuelta— encadenadas con `acrossfade` |
