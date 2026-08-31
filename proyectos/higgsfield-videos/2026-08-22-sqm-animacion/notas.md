@@ -68,6 +68,9 @@ Resumen operativo para el video:
   densidad, no por luz.
 
 ## Bitácora
+- 2026-08-31: **corte v12** — 3:24. La narración pasa a cuatro tomas continuas cortadas por
+  whisper: dentro de una toma el modelo no cambia de tempo ni de acento, que era la causa de
+  que la voz «saltara» entre escenas. Más quince ajustes de guion y pantalla.
 - 2026-08-26: **corte v11** — 3:13. Cierra con la placa de marca y la bajada de la web.
   Habilitación abre en que Velaria sugiere qué IA usar. La música pasa a nivel fijo sin ducking.
 - 2026-08-26: **corte v10** — 3:08. La escena 1 apuntaba a la locución del v5, que nombraba a

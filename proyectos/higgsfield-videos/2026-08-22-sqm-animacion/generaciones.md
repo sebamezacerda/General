@@ -851,3 +851,51 @@ Se elimina el `sidechaincompress`. Bajar la cama en cada frase de la locución y
 cada silencio es exactamente lo que se oía como bombeo, y ningún ajuste de release lo arregla
 del todo cuando la voz entra y sale cada dos segundos. Ahora es **nivel fijo a −17 dB** —dos dB
 más arriba que antes— y la mezcla es una simple suma. Más simple y suena mejor.
+
+
+## Corte v12 — 31/08/2026
+
+**3:24 · trece láminas · narración en cuatro tomas continuas**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/b81badb9-6044-481b-9a54-4dac4094ec3d.mp4
+
+### El cambio de fondo: la voz deja de saltar
+
+El síntoma eran tres quejas distintas —«a veces se acelera», «después de *le pone adentro*
+cambia la voz», «revisar el tono del lunes siguiente»— y era **un solo problema**: cada escena
+era una generación de TTS independiente, y el modelo arranca de cero en cada llamada. Tempo,
+timbre y acento son estado interno que no se conserva entre generaciones. Parchar pista por
+pista no podía funcionar: cada regeneración es un dado nuevo.
+
+La narración ahora se graba en **cuatro tomas continuas**, una por bloque narrativo, y se corta
+en escenas con los tiempos de palabra de whisper. Dentro de una toma el estado no cambia, así
+que la voz no puede saltar. Los cortes caen en el silencio entre frases, con fundidos de 50 y
+80 ms para que no haya clic.
+
+| Toma | Escenas | Duración |
+|---|---|---|
+| A | 1–3 | 58,8 s |
+| B | 4–6 | 46,7 s |
+| C | 7–9 | 53,1 s |
+| D | 10–13 | 39,7 s |
+
+Efecto lateral: las cuatro tomas salieron **sin cola alucinada**, el modo de falla que había
+aparecido cinco veces en pistas cortas. Un texto largo le da al modelo suficiente contexto para
+saber dónde termina.
+
+### Los demás cambios
+
+| | |
+|---|---|
+| Intro | «Tu equipo **probablemente** ya usa IA en su trabajo» |
+| Villano | Las tres tarjetas entran una tras otra, ~5,5 s de lectura cada una, y ya no desaparecen. La locución nombra a cada una —Comercial, Logística, Planificación— para que la voz acompañe la lectura. Fuera «+ 7 personas» |
+| Eje 2 | Pasa a **Productividad · Mejora continua** en las tres láminas donde aparece |
+| Ejemplo | «Veamos un ejemplo de uso en **ingeniería**» |
+| El caso | «Un equipo de **10 personas planifican demanda**» |
+| Con Velaria | **«Entra Velaria»** |
+| Habilitación | «la **herramienta de IA** que ya usan» · «cualquiera del equipo pregunta **a la herramienta de IA**», en ámbar |
+| Mejora continua | 52 px de aire entre el rótulo y «Pasan las semanas» |
+| La Skill | `[ SKILL v1 ]` a 40 px y el nombre de la Skill a 52 |
+| El lunes siguiente | **Sin cifra.** El énfasis va en «El mismo lunes» a 118 px, con «No el jueves» tachado al lado |
+| Placa final | Ahora lleva voz: «Velaria. Libera el poder de la IA. Guíala con tu visión.» |
+| Música | Tres pistas intercaladas: sobria · tensa · brillante · y vuelve la sobria para cerrar el arco |
