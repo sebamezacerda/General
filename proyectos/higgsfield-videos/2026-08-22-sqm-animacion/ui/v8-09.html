@@ -1,13 +1,13 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="v7.css"><title>La Skill repartida</title></head><body class="v7">
-<div class="head"><div class="mlbl">Con Velaria · Eje 2 · Mejora continua</div>
+<div class="head"><div class="mlbl">Eje 2 de 3</div>
   <div class="ejes"><b></b><b class="on"></b><b></b></div></div>
 <div class="stage hero">
-  <div class="secc" data-in="0.005"><span class="n">EJE 2 DE 3</span><span class="t">Mejora continua</span></div>
+  <div class="secc" data-in="0.005"><span class="n">EJE 2 DE 3</span><span class="t">Productividad · Mejora continua</span></div>
   <div id="out">
     <div class="skill" id="skill" style="border-left-color:var(--warn)">
-      <div><div class="nm">Weekly S&amp;OP Exception Review</div>
+      <div><div class="nm" style="font-size:52px">Weekly S&amp;OP Exception Review</div>
         <div class="mt">6 pasos · fuentes: ERP · TMS · CRM · criterio: cobertura &lt; 21 días</div></div>
-      <div class="state" id="tag" style="color:var(--warn)">[ SKILL · PROPUESTA ]</div></div>
+      <div class="state" id="tag" style="color:var(--warn);font-size:40px;letter-spacing:3px">[ SKILL v1 ]</div></div>
     <div class="team" id="team">
       <div class="slot"><div class="who">C. ROJAS</div><div class="has">Skill v1</div></div>
       <div class="slot"><div class="who">M. DÍAZ</div><div class="has">Skill v1</div></div>
@@ -27,13 +27,13 @@
   <div class="mval hi" id="cnt">0 / 10</div></div>
 <script>
 // la propagacion: la Skill aprobada se instala en los diez
-window.VO = 10.152;
+window.VO = 9.416;
 var TEAM, CNT, FIN, TAG, REV, FILL = [], T;
 window.buildExtra = function (clip, VO) {
   TEAM = document.getElementById('team'); CNT = document.getElementById('cnt');
   FIN = document.getElementById('fin'); TAG = document.getElementById('tag'); REV = document.getElementById('rev');
-  FILL = []; for (var i = 0; i < 10; i++) FILL.push((0.637 + i * 0.020) * VO);
-  T = { rev: 0.005 * VO, apr: 0.356 * VO, due: 0.840 * VO };
+  FILL = []; for (var i = 0; i < 10; i++) FILL.push((0.638 + i * 0.018) * VO);
+  T = { rev: 0.005 * VO, apr: 0.350 * VO, due: 0.829 * VO };
   [].slice.call(TEAM.children).forEach(function (s) { s.style.opacity = 0; });
   CNT.style.opacity = 0; FIN.style.opacity = 0; REV.style.opacity = 0;
 };
