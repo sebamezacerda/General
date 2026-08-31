@@ -107,5 +107,5 @@ sh(f"ffmpeg -y -v error -i seg8/voz.wav -i seg8/bed.wav -filter_complex "
    f"\"[0:a][1:a]amix=inputs=2:duration=first:normalize=0[mix]\" "
    f"-map '[mix]' -ar 48000 -ac 2 seg8/mezcla.wav")
 
-sh("ffmpeg -y -v error -i seg8/video.mp4 -i seg8/mezcla.wav -c:v copy -c:a aac -b:a 192k corte-v8.mp4")
-print("VIDEO", dur("seg8/video.mp4"), "VOZ", T, "CAMA", dur("seg8/bed.wav"), "FINAL", dur("corte-v8.mp4"))
+sh("ffmpeg -y -v error -i seg8/video.mp4 -i seg8/mezcla.wav -c:v copy -c:a aac -b:a 192k corte-v13.mp4")
+print("VIDEO", dur("seg8/video.mp4"), "VOZ", T, "CAMA", dur("seg8/bed.wav"), "FINAL", dur("corte-v13.mp4"))

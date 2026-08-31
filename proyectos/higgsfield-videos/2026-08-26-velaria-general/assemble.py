@@ -102,5 +102,5 @@ sh(f"ffmpeg -y -v error -i seg/bed_raw.wav -af "
 sh(f"ffmpeg -y -v error -i seg/voz.wav -i seg/bed.wav -filter_complex "
    f"\"[0:a][1:a]amix=inputs=2:duration=first:normalize=0[mix]\" -map '[mix]' -ar 48000 -ac 2 seg/mezcla.wav")
 
-sh("ffmpeg -y -v error -i seg/video.mp4 -i seg/mezcla.wav -c:v copy -c:a aac -b:a 192k corte-v2.mp4")
-print("VIDEO", dur("seg/video.mp4"), "VOZ", T, "CAMA", dur("seg/bed.wav"), "FINAL", dur("corte-v2.mp4"))
+sh("ffmpeg -y -v error -i seg/video.mp4 -i seg/mezcla.wav -c:v copy -c:a aac -b:a 192k corte-v3.mp4")
+print("VIDEO", dur("seg/video.mp4"), "VOZ", T, "CAMA", dur("seg/bed.wav"), "FINAL", dur("corte-v3.mp4"))
