@@ -2,22 +2,15 @@
 """Montaje de Velaria General. Corre en el sandbox de Higgsfield."""
 import subprocess, os, json
 B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
-MP3 = ["hf_20260826_115500_c1c23fd9-a8c4-4ac6-b79e-7849c52c625b",  # 01 que hace Velaria
-       "hf_20260826_115501_4e6aebe3-edf2-4b23-8e73-f55ea1962470",  # 02 en cinco pasos
-       "hf_20260826_115647_b61dd10c-30d1-4e3d-b493-5bd61ad672a4",  # 03 paso 1a
-       "hf_20260826_165229_800bab79-229a-4fa3-9b11-334bb90c6ea5",  # 04 paso 1b
-       "hf_20260826_165928_7049a46d-230c-4749-b6d4-492143bd81a4",  # 05 el ejemplo: cotizaciones
-       "hf_20260826_165229_384eaaaa-f0a3-47dd-ac71-642b55010607",  # 06 paso 2 piezas
-       "hf_20260826_165928_70c0d51c-87c2-456e-ae20-852c70420d31",  # 07 paso 3 conocimiento
-       "hf_20260826_115514_8ee04e40-a06f-4081-b2c0-b72e657b4c8e",  # 08 paso 4 la base
-       "hf_20260826_115515_ae046f26-bfa5-490a-9e4b-f591f4e30223",  # 09 paso 5 reparto
-       "hf_20260826_165228_203f242f-3e47-4214-b17d-6b97d361bfa0"]  # 10 cierre
+# La narracion va en CUATRO TOMAS CONTINUAS y se corta en escenas: dentro de una
+# toma el modelo no cambia de tempo ni de acento.
+TOMAS = ["hf_20260831_222136_f6477c2f-e4cd-4830-9c65-7aa5674bbd07",  # A escenas 1-2
+         "hf_20260831_222136_f87e181b-426e-423c-8938-0e82523dcbb4",  # B escenas 3-5
+         "hf_20260831_222136_79793e04-e113-425b-888d-3418436574b6",  # C escenas 6-7
+         "hf_20260831_222417_59415cce-de31-43f9-bbc9-f35df4b24230"]  # D escenas 8-11
+CUTS = json.load(open("cortes-voz.json"))
 PLAN = [n for n, _ in json.load(open("ui/plan-mec.json"))]
 WIN = [w for _, w in json.load(open("ui/plan-mec.json"))]
-# la 8 trae cola alucinada tras "se entera"; la 10, seis segundos de balbuceo
-# despues de "vision" -- ahi se corta antes de la palabra "Velaria" suelta,
-# que es la que sonaba con acento raro
-TRIM = {8: 14.4, 10: 4.95}
 FPS = 25
 os.makedirs("src", exist_ok=True); os.makedirs("seg", exist_ok=True)
 def sh(c): subprocess.run(c, shell=True, check=True, capture_output=True)
@@ -26,8 +19,26 @@ def dur(p):
                        shell=True, capture_output=True, text=True)
     return float(json.loads(r.stdout)["format"]["duration"])
 
-for i, f in enumerate(MP3, 1):
-    if not os.path.exists(f"src/a{i}.mp3"): sh(f"curl -sfo src/a{i}.mp3 '{B}{f}.mp3'")
+for i, f in enumerate(TOMAS, 1):
+    if not os.path.exists(f"src/t{i}.mp3"): sh(f"curl -sfo src/t{i}.mp3 '{B}{f}.mp3'")
+# atrim + asetpts reinicia el reloj ANTES del fade. Con -ss/-to de salida el filtro
+# sigue viendo los timestamps del original y el fade de cierre se dispara antes de
+# tiempo: asi es como se apagaba la voz a media escena.
+for i, (tk, tramos) in enumerate(CUTS, 1):
+    trozos = []
+    for k, (ini, fin) in enumerate(tramos):
+        out = f"src/a{i}_{k}.wav"
+        sh(f"ffmpeg -y -v error -i src/t{tk}.mp3 -af "
+           f"'atrim=start={ini}:end={fin},asetpts=N/SR/TB' -ar 48000 -ac 2 '{out}'")
+        trozos.append(out)
+    with open(f"src/l{i}.txt", "w") as fh:
+        for t in trozos: fh.write(f"file '{os.path.abspath(t)}'\n")
+    sh(f"ffmpeg -y -v error -f concat -safe 0 -i src/l{i}.txt -c copy src/c{i}.wav")
+    d = dur(f"src/c{i}.wav")
+    sh(f"ffmpeg -y -v error -i src/c{i}.wav -af "
+       f"'afade=t=in:d=0.05,afade=t=out:st={d-0.08:.3f}:d=0.08' src/a{i}.wav")
+    esperado = round(sum(e - s2 for s2, e in tramos), 3)
+    if abs(d - esperado) > 0.05: print("CORTE MAL en escena", i, esperado, round(d, 2))
 
 segs = []
 for i, w in enumerate(WIN, 1):
@@ -44,11 +55,8 @@ sh("ffmpeg -y -v error -f concat -safe 0 -i seg/list.txt -c copy seg/video.mp4")
 
 parts = []
 for i, w in enumerate(WIN, 1):
-    t = TRIM.get(i)
-    cut = f"-t {t} -af afade=t=out:st={t-0.2}:d=0.2" if t else ""
-    sh(f"ffmpeg -y -v error -i src/a{i}.mp3 {cut} -ar 48000 -ac 2 seg/a{i}.wav")
-    parts.append(f"seg/a{i}.wav")
-    g = round(w - dur(f"seg/a{i}.wav"), 3)
+    parts.append(f"src/a{i}.wav")
+    g = round(w - dur(f"src/a{i}.wav"), 3)
     if g < 0: print("VENTANA CORTA en escena", i, g); g = 0.05
     sh(f"ffmpeg -y -v error -f lavfi -i anullsrc=r=48000:cl=stereo -t {g} seg/g{i}.wav")
     parts.append(f"seg/g{i}.wav")
@@ -58,11 +66,12 @@ sh("ffmpeg -y -v error -f concat -safe 0 -i seg/alist.txt -c copy seg/voz.wav")
 T = dur("seg/voz.wav")
 
 # ---- cama: las mismas cuatro piezas electronicas del corte de SQM, una por bloque
-BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # A que hace Velaria
-        "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # B el paso 1 y el ejemplo
-        "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # C piezas y conocimiento
-        "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # D reparto y cierre
-BLOQUES = [(1, 3), (4, 5), (6, 8), (9, 10)]
+# cuatro pistas intercaladas, para que la musica acompane el avance de los pasos
+BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # sobria
+        "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # tensa
+        "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # brillante
+        "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # resuelta
+BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 11)]
 for i, f in enumerate(BEDS, 1):
     if not os.path.exists(f"src/b{i}.m4a"): sh(f"curl -sfo src/b{i}.m4a '{B}{f}'")
 

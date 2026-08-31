@@ -23,9 +23,19 @@ def dur(p):
 for i, f in enumerate(TOMAS, 1):
     if not os.path.exists(f"src8/t{i}.mp3"): sh(f"curl -sfo src8/t{i}.mp3 '{B}{f}.mp3'")
 # cada escena es un trozo de su toma; los cortes caen en el silencio entre frases
+# BUG corregido: antes el recorte usaba -ss/-to DESPUES de -i y el afade se
+# calculaba sobre el reloj relativo. Con seek de salida el filtro sigue viendo los
+# timestamps del archivo original, asi que el fade de cierre se disparaba a los
+# pocos segundos y la voz se apagaba a media escena. atrim + asetpts reinicia el
+# reloj antes del fade, que es lo unico que garantiza que ambos hablen del mismo 0.
 for i, (tk, ini, fin) in enumerate(CUTS, 1):
-    sh(f"ffmpeg -y -v error -i src8/t{tk}.mp3 -ss {ini} -to {fin} "
-       f"-af afade=t=in:d=0.05,afade=t=out:st={fin-ini-0.08:.3f}:d=0.08 -ar 48000 -ac 2 src8/a{i}.wav")
+    d = round(fin - ini, 3)
+    sh(f"ffmpeg -y -v error -i src8/t{tk}.mp3 -af "
+       f"'atrim=start={ini}:end={fin},asetpts=N/SR/TB,"
+       f"afade=t=in:d=0.05,afade=t=out:st={d-0.08:.3f}:d=0.08' "
+       f"-ar 48000 -ac 2 src8/a{i}.wav")
+    got = dur(f"src8/a{i}.wav")
+    if abs(got - d) > 0.05: print("CORTE MAL en escena", i, "esperado", d, "obtenido", round(got,2))
 if not os.path.exists("src8/mus.m4a"): sh(f"curl -sfo src8/mus.m4a '{B}{MUS}'")
 
 # ---- video
