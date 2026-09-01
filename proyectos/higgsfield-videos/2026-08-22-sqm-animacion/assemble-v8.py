@@ -5,12 +5,14 @@ B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
 # La narracion se graba en CUATRO TOMAS CONTINUAS, no en trece pistas sueltas.
 # Dentro de una toma el modelo mantiene el mismo tempo y el mismo acento; entre
 # generaciones independientes no, y eso era lo que se oia como cambios de voz.
-TOMAS = ["hf_20260831_215317_bebf5409-07ec-48eb-a951-42132a992c47",  # A escenas 1-3
+TOMAS = ["hf_20260901_083624_75fdede7-1521-418f-b608-89c8e6e477a6",  # A escenas 1-3
          "hf_20260831_215317_e76e7745-45ef-4cd3-89b0-25516a6e009e",  # B escenas 4-6
-         "hf_20260831_215317_24b37c23-b599-4d94-b231-9fffec92c104",  # C escenas 7-9
-         "hf_20260831_215317_65c4a6d9-15ba-4706-a78b-026f49aabd56"]  # D escenas 10-13
+         "hf_20260901_083623_303bf1cd-1acd-4733-b33b-b670e4dae910",  # C escenas 7-9
+         "hf_20260901_083623_151d9d39-edd1-4176-a241-6778be044392"]  # D escenas 10-13
+# la voz se acelera un 7% antes de cortar: da cadencia sin subir el tono ni
+# obligar a regenerar. Los tiempos de cortes-voz.json ya estan en este reloj.
+SPEED = 1.07
 CUTS = json.load(open("cortes-voz.json"))
-MUS = "hf_20260826_125423_e30abb49-79a0-4b66-a08a-e3a2e0bbb6fa.m4a"
 WIN = [w for _, w in json.load(open("ui/plan-v8.json"))]
 FPS = 25
 os.makedirs("src8", exist_ok=True); os.makedirs("seg8", exist_ok=True)
@@ -22,21 +24,31 @@ def dur(p):
 
 for i, f in enumerate(TOMAS, 1):
     if not os.path.exists(f"src8/t{i}.mp3"): sh(f"curl -sfo src8/t{i}.mp3 '{B}{f}.mp3'")
-# cada escena es un trozo de su toma; los cortes caen en el silencio entre frases
+    if not os.path.exists(f"src8/t{i}.wav"):
+        sh(f"ffmpeg -y -v error -i src8/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src8/t{i}.wav")
+# cada escena es uno o varios trozos de su toma; los cortes caen en el silencio
+# entre frases. El formato es [toma, [[ini,fin], ...]]: el segundo tramo sirve para
+# saltarse una alucinacion del modelo sin regenerar la toma entera.
 # BUG corregido: antes el recorte usaba -ss/-to DESPUES de -i y el afade se
 # calculaba sobre el reloj relativo. Con seek de salida el filtro sigue viendo los
 # timestamps del archivo original, asi que el fade de cierre se disparaba a los
 # pocos segundos y la voz se apagaba a media escena. atrim + asetpts reinicia el
 # reloj antes del fade, que es lo unico que garantiza que ambos hablen del mismo 0.
-for i, (tk, ini, fin) in enumerate(CUTS, 1):
-    d = round(fin - ini, 3)
-    sh(f"ffmpeg -y -v error -i src8/t{tk}.mp3 -af "
-       f"'atrim=start={ini}:end={fin},asetpts=N/SR/TB,"
-       f"afade=t=in:d=0.05,afade=t=out:st={d-0.08:.3f}:d=0.08' "
-       f"-ar 48000 -ac 2 src8/a{i}.wav")
-    got = dur(f"src8/a{i}.wav")
-    if abs(got - d) > 0.05: print("CORTE MAL en escena", i, "esperado", d, "obtenido", round(got,2))
-if not os.path.exists("src8/mus.m4a"): sh(f"curl -sfo src8/mus.m4a '{B}{MUS}'")
+for i, (tk, tramos) in enumerate(CUTS, 1):
+    trozos = []
+    for k, (ini, fin) in enumerate(tramos):
+        out = f"src8/a{i}_{k}.wav"
+        sh(f"ffmpeg -y -v error -i src8/t{tk}.wav -af "
+           f"'atrim=start={ini}:end={fin},asetpts=N/SR/TB' -ar 48000 -ac 2 '{out}'")
+        trozos.append(out)
+    with open(f"src8/l{i}.txt", "w") as fh:
+        for t in trozos: fh.write(f"file '{os.path.abspath(t)}'\n")
+    sh(f"ffmpeg -y -v error -f concat -safe 0 -i src8/l{i}.txt -c copy src8/c{i}.wav")
+    d = dur(f"src8/c{i}.wav")
+    sh(f"ffmpeg -y -v error -i src8/c{i}.wav -af "
+       f"'afade=t=in:d=0.05,afade=t=out:st={d-0.08:.3f}:d=0.08' src8/a{i}.wav")
+    esperado = round(sum(b - a for a, b in tramos), 3)
+    if abs(d - esperado) > 0.05: print("CORTE MAL en escena", i, esperado, round(d, 2))
 
 # ---- video
 segs = []
