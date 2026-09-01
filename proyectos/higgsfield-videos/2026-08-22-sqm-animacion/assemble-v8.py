@@ -5,14 +5,16 @@ B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
 # La narracion se graba en CUATRO TOMAS CONTINUAS, no en trece pistas sueltas.
 # Dentro de una toma el modelo mantiene el mismo tempo y el mismo acento; entre
 # generaciones independientes no, y eso era lo que se oia como cambios de voz.
-TOMAS = ["hf_20260901_083624_75fdede7-1521-418f-b608-89c8e6e477a6",  # A escenas 1-3
-         "hf_20260831_215317_e76e7745-45ef-4cd3-89b0-25516a6e009e",  # B escenas 4-6
-         "hf_20260901_083623_303bf1cd-1acd-4733-b33b-b670e4dae910",  # C escenas 7-9
-         "hf_20260901_083623_151d9d39-edd1-4176-a241-6778be044392"]  # D escenas 10-13
+TOMAS = ["hf_20260901_090034_04469c3e-7222-4155-b95a-9084226b4cca",  # A escenas 2-4
+         "hf_20260831_215317_e76e7745-45ef-4cd3-89b0-25516a6e009e",  # B escenas 5-7
+         "hf_20260901_083623_303bf1cd-1acd-4733-b33b-b670e4dae910",  # C escenas 8-10
+         "hf_20260901_090033_f9165e69-649f-45aa-831d-be0680c68b1e"]  # D escenas 11-15
 # la voz se acelera un 7% antes de cortar: da cadencia sin subir el tono ni
 # obligar a regenerar. Los tiempos de cortes-voz.json ya estan en este reloj.
 SPEED = 1.07
 CUTS = json.load(open("cortes-voz.json"))
+RITMO = json.load(open("ritmo.json"))
+PLAN = [n for n, _ in json.load(open("ui/plan-v8.json"))]
 WIN = [w for _, w in json.load(open("ui/plan-v8.json"))]
 FPS = 25
 os.makedirs("src8", exist_ok=True); os.makedirs("seg8", exist_ok=True)
@@ -25,7 +27,20 @@ def dur(p):
 for i, f in enumerate(TOMAS, 1):
     if not os.path.exists(f"src8/t{i}.mp3"): sh(f"curl -sfo src8/t{i}.mp3 '{B}{f}.mp3'")
     if not os.path.exists(f"src8/t{i}.wav"):
-        sh(f"ffmpeg -y -v error -i src8/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src8/t{i}.wav")
+        sh(f"ffmpeg -y -v error -i src8/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src8/s{i}.wav")
+        # ritmo: las pausas de la toma van de 0,2 a 0,8 s y eso es lo que se oye
+        # como "hay partes mas rapidas que otras". El plan las acota a 0,2-0,4 s y
+        # deja el habla intacta (normalizar tambien la velocidad de cada frase se
+        # probo y AUMENTABA la dispersion: la prosodia real ya varia a proposito).
+        letra = "ABCD"[i - 1]; trozos = []
+        for k, (a, b, f2) in enumerate(RITMO[letra]):
+            o = f"src8/r{i}_{k:03d}.wav"
+            sh(f"ffmpeg -y -v error -i src8/s{i}.wav -af "
+               f"'atrim={a}:{b},asetpts=N/SR/TB,atempo={f2}' -ar 48000 -ac 2 {o}")
+            trozos.append(o)
+        with open(f"src8/r{i}.txt", "w") as fh:
+            for t in trozos: fh.write(f"file '{os.path.abspath(t)}'\n")
+        sh(f"ffmpeg -y -v error -f concat -safe 0 -i src8/r{i}.txt -c copy src8/t{i}.wav")
 # cada escena es uno o varios trozos de su toma; los cortes caen en el silencio
 # entre frases. El formato es [toma, [[ini,fin], ...]]: el segundo tramo sirve para
 # saltarse una alucinacion del modelo sin regenerar la toma entera.
@@ -35,6 +50,9 @@ for i, f in enumerate(TOMAS, 1):
 # pocos segundos y la voz se apagaba a media escena. atrim + asetpts reinicia el
 # reloj antes del fade, que es lo unico que garantiza que ambos hablen del mismo 0.
 for i, (tk, tramos) in enumerate(CUTS, 1):
+    if not tramos:                       # escena sin voz (la intro de marca)
+        sh(f"ffmpeg -y -v error -f lavfi -i anullsrc=r=48000:cl=stereo -t 0.02 src8/a{i}.wav")
+        continue
     trozos = []
     for k, (ini, fin) in enumerate(tramos):
         out = f"src8/a{i}_{k}.wav"
@@ -53,7 +71,7 @@ for i, (tk, tramos) in enumerate(CUTS, 1):
 # ---- video
 segs = []
 for i, w in enumerate(WIN, 1):
-    src, out = f"ui/clips/v8-{i:02d}.mp4", f"seg8/s{i}.mp4"
+    src, out = f"ui/clips/{PLAN[i - 1]}.mp4", f"seg8/s{i}.mp4"
     sh(f"ffmpeg -y -v error -i '{src}' -vf 'scale=1920:1080:flags=lanczos,setsar=1,fps={FPS}' "
        f"-t {w:.3f} -an -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p '{out}'")
     d = dur(out)
@@ -83,7 +101,7 @@ BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # 1 sobr
         "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # 2 tensa
         "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # 3 brillante
         "hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a"]  # 1 otra vez
-BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 13)]   # escenas de cada bloque, inclusivo
+BLOQUES = [(1, 4), (5, 7), (8, 10), (11, 15)]   # escenas de cada bloque, inclusivo
 for i, f in enumerate(BEDS, 1):
     if not os.path.exists(f"src8/b{i}.m4a"): sh(f"curl -sfo src8/b{i}.m4a '{B}{f}'")
 
