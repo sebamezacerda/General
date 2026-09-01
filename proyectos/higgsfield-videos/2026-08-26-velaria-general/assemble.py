@@ -14,6 +14,7 @@ TOMAS = ["hf_20260901_085159_4bca9323-3906-443d-800e-8b54a03ba989",  # A escenas
 # tiempos de cortes-voz.json ya estan escritos en este reloj.
 SPEED = 1.08
 CUTS = json.load(open("cortes-voz.json"))
+RITMO = json.load(open("ritmo.json"))
 PLAN = [n for n, _ in json.load(open("ui/plan-mec.json"))]
 WIN = [w for _, w in json.load(open("ui/plan-mec.json"))]
 FPS = 25
@@ -27,11 +28,27 @@ def dur(p):
 for i, f in enumerate(TOMAS, 1):
     if not os.path.exists(f"src/t{i}.mp3"): sh(f"curl -sfo src/t{i}.mp3 '{B}{f}.mp3'")
     if not os.path.exists(f"src/t{i}.wav"):
-        sh(f"ffmpeg -y -v error -i src/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src/t{i}.wav")
+        sh(f"ffmpeg -y -v error -i src/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src/s{i}.wav")
+        # ritmo: las pausas de la toma iban de 0,2 a 0,7 s y eso es lo que se oye
+        # como "hay partes mas rapidas que otras". El plan las acota a 0,2-0,4 s y
+        # deja el habla intacta (normalizar tambien la velocidad de cada frase se
+        # probo y AUMENTABA la dispersion: la prosodia real ya varia a proposito).
+        letra = "ABCDE"[i - 1]; trozos = []
+        for k, (a, b, f2) in enumerate(RITMO[letra]):
+            o = f"src/r{i}_{k:03d}.wav"
+            sh(f"ffmpeg -y -v error -i src/s{i}.wav -af "
+               f"'atrim={a}:{b},asetpts=N/SR/TB,atempo={f2}' -ar 48000 -ac 2 {o}")
+            trozos.append(o)
+        with open(f"src/r{i}.txt", "w") as fh:
+            for t in trozos: fh.write(f"file '{os.path.abspath(t)}'\n")
+        sh(f"ffmpeg -y -v error -f concat -safe 0 -i src/r{i}.txt -c copy src/t{i}.wav")
 # atrim + asetpts reinicia el reloj ANTES del fade. Con -ss/-to de salida el filtro
 # sigue viendo los timestamps del original y el fade de cierre se dispara antes de
 # tiempo: asi es como se apagaba la voz a media escena.
 for i, (tk, tramos) in enumerate(CUTS, 1):
+    if not tramos:                       # escena sin voz (la intro de marca)
+        sh(f"ffmpeg -y -v error -f lavfi -i anullsrc=r=48000:cl=stereo -t 0.02 src/a{i}.wav")
+        continue
     trozos = []
     for k, (ini, fin) in enumerate(tramos):
         out = f"src/a{i}_{k}.wav"
@@ -78,7 +95,7 @@ BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # sobria
         "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # tensa
         "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # brillante
         "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # resuelta
-BLOQUES = [(1, 2), (3, 5), (6, 7), (8, 11)]
+BLOQUES = [(1, 3), (4, 6), (7, 8), (9, 12)]
 for i, f in enumerate(BEDS, 1):
     if not os.path.exists(f"src/b{i}.m4a"): sh(f"curl -sfo src/b{i}.m4a '{B}{f}'")
 
