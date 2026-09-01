@@ -165,3 +165,43 @@ por generación, menos superficie para que el modelo se descarrile. Las dos sali
 
 Verificación de audio: `mean_volume` por cuartos en las once pistas con voz, todo entre −14 y
 −21 dB; ninguna cae a silencio.
+
+## Corte v5 — 01/09/2026
+
+**3:16 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/8e44a192-4cbc-472a-9845-fd7ae7710b30.mp4
+
+Solo composición: la narración, los cortes y los cues son los mismos del v4.
+
+### El pie que se perdía
+
+Se auditaron las once láminas por medición —contraste calculado de cada texto contra el fondo
+efectivo, y posición de cada caja contra el borde de cuadro— en vez de mirarlas. Dos hallazgos:
+
+**`m-01` empujaba el pie fuera del video.** El pie terminaba en 1096 px sobre un cuadro de 1080:
+la línea «Tres frentes» estaba literalmente cortada. La causa es que `.stage` es `flex:1` y, al
+no caber, crecía y desplazaba el pie. Se le puso `min-height:0` y se recuperó altura donde no
+cuesta lectura: `.row` de 18 a 13 px de padding, `.card` de 26/28 a 22/26, el cuerpo de tarjeta
+de 29 a 28 px, el interlineado de `.t2` de 1,28 a 1,24. Ahora **las once láminas cierran el pie
+en 977–1025**, la misma posición en todas.
+
+**Seis textos por debajo del mínimo de contraste.** Todos eran `--steel` (#8A94A6), que funciona
+sobre tinta pero no sobre el fondo claro:
+
+| | antes | ahora |
+|---|---|---|
+| Pie de lámina, las once | 2,70:1 | **5,4:1** |
+| «Algunos · por su cuenta» y el otro encabezado de columna | 3,06:1 | **4,9:1** |
+| Los números 01–04 de la cadena de la etapa 4 | 3,06:1 | **4,9:1** |
+| «EQUIPO» en las seis fichas de la etapa 5 | 3,06:1 | **4,9:1** |
+| Los separadores `·` de la cadena de etapas | 3,08:1 | **6,3:1** |
+
+Se agregó `--mute2: #55606F` para eso: el steel de marca se reserva para las láminas oscuras.
+
+### Los otros dos cambios
+
+| | |
+|---|---|
+| «1 de 5» | El «DE 5» estaba en gris a 22 px y desterrado al margen derecho con `margin-left:auto`. Ahora va **pegado al número, a 38 px y en `--accent-hi`**: la banda se lee «ETAPA N°1 DE 5» como una sola unidad |
+| Barras de la cabecera | Fuera. El contador de cinco barras arriba a la derecha decía lo mismo que la banda de etapa, y dos indicadores del mismo dato compiten entre sí |

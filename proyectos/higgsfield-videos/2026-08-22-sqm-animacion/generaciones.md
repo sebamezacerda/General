@@ -1043,3 +1043,42 @@ y se sigue sacando con el segundo tramo de la escena 8.
 
 Verificación de audio: `mean_volume` por cuartos en las catorce pistas con voz, todo entre −14 y
 −21 dB; ninguna cae a silencio.
+
+## Corte v16 — 01/09/2026
+
+**3:17 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/403ece49-071f-45be-b96b-c1ae0acd7325.mp4
+
+Video 197,44 s · voz 197,38 s · cama 197,38 s. Sin avisos de corte.
+
+### La voz se aceleraba en las tarjetas
+
+Reporte: en «Es dónde queda lo que aprendió», al entrar los cuadros, la voz corre de más. Medido
+sobre la toma A, en caracteres hablados por segundo con los `word_timestamps` de cada frase:
+
+| frase | antes | ahora |
+|---|---|---|
+| «Logística cruza el sistema de transporte…» | 21,1 | **17,6** |
+| «Planificación escribió los pasos…» | 20,3 | **17,6** |
+| «El problema no es la IA» · «Es dónde queda lo que aprendió» | 19,7 | **17,6** |
+| mediana de la toma | 16,8 | 16,8 |
+
+El máximo de la toma baja de 21,1 a 18,5 car/s: de un +26 % sobre la mediana a un +10 %.
+
+**Cómo, y por qué así.** El plan de ritmo de la toma A se rehizo partiendo de las **frases de
+whisper**, no de `silencedetect`: sus tramos parten frases por la mitad y el ritmo medido sobre
+un fragmento no significa nada — ese fue el error del intento anterior, que empeoraba la
+dispersión. Cada límite cae en el **punto medio del silencio** entre frase y frase, así ningún
+ataque se recorta. Solo se frena lo que supera la mediana en más de un 10 %, con tope 0,82; lo
+demás queda en 1,0. Las tomas B, C y D no se tocaron.
+
+Como cambian las duraciones, se re-derivaron los cortes y los cues de las tres escenas de la toma
+A: `v8-01`, `v8-02` y `v8-03`.
+
+### La cabecera
+
+| | |
+|---|---|
+| Barras de eje | Fuera de las trece láminas, igual que en General |
+| «Eje 2 de 3» | Las cabeceras de `v8-08`, `v8-09` y `v8-10` decían el mismo eje que el rótulo de la lámina, dos veces en pantalla. Ahora las cuatro láminas del bloque dicen **«Entra Velaria»** arriba y el eje abajo, que es como ya funcionaba `v8-07` |
