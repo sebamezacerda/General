@@ -76,6 +76,7 @@ body.dark{background:var(--ink);color:var(--light)}
 .steps .s{flex:1;background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent);
   padding:22px 24px}
 .steps .arr{width:56px;text-align:center;font-size:34px;color:var(--accent)}
+.dark .steps .arr{color:var(--accent-hi)}
 .steps .s .n{font-family:'IBM Plex Mono',monospace;font-size:19px;letter-spacing:2px;color:var(--mute2)}
 .dark .steps .s .n{color:var(--steel)}
 .steps .s .w{font-size:27px;margin-top:8px}
