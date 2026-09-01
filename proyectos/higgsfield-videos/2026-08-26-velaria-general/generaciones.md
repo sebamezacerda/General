@@ -123,3 +123,45 @@ poder hacerlo sin regenerar la toma.
 | Cierre | Nueva lámina `m-08b`: «Una empresa no captura valor…», la del corte de SQM |
 | Locución | Cuatro tomas continuas: sin alucinaciones, sin cambios de idioma, sin cambios de tempo |
 | Música | Cuatro pistas intercaladas —sobria · tensa · brillante · resuelta— encadenadas con `acrossfade` |
+
+## Corte v4 — 01/09/2026
+
+**3:16 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/929a106d-d3be-484e-b4b6-82fbd2a84826.mp4
+
+Doce escenas: la intro de marca más las once del corte v3. Video 196,12 s · voz 195,99 s ·
+cama 195,99 s. Sin avisos de corte.
+
+| | |
+|---|---|
+| Intro | `intro.html`, 2,4 s sin voz, la misma que abre el corte de SQM (descrita en su `generaciones.md`) |
+| Portada | Fuera «Qué hace Velaria»: queda **el símbolo y VELARIA**, nada más |
+| PROCESO | Las etiquetas de la derecha pasan a chip azul de marca sobre `#DDE6F8`, con borde |
+| PASOS → **ETAPAS** | En las once láminas y en la locución: «En cinco etapas», «ETAPA N°1», «Por eso la etapa 2» |
+| Propuesta de Skill | Deja de ser una etiqueta al margen: bloque `.skillbox` ámbar con borde izquierdo de 10 px, **PROPUESTA DE NUEVO SKILL** a 34 px y el nombre de la Skill al lado. La voz lo dice |
+| Velocidad | `atempo=1.08` sobre cada toma |
+| Cadencia | Las pausas acotadas a 0,20–0,40 s con el mismo `ritmo.json` de SQM |
+| Cues | Los 60 `data-in` del corte recalculados uno por uno sobre los `word_timestamps` de las tomas ya aceleradas y normalizadas |
+
+### Los ruidos después de «cómo estaba antes»
+
+Eran reales y estaban en la toma: 3,2 segundos entre 20,3 y 23,6 con media de −24 dB pero
+**picos a −2 dB**. No era una pausa, era un artefacto del modelo. La toma regenerada no lo trae.
+
+### Cinco tomas, no cuatro
+
+La toma D salió con «Etapa número cinco» repetido tres veces y **cuarenta segundos de balbuceo**
+en medio. Se partió en dos: D llega hasta el tablero de control y E toma el cierre. Menos texto
+por generación, menos superficie para que el modelo se descarrile. Las dos salieron limpias.
+
+| Toma | Escenas | Job |
+|---|---|---|
+| A | 2–3 | `4bca9323-3906-443d-800e-8b54a03ba989` |
+| B | 4–6 | `3a9106d6-a91b-4b8d-8c2a-9ad45659c07c` |
+| C | 7–8 | `ec2d957c-1494-4913-a24f-ef2f363f1489` |
+| D | 9–10 | `65586801-8ac0-43dc-8d40-eaf08ac169b0` |
+| E | 11–12 | `defa80a2-5bfa-45e6-9175-bf7724ec7929` |
+
+Verificación de audio: `mean_volume` por cuartos en las once pistas con voz, todo entre −14 y
+−21 dB; ninguna cae a silencio.

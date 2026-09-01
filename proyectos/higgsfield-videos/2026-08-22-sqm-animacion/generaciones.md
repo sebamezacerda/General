@@ -974,3 +974,72 @@ Velaria General.
 
 Verificación de audio: `mean_volume` por cuartos en las trece pistas, todo entre −14 y −22 dB,
 ninguna cae a silencio.
+
+## Corte v15 — 01/09/2026
+
+**3:17 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/43a4f23f-a3be-4a2e-b360-85e69327689b.mp4
+
+Quince escenas. Video 196,64 s · voz 196,61 s · cama 196,61 s. Sin avisos de corte.
+
+### Intro de marca
+
+`intro.html`, 2,4 s, sin voz. Se anima sola, sin dependencias: el aro se dibuja con
+`stroke-dashoffset`, el arco azul lo barre una vuelta y frena en su posición de marca, el punto
+central entra con un rebote corto, las siete letras de VELARIA suben de a una tras la máscara del
+contenedor —32 ms de desfase entre ellas— y una regla azul cruza por debajo y se apaga. El
+conjunto asienta con un `scale` de 0,965 a 1: un empuje, no un zoom.
+
+Va **igual en los dos videos**. Es la primera escena sin voz del proyecto, así que
+`cortes-voz.json` admite ahora una escena con la lista de tramos vacía: el montaje le genera
+20 ms de silencio y el aire de la ventana hace el resto.
+
+### Los ejemplos son infinitos
+
+En la lámina del villano, después de las tres tarjetas: **«Los ejemplos son infinitos»** en
+`--steel`, y recién entonces «Y el aprendizaje no sale de ahí» en ámbar. Cierra la enumeración en
+vez de dejarla colgando en tres casos.
+
+### La lámina de impacto
+
+Nueva `v8-11b`, entre «el mismo lunes» y el cierre:
+
+> **Procesos clave en menor tiempo y con mejor ejecución.**
+> **Impacto positivo directo al negocio.**
+
+La primera en `--accent-hi`, la segunda a 88 px en `--warn`. Las dos se leen en voz.
+
+### La cadencia despareja
+
+El reporte era que dentro de «Velaria convierte el uso individual…» hay tramos más rápidos que
+otros. Se midieron los dos candidatos:
+
+**Velocidad de habla.** Se probó normalizarla frase a frase —factor amortiguado hacia la mediana
+de la toma, tope ±15 %— y se midió antes y después: la dispersión **subió** de ×1,87 a ×2,27. Una
+frase corta y enfática es más lenta a propósito; aplanarla pelea contra la prosodia. Se descartó,
+y queda anotado para no volver a intentarlo.
+
+**Pausas.** Ahí sí: dentro de una misma toma iban de 0,22 a 0,78 s. `ritmo.json` guarda, por toma,
+la partición completa en tramos con su factor de tempo: 1,0 en el habla y lo que haga falta en
+cada pausa para dejarla entre 0,20 y 0,40 s. El montaje la reproduce igual en cada corrida, y las
+costuras caen dentro del silencio, así que no se oyen.
+
+La partición sale de `silencedetect` a −42 dB con 0,20 s de mínimo. Los tiempos de
+`cortes-voz.json` están escritos **en el reloj ya normalizado**: primero se acelera un 7 %, después
+se aplica el ritmo, y recién ahí se transcribe para elegir los cortes.
+
+### Tomas
+
+Se regeneraron A y D. La toma C sigue trayendo su alucinación —«L, D, L, C.» entre 7,85 y 11,15—
+y se sigue sacando con el segundo tramo de la escena 8.
+
+| Toma | Escenas | Job |
+|---|---|---|
+| A | 2–4 | `04469c3e-7222-4155-b95a-9084226b4cca` |
+| B | 5–7 | `e76e7745-45ef-4cd3-89b0-25516a6e009e` |
+| C | 8–10 | `303bf1cd-1acd-4733-b33b-b670e4dae910` |
+| D | 11–15 | `f9165e69-649f-45aa-831d-be0680c68b1e` |
+
+Verificación de audio: `mean_volume` por cuartos en las catorce pistas con voz, todo entre −14 y
+−21 dB; ninguna cae a silencio.
