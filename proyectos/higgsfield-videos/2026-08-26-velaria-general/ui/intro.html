@@ -1,0 +1,76 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Velaria</title>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-weight:600;src:url('fonts/ibm-plex-sans-latin-600-normal.woff2') format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0B0F17}
+body{display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Sans',Helvetica,sans-serif}
+#lock{display:flex;align-items:center;gap:52px;will-change:transform}
+#mark{flex:none}
+#wm{display:flex;overflow:hidden;padding:14px 0}
+#wm span{display:block;font-size:132px;font-weight:600;letter-spacing:22px;color:#F5F7FA;
+  will-change:transform,opacity}
+#rule{position:absolute;height:2px;background:#2456D6;bottom:392px;left:50%;
+  transform:translateX(-50%)}
+</style></head><body>
+<div id="lock">
+  <svg id="mark" width="188" height="188" viewBox="0 0 48 48" fill="none">
+    <circle id="ring" cx="24" cy="24" r="19" stroke="#F5F7FA" stroke-width="2.5"
+      stroke-linecap="round" transform="rotate(-90 24 24)"/>
+    <circle id="arc" cx="24" cy="24" r="19" stroke="#2456D6" stroke-width="2.5"
+      stroke-linecap="round" transform="rotate(-90 24 24)"/>
+    <circle id="dot" cx="24" cy="24" r="5" fill="#F5F7FA"/>
+  </svg>
+  <div id="wm"><span>V</span><span>E</span><span>L</span><span>A</span><span>R</span><span>I</span><span>A</span></div>
+</div>
+<div id="rule"></div>
+<script>
+// Intro de marca. Sin voz: el tiempo va en fracciones de la ventana del clip.
+// 1 el aro se dibuja solo · 2 el arco azul lo barre · 3 el punto entra
+// 4 las letras suben de a una tras una mascara · 5 la regla azul cruza y asienta
+var R = 2 * Math.PI * 19, LT, RING, ARC, DOT, RULE, LOCK, W;
+function c01(x){ return x < 0 ? 0 : x > 1 ? 1 : x; }
+function out3(u){ return 1 - Math.pow(1 - u, 3); }
+function seg(t, a, b){ return c01((t - a) / (b - a)); }
+
+window.buildAnim = function (dur) {
+  W = dur;
+  RING = document.getElementById('ring'); ARC = document.getElementById('arc');
+  DOT  = document.getElementById('dot');  RULE = document.getElementById('rule');
+  LOCK = document.getElementById('lock');
+  LT = [].slice.call(document.querySelectorAll('#wm span'));
+  RING.setAttribute('stroke-dasharray', R);
+  ARC.setAttribute('stroke-dasharray', (R * 0.25) + ' ' + R);
+  document.getElementById('wm').style.width =
+    document.getElementById('wm').getBoundingClientRect().width + 'px';
+};
+
+window.scrub = function (t, dur) {
+  var f = t / dur;
+  // el aro se dibuja
+  var a = out3(seg(f, 0.00, 0.34));
+  RING.setAttribute('stroke-dashoffset', (R * (1 - a)).toFixed(2));
+  // el arco azul barre una vuelta y se detiene en su posicion de marca
+  var b = out3(seg(f, 0.20, 0.52));
+  ARC.setAttribute('stroke-dashoffset', (R * (0.30 - 1.30 * b)).toFixed(2));
+  ARC.style.opacity = seg(f, 0.20, 0.26).toFixed(3);
+  // el punto entra con un rebote corto
+  var d = seg(f, 0.30, 0.44), s = d < 1 ? out3(d) * 1.18 : 1;
+  if (d >= 1) s = 1 + 0.18 * Math.max(0, 1 - (f - 0.44) / 0.06);
+  DOT.setAttribute('r', (5 * s).toFixed(2));
+  DOT.style.opacity = c01(d * 2).toFixed(3);
+  // las letras suben de a una tras la mascara del contenedor
+  LT.forEach(function (el, i) {
+    var u = out3(seg(f, 0.38 + i * 0.032, 0.52 + i * 0.032));
+    el.style.transform = 'translateY(' + ((1 - u) * 132).toFixed(1) + 'px)';
+    el.style.opacity = u.toFixed(3);
+  });
+  // la regla azul cruza bajo el logotipo
+  var r = out3(seg(f, 0.56, 0.80));
+  RULE.style.width = (r * 760).toFixed(0) + 'px';
+  RULE.style.opacity = (1 - c01((f - 0.86) / 0.14)).toFixed(3);
+  // el conjunto asienta: un empuje minimo, no un zoom
+  var k = out3(seg(f, 0.00, 0.86));
+  LOCK.style.transform = 'scale(' + (0.965 + 0.035 * k).toFixed(4) + ')';
+};
+</script></body></html>
