@@ -57,7 +57,9 @@ body.dark{background:var(--ink);color:var(--light)}
   padding:18px 0;border-bottom:1px solid var(--line)}
 .row .lab{font-family:'IBM Plex Mono',monospace;font-size:21px;letter-spacing:2px;color:var(--steel);
   white-space:nowrap}
-.row .lab.on{color:var(--accent)}
+/* la etiqueta de la derecha es un chip, no texto gris: se lee como rotulo */
+.row .lab.on{color:var(--accent);background:#DDE6F8;border:1px solid #BACBF0;
+  padding:7px 16px;letter-spacing:2.6px;font-weight:500}
 
 /* dos columnas: cuenta personal / licencias de la empresa */
 .two{display:flex;gap:22px;align-items:stretch}
@@ -97,6 +99,9 @@ body{background:#EDF1F7}                     /* el fondo baja un punto */
 
 /* titulo de lamina: grande y en color corporativo, no un kicker gris */
 .tit{display:flex;align-items:baseline;gap:20px;margin-bottom:6px}
+/* portada: la marca reemplaza al titulo de lamina */
+.tit.marca{align-items:center;gap:18px}
+.tit.marca .wm{font-size:62px;font-weight:600;letter-spacing:5px;color:var(--accent)}
 .tit .t{font-size:58px;font-weight:600;letter-spacing:-1.2px;color:var(--accent);
   text-transform:uppercase}
 
@@ -113,5 +118,11 @@ body{background:#EDF1F7}                     /* el fondo baja un punto */
 .tag{font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:2.4px;
   color:var(--accent);white-space:nowrap}
 .tag.warn{color:#B8791F}
+/* la propuesta de Skill es el momento del video: bloque propio, no etiqueta al margen */
+.skillbox{display:flex;align-items:center;gap:26px;background:#FBF3E3;border:2px solid #D9A03C;
+  border-left-width:10px;padding:24px 32px;margin-top:6px}
+.skillbox .k{font-family:'IBM Plex Mono',monospace;font-size:34px;letter-spacing:3.4px;
+  color:#8A5A12;font-weight:500;white-space:nowrap}
+.skillbox .v{font-size:34px;font-weight:500;color:var(--text);letter-spacing:-.4px}
 .nota{background:var(--ink2);color:var(--light);padding:22px 28px;border-left:4px solid var(--accent-hi);
   font-size:30px;line-height:1.4}

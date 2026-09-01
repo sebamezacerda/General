@@ -2,12 +2,17 @@
 """Montaje de Velaria General. Corre en el sandbox de Higgsfield."""
 import subprocess, os, json
 B = "https://d8j0ntlcm91z4.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
-# La narracion va en CUATRO TOMAS CONTINUAS y se corta en escenas: dentro de una
-# toma el modelo no cambia de tempo ni de acento.
-TOMAS = ["hf_20260831_222136_f6477c2f-e4cd-4830-9c65-7aa5674bbd07",  # A escenas 1-2
-         "hf_20260831_222136_f87e181b-426e-423c-8938-0e82523dcbb4",  # B escenas 3-5
-         "hf_20260831_222136_79793e04-e113-425b-888d-3418436574b6",  # C escenas 6-7
-         "hf_20260831_222417_59415cce-de31-43f9-bbc9-f35df4b24230"]  # D escenas 8-11
+# La narracion va en CINCO TOMAS CONTINUAS y se corta en escenas: dentro de una
+# toma el modelo no cambia de tempo ni de acento. La E se separo de la D porque
+# la toma larga traia una alucinacion de 40 s: menos texto por toma, menos riesgo.
+TOMAS = ["hf_20260901_085159_4bca9323-3906-443d-800e-8b54a03ba989",  # A escenas 1-2
+         "hf_20260901_085159_3a9106d6-a91b-4b8d-8c2a-9ad45659c07c",  # B escenas 3-5
+         "hf_20260901_085159_ec2d957c-1494-4913-a24f-ef2f363f1489",  # C escenas 6-7
+         "hf_20260901_085343_65586801-8ac0-43dc-8d40-eaf08ac169b0",  # D escenas 8-9
+         "hf_20260901_085343_defa80a2-5bfa-45e6-9175-bf7724ec7929"]  # E escenas 10-11
+# la voz se acelera un 8% antes de cortar: da cadencia sin subir el tono. Los
+# tiempos de cortes-voz.json ya estan escritos en este reloj.
+SPEED = 1.08
 CUTS = json.load(open("cortes-voz.json"))
 PLAN = [n for n, _ in json.load(open("ui/plan-mec.json"))]
 WIN = [w for _, w in json.load(open("ui/plan-mec.json"))]
@@ -21,6 +26,8 @@ def dur(p):
 
 for i, f in enumerate(TOMAS, 1):
     if not os.path.exists(f"src/t{i}.mp3"): sh(f"curl -sfo src/t{i}.mp3 '{B}{f}.mp3'")
+    if not os.path.exists(f"src/t{i}.wav"):
+        sh(f"ffmpeg -y -v error -i src/t{i}.mp3 -af 'atempo={SPEED}' -ar 48000 -ac 2 src/t{i}.wav")
 # atrim + asetpts reinicia el reloj ANTES del fade. Con -ss/-to de salida el filtro
 # sigue viendo los timestamps del original y el fade de cierre se dispara antes de
 # tiempo: asi es como se apagaba la voz a media escena.
@@ -28,7 +35,7 @@ for i, (tk, tramos) in enumerate(CUTS, 1):
     trozos = []
     for k, (ini, fin) in enumerate(tramos):
         out = f"src/a{i}_{k}.wav"
-        sh(f"ffmpeg -y -v error -i src/t{tk}.mp3 -af "
+        sh(f"ffmpeg -y -v error -i src/t{tk}.wav -af "
            f"'atrim=start={ini}:end={fin},asetpts=N/SR/TB' -ar 48000 -ac 2 '{out}'")
         trozos.append(out)
     with open(f"src/l{i}.txt", "w") as fh:
@@ -71,7 +78,7 @@ BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # sobria
         "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # tensa
         "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # brillante
         "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # resuelta
-BLOQUES = [(1, 3), (4, 6), (7, 9), (10, 11)]
+BLOQUES = [(1, 2), (3, 5), (6, 7), (8, 11)]
 for i, f in enumerate(BEDS, 1):
     if not os.path.exists(f"src/b{i}.m4a"): sh(f"curl -sfo src/b{i}.m4a '{B}{f}'")
 
