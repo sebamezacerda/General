@@ -912,3 +912,65 @@ Mismo contenido de la v12 —las trece láminas y las cuatro tomas continuas— 
 Verificación posterior al montaje: se midió `mean_volume` por cuartos en cada una de las trece
 pistas de escena. Todas dan entre −14 y −23 dB en los cuatro cuartos; ninguna cae a silencio.
 En la v12, las escenas que no abrían toma se apagaban a media escena.
+
+## Corte v14 — 01/09/2026
+
+**3:08 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/3958931a-1f2a-482f-a6e9-88badb36f3cb.mp4
+
+Video 188,28 s · voz 188,24 s · cama 188,24 s. Baja de 3:24 a 3:08 por dos vías: la escena del
+villano se acorta y la voz corre un 7 % más rápido.
+
+### La voz lee menos de lo que se ve
+
+En la lámina del villano la locución decía las tres líneas de cada tarjeta. Ahora **lee solo la
+primera** —«Comercial conectó el ERP a su asistente», «Logística cruza el sistema de transporte
+con las planillas de puerto», «Planificación escribió los pasos que sigue cada semana»— y las
+otras dos entran después, **sin leerse y en otro color**: la segunda en blanco algo más chico,
+la tercera en `--steel` e itálica.
+
+Las nueve líneas ya no entran como tres bloques sino una por una, cada una con su `data-in`
+sacado de los `word_timestamps` de la toma. La tarjeta entra, se lee su primera línea, y las dos
+que la siguen aparecen a 0,95 s de distancia mientras la voz ya va en la siguiente persona: la
+lámina se llena sola en vez de esperar. La escena baja de 23,90 s a 18,44 s.
+
+Es la misma regla que ya regía el resto del corte —la voz no dice lo que la pantalla escribe—,
+aplicada dentro de una lámina: la voz da el titular, la pantalla da el detalle.
+
+### La voz, un 7 % más rápida
+
+`atempo=1.07` sobre cada toma antes de cortar. Preserva el tono, no obliga a regenerar y no
+depende de que el modelo acierte el ritmo. Como el filtro es una escala uniforme del tiempo,
+**los tiempos de `cortes-voz.json` se escriben ya en el reloj acelerado**: las tomas se aceleran
+primero y recién ahí se transcriben con `faster-whisper` para elegir los cortes.
+
+### Fuera «excepción»
+
+Palabra opaca para quien no está en planificación. Queda **«imprevisto»**, mismo término en la
+pantalla y en la voz:
+
+| Antes | Ahora |
+|---|---|
+| «resolviendo la excepción de la misma forma» | «resolviendo **el mismo imprevisto** de la misma forma» |
+| «La excepción entra · 07:00» | «**El imprevisto se detecta** · 07:00» |
+| Skill `Weekly S&OP Exception Review` | `Weekly S&OP Coverage Review` |
+
+### Tomas
+
+Se regeneraron A, C y D; la B queda igual porque no la tocaba ningún cambio.
+
+| Toma | Escenas | Duración ×1,07 | Job |
+|---|---|---|---|
+| A | 1–3 | 50,38 s | `75fdede7-1521-418f-b608-89c8e6e477a6` |
+| B | 4–6 | 43,58 s | `e76e7745-45ef-4cd3-89b0-25516a6e009e` |
+| C | 7–9 | 56,44 s | `303bf1cd-1acd-4733-b33b-b670e4dae910` |
+| D | 10–13 | 35,14 s | `151d9d39-edd1-4176-a241-6778be044392` |
+
+La toma C trajo una cola alucinada **en medio**, no al final: un «L, D, L, C.» entre 7,85 y 11,15
+justo después de «junto a la empresa». Se saca con el segundo tramo de la escena 7, sin
+regenerar: `assemble-v8.py` adopta el formato multi-tramo `[toma, [[ini,fin], …]]` que ya usaba
+Velaria General.
+
+Verificación de audio: `mean_volume` por cuartos en las trece pistas, todo entre −14 y −22 dB,
+ninguna cae a silencio.
