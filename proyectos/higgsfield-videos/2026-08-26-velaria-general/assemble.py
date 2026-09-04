@@ -89,29 +89,44 @@ with open("seg/alist.txt", "w") as fh:
 sh("ffmpeg -y -v error -f concat -safe 0 -i seg/alist.txt -c copy seg/voz.wav")
 T = dur("seg/voz.wav")
 
-# ---- cama: las mismas cuatro piezas electronicas del corte de SQM, una por bloque
-# cuatro pistas intercaladas, para que la musica acompane el avance de los pasos
-BEDS = ["hf_20260826_135133_65a8fa4f-44ea-4719-bf00-e27b3abfb27f.m4a",  # sobria
-        "hf_20260826_135133_81e3d4d0-918f-4243-9879-3f8dd234ddeb.m4a",  # tensa
-        "hf_20260826_135133_9872ad48-9432-4f31-9b71-f866857932f4.m4a",  # brillante
-        "hf_20260826_135133_974ce7e4-9d0a-4c3a-8840-cb8471714b68.m4a"]  # resuelta
+# ---- cama: cuatro pistas de libreria que trajo el cliente, una por bloque
+# narrativo, para que la musica acompane el relato en vez de ser un loop plano.
+# Medidas antes de asignarlas: m3 es plana (pulso 0,8 dB) y va al planteo; m1 sube
+# la tension; m2 tiene el pulso mas marcado (16 dB) y entra justo cuando entra
+# Velaria; m4 es la mas abierta arriba y cierra.
+BEDS = ["1c784bd1-fd35-4643-9f0c-16425a5e7c2e.mp3",   # m1  100 bpm  tensa
+        "5755ffc4-aae2-4e1b-9259-f8e66e34c567.mp3",   # m2  121 bpm  pulso fuerte
+        "b0849c43-de85-48b2-b8ac-33d02b8b90e7.mp3",   # m3   90 bpm  plana
+        "d5e674e2-8aac-4c8a-8d74-1b42650fde48.mp3"]   # m4  102 bpm  abierta
 BLOQUES = [(1, 3), (4, 6), (7, 8), (9, 12)]
+ASIGNA  = [3, 1, 2, 4]              # bloque -> pista (1..4), en ese orden narrativo
+BASE_MEDIA = "https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/"
 for i, f in enumerate(BEDS, 1):
-    if not os.path.exists(f"src/b{i}.m4a"): sh(f"curl -sfo src/b{i}.m4a '{B}{f}'")
+    if not os.path.exists(f"src/b{i}.mp3"): sh(f"curl -sfo src/b{i}.mp3 '{BASE_MEDIA}{f}'")
 
 corte = []
 for k, (ini, fin) in enumerate(BLOQUES, 1):
     L = round(sum(WIN[ini - 1:fin]), 3)
     if k < len(BLOQUES): L += 2.0     # el sobrante lo consume el acrossfade siguiente
-    n = max(1, -(-int(L) // 55))
-    ins = " ".join(f"-i src/b{k}.m4a" for _ in range(n))
+    pista = f"src/b{ASIGNA[k - 1]}.mp3"
+    dp = dur(pista)
+    # se encadena la pista consigo misma las veces que haga falta para cubrir el
+    # bloque; el numero sale de su duracion real, que va de 30 a 154 s segun la pieza
+    n = max(1, -(-int(L + 2) // int(dp - 2)))
+    ins = " ".join(f"-i {pista}" for _ in range(n))
     if n == 1:
         fc = "[0:a]anull[c]"
     else:
         fc = "[0][1]acrossfade=d=2[x1];" + "".join(
             f"[x{j}][{j + 1}]acrossfade=d=2[x{j + 1}];" for j in range(1, n - 1)) + f"[x{n - 1}]anull[c]"
     sh(f"ffmpeg -y -v error {ins} -filter_complex '{fc}' -map '[c]' -ar 48000 -ac 2 seg/bl{k}_raw.wav")
-    sh(f"ffmpeg -y -v error -i seg/bl{k}_raw.wav -af 'atrim=0:{L},asetpts=N/SR/TB,volume=-17dB' seg/bl{k}.wav")
+    # el despeje de 300-3500 Hz le abre el carril a la voz; volumen fijo, no loudnorm:
+    # en una pieza larga el loudnorm de una pasada bombea
+    sh(f"ffmpeg -y -v error -i seg/bl{k}_raw.wav -af "
+       f"'atrim=0:{L},asetpts=N/SR/TB,highpass=f=38:poles=2,"
+       f"equalizer=f=900:width_type=q:w=0.9:g=-2.0,"
+       f"equalizer=f=2200:width_type=q:w=0.8:g=-3.0,"
+       f"volume=-17dB' seg/bl{k}.wav")
     corte.append(f"seg/bl{k}.wav")
 
 # bloque a bloque encadenado: la musica nunca desaparece en el corte
