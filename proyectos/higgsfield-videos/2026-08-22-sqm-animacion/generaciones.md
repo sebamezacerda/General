@@ -1152,3 +1152,47 @@ más un corte bajo los 38 Hz. Nivel fijo a −17 dB, sin ducking.
 **Nota sobre los 124 BPM que había propuesto:** no se aplicó. Las pistas están entre 90 y
 121 BPM y llevarlas a 124 exigía estirar hasta un 38 %, que destruye el material. Se
 respetó el tempo natural de cada una.
+
+## Corte v14 — 04/09/2026
+
+**3:15.3 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/64c3fac9-b6d9-4717-9ba5-90b01c104255.mp4
+
+Quince escenas. Video 195,32 s · voz 195,29 s. Sin avisos de corte.
+
+### La velocidad de la voz, medida contra el video entero
+
+Mismo cambio que en General, y por la misma razón: el corte anterior comparaba
+cada frase con la mediana de **su propia toma**, así que una toma rápida entera
+seguía rápida. Ahora la referencia es la mediana ponderada por duración de todo
+el video.
+
+| | antes | ahora |
+|---|---|---|
+| p10 | 4,92 síl/s | **5,40** |
+| mediana | 6,13 | 6,13 |
+| p90 | 7,86 síl/s | **6,34** |
+| dispersión p90/p10 | **×1,60** | **×1,17** |
+
+Cincuenta y seis frases sobre las cuatro tomas. Objetivo global 5,87 síl/s.
+
+La sección de los cuadros —«Comercial conectó el ERP a su asistente»,
+«Logística cruza el sistema de transporte…», «Planificación escribió los pasos
+que sigue cada semana»— corría entre un 19 % y un 25 % sobre la mediana. Era la
+aceleración que Sebastián había señalado en su momento y que la corrección
+per-toma no alcanzaba a tocar.
+
+Al re-ritmar, la pausa de 3,7 s que hay dentro de la toma C —entre «la define
+junto a la empresa» y «Y después le pone adentro tres cosas»— se comprime a
+0,93 s, y el corte de dos trozos de `v8-08` pasa de `[0–7,81] + [10,94–28,06]`
+a `[0–7,54] + [8,38–24,50]`.
+
+### Verificación
+
+| Qué se buscó | Resultado |
+|---|---|
+| Escenas mudas (`mean_volume` por cuartos) | Ninguna · niveles de −15,4 a −19,2 dB |
+| Fronteras de escena fuera de silencio | Ninguna · la peor a −35,8 dB |
+| Ventanas del plan más cortas que su voz | Ninguna |
+| Video contra plan | 195,32 vs 195,29 s |

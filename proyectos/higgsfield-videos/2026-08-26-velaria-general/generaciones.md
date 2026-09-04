@@ -275,3 +275,53 @@ más un corte bajo los 38 Hz. Nivel fijo a −17 dB, sin ducking.
 **Nota sobre los 124 BPM que había propuesto:** no se aplicó. Las pistas están entre 90 y
 121 BPM y llevarlas a 124 exigía estirar hasta un 38 %, que destruye el material. Se
 respetó el tempo natural de cada una.
+
+## Corte v6 — 04/09/2026
+
+**3:09.7 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/027af0a9-32b6-4366-8de5-ca0bef74ad7d.mp4
+
+Doce escenas. Video 189,72 s · voz 189,57 s. Sin avisos de corte.
+
+### La velocidad de la voz, esta vez de verdad
+
+Sebastián insistió en que seguía habiendo cambios de velocidad, y tenía razón.
+El corte anterior medía cada frase **contra la mediana de su propia toma**. Una
+toma que corría rápida entera se quedaba rápida, porque su mediana ya estaba
+alta. El espectador escucha el video como una sola pieza, no toma por toma.
+
+Ahora la referencia es la **mediana ponderada por duración del video completo**,
+en sílabas por segundo, y la corrección ya no está limitada a no mover ningún
+cue: se re-derivan los cortes, las ventanas del plan, cada `window.VO` y cada
+`data-in`.
+
+| | antes | ahora |
+|---|---|---|
+| p10 (las frases lentas) | 5,36 síl/s | **6,07** |
+| mediana | 6,82 | 6,82 |
+| p90 (las apuradas) | 8,16 síl/s | **7,13** |
+| dispersión p90/p10 | **×1,52** | **×1,17** |
+
+Sesenta y seis frases medidas sobre las cinco tomas. Objetivo global 6,60 síl/s.
+Dentro de ±8 % de la mediana no se toca nada —esa variación es prosodia, no
+defecto— y fuera de la banda la frase se lleva al borde, con tope de `atempo`
+entre 0,80 y 1,25.
+
+Las que más se movían: «Velaria toma estos procesos…» y «midiendo el resultado
+contra cómo estaba antes» corrían +25 % y +30 %; «Libera el poder de la
+inteligencia artificial», del cierre, +30 %; «En cinco etapas» iba un 32 % por
+debajo. Ninguna de esas cuatro se había corregido antes, porque en su propia
+toma no destacaban.
+
+### Verificación
+
+| Qué se buscó | Resultado |
+|---|---|
+| Escenas mudas (`mean_volume` por cuartos) | Ninguna · niveles de −16,3 a −18,2 dB |
+| Fronteras de escena fuera de silencio | Una a −27,6 dB (fin de `m-04b`), sobre el fade de cierre de 80 ms |
+| Ventanas del plan más cortas que su voz | Ninguna |
+| Video contra plan | 189,72 vs 189,57 s |
+
+El video dura 5,6 s menos que el v5: al frenar las frases apuradas y comprimir
+las pausas largas, el total baja.
