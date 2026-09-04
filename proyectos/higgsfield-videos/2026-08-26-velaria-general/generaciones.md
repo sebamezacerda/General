@@ -205,3 +205,73 @@ Se agregó `--mute2: #55606F` para eso: el steel de marca se reserva para las l�
 |---|---|
 | «1 de 5» | El «DE 5» estaba en gris a 22 px y desterrado al margen derecho con `margin-left:auto`. Ahora va **pegado al número, a 38 px y en `--accent-hi`**: la banda se lee «ETAPA N°1 DE 5» como una sola unidad |
 | Barras de la cabecera | Fuera. El contador de cinco barras arriba a la derecha decía lo mismo que la banda de etapa, y dos indicadores del mismo dato compiten entre sí |
+
+## Corte final — 04/09/2026
+
+**3:15.2 · 1920×1080 · H.264 + AAC · sin subtítulos**
+
+https://d2ol7oe51mr4n9.cloudfront.net/user_3GZDp50cX9i6ZJdtP9xYJIH5Moh/339ccaa0-9bf0-4d99-803f-2fb9534071b1.mp4
+
+Doce escenas. Video 195,20 s · voz 195,16 s. Sin avisos de corte.
+
+### El escaneo
+
+Antes de renderizar se pasaron las dos animaciones por todos los modos de falla que
+aparecieron en el proyecto. Medido, no mirado.
+
+| Qué se buscó | Cómo | Resultado |
+|---|---|---|
+| Texto cortado o fuera de cuadro | Caja real de cada **nodo de texto** con `Range`, en tres momentos de cada lámina | Ninguno en los 27 planos |
+| Contraste ilegible | Luminancia relativa de cada texto contra su fondo efectivo | Todo sobre 4,5:1 |
+| Alucinaciones de voz | Transcripción completa con `faster-whisper`, más detector de repeticiones, balbuceo y cola larga | Ninguna. Colas de 0,18 a 0,52 s |
+| Voces apuradas | Caracteres hablados por segundo de cada frase contra la mediana de su toma | Corregidas, ver abajo |
+| Cortes de audio extraños | Nivel medido en una ventana de 120 ms alrededor de **cada frontera de escena** | Todas en silencio, −51 a −68 dB |
+| Escenas mudas | `mean_volume` por cuartos en cada pista de escena | Ninguna |
+
+La banda de etapa de General aparece como «fuera de cuadro» en la auditoría de cajas:
+es un falso positivo. Es una banda a sangre con `margin: 0 -90px` que el `overflow:hidden`
+recorta por diseño; su texto está a 90 px del borde.
+
+### Las frases apuradas
+
+El detector encontró frases corriendo entre un 12 % y un 26 % sobre la mediana de su
+toma. Se frenan con una restricción dura: **la duración de salida de cada escena queda
+idéntica**, y lo que se gana frenando se paga comprimiendo las pausas de esa misma
+escena. Así el corte, el plan y los cues siguen siendo válidos sin re-derivar nada.
+
+Cuando el presupuesto de pausas de una escena no alcanza, el freno se recorta a lo que
+la escena puede pagar en vez de estirarla. Es la razón de que algunas frases queden
+frenadas a la mitad de lo ideal: se prefirió no mover ni un cue.
+
+La partición sale de las **frases de whisper**, no de `silencedetect`. Ese fue el error
+del primer intento —sus tramos parten frases por la mitad y el ritmo medido sobre un
+fragmento no significa nada— y por eso aquella pasada empeoraba la dispersión en vez de
+mejorarla. Cada límite cae en el punto medio del silencio entre frase y frase.
+
+### Las fronteras que no estaban en silencio
+
+En General, los cortes de escena 7|8 y 11|12 caían sobre la cola de la palabra anterior,
+a −22,7 y −25,7 dB. Eran cortes audibles. Se movieron al silencio real: 26,79 → 27,06 y
+8,35 → 8,50. Después del re-cálculo del ritmo, un barrido automático reubicó ocho
+fronteras más —de las dos animaciones— al punto de silencio más cercano.
+
+### La música
+
+Cuatro pistas de librería que trajo el cliente. Llegaron cinco archivos, pero
+`Audio_3` y `Audio_5` son idénticos (mismo MD5), así que son cuatro piezas.
+
+| Bloque | Pista | BPM | Pulso | Por qué ahí |
+|---|---|---|---|---|
+| 1 · planteo | m3 | 90 | 0,8 dB | La más plana; no compite con el planteo |
+| 2 · la fricción | m1 | 100 | 2,7 dB | Sube la tensión donde se muestra el problema |
+| 3 · el giro | m2 | 121 | **16,0 dB** | El pulso más marcado, justo cuando entra Velaria |
+| 4 · cierre | m4 | 102 | 2,6 dB | La más abierta arriba; aguanta la placa de marca |
+
+Cada pieza se encadena consigo misma con `acrossfade` de 2 s hasta cubrir su bloque; el
+número de repeticiones sale de la duración real de cada pista, que va de 30 s a 2:34.
+Antes de la mezcla se les abre el carril a la voz: −2 dB en 900 Hz y −3 dB en 2200 Hz,
+más un corte bajo los 38 Hz. Nivel fijo a −17 dB, sin ducking.
+
+**Nota sobre los 124 BPM que había propuesto:** no se aplicó. Las pistas están entre 90 y
+121 BPM y llevarlas a 124 exigía estirar hasta un 38 %, que destruye el material. Se
+respetó el tempo natural de cada una.
